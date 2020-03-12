@@ -11,11 +11,19 @@ using System.Data.SQLite;
 
 namespace ProjectNeon
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Main formMain = new Main();
+            Hide();
+            formMain.Show();
+            
         }
     }
 }
