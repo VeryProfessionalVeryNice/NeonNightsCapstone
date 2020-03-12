@@ -66,6 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
