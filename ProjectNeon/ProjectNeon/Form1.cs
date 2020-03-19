@@ -13,9 +13,16 @@ namespace ProjectNeon
 {
     public partial class Form1 : Form
     {
+        //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Joe\Documents\Neon-Nights\ProjectNeon\ProjectNeon\Database1.mdf;Integrated Security=True
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
