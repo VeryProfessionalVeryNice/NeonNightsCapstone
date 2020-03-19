@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.IO;
 
 namespace ProjectNeon
 {
@@ -16,6 +17,21 @@ namespace ProjectNeon
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void safePDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string path = Directory.GetCurrentDirectory();
+                string target = @"";
+
+
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.GetType().ToString());
+            }
         }
     }
 }
