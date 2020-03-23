@@ -10,6 +10,7 @@ namespace ProjectNeon
     {
         private int id;
         private string companyName;
+        private string privateJob;
         private string addressLine1;
         private string addressLine2;
         private string city;
@@ -23,13 +24,15 @@ namespace ProjectNeon
         public string City { get => city; set => city = value; }
         public string State { get => state; set => state = value; }
         public string Zip { get => zip; set => zip = value; }
+        public string PrivateJob { get => privateJob; set => privateJob = value; }
 
         public Customer() { }
 
-        public Customer(string companyName, string addressLine1, string addressLine2, string city, string state, string zip)
+        public Customer(string companyName, string privateJob, string addressLine1, string addressLine2, string city, string state, string zip)
         {
             id = 0;
             this.companyName = companyName;
+            this.privateJob = privateJob;
             this.addressLine1 = addressLine1;
             this.addressLine2 = addressLine2;
             this.city = city;
@@ -37,10 +40,11 @@ namespace ProjectNeon
             this.zip = zip;
         }
 
-        public Customer(int id, string companyName, string addressLine1, string addressLine2, string city, string state, string zip)
+        public Customer(int id, string companyName, string privateJob, string addressLine1, string addressLine2, string city, string state, string zip)
         {
             this.id = id;
             this.companyName = companyName;
+            this.privateJob = privateJob;
             this.addressLine1 = addressLine1;
             this.addressLine2 = addressLine2;
             this.city = city;
@@ -48,6 +52,9 @@ namespace ProjectNeon
             this.zip = zip;
         }
 
-        
+        public override string ToString()
+        {
+            return $"Name: {companyName}\r\nJob Type: {privateJob}\r\nAddress: {addressLine1} {addressLine2}\r\nCity: {city}\r\nState: {state}\r\nZip: {zip}";
+        }
     }
 }
