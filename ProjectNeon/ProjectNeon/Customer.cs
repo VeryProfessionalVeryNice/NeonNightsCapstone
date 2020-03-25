@@ -54,7 +54,7 @@ namespace ProjectNeon
 
         public override string ToString()
         {
-            return $"Name: {companyName}\r\nJob Type: {jobType}\r\nAddress: {addressLine1} {addressLine2}\r\nCity: {city}\r\nState: {state}\r\nZip: {zip}";
+            return $"ID: {id}\r\nName: {companyName}\r\nJob Type: {jobType}\r\nAddress: {addressLine1} {addressLine2}\r\nCity: {city}\r\nState: {state}\r\nZip: {zip}\r\n";
         }
     }
 }
