@@ -11,20 +11,44 @@ namespace ProjectNeon
 {
     class Invoice
     {
-        private string InvoiceID;
-        private int CustomerID;
-        private bool TaxExempt;
-        private float Total;
-        private DateTime DateIssued;
-        private string PaymentMethod;
-        private string CheckNum;
+        private string id;
+        private int customerId;
+        private bool taxExempt;
+        private decimal total;
+        private DateTime dateIssued;
+        private string paymentMethod;
+        private string checkNum;
 
-        public string InvoiceID1 { get => InvoiceID; set => InvoiceID = value; }
-        public int CustomerID1 { get => CustomerID; set => CustomerID = value; }
-        public bool TaxExempt1 { get => TaxExempt; set => TaxExempt = value; }
-        public float Total1 { get => Total; set => Total = value; }
-        public DateTime DateIssued1 { get => DateIssued; set => DateIssued = value; }
-        public string PaymentMethod1 { get => PaymentMethod; set => PaymentMethod = value; }
-        public string CheckNum1 { get => CheckNum; set => CheckNum = value; }
+        public string Id { get => id; set => id = value; }
+        public int CustomerId { get => customerId; set => customerId = value; }
+        public bool TaxExempt { get => taxExempt; set => taxExempt = value; }
+        public decimal Total { get => total; set => total = value; }
+        public DateTime DateIssued { get => dateIssued; set => dateIssued = value; }
+        public string PaymentMethod { get => paymentMethod; set => paymentMethod = value; }
+        public string CheckNum { get => checkNum; set => checkNum = value; }
+
+        public Invoice() { }
+
+        public Invoice(string id, int customerId, bool taxExempt, decimal total, DateTime dateIssued, string paymentMethod, string checkNum)
+        {
+            this.id = id;
+            this.customerId = customerId;
+            this.taxExempt = taxExempt;
+            this.total = total;
+            this.dateIssued = dateIssued;
+            this.paymentMethod = paymentMethod;
+            this.checkNum = checkNum;
+        }
+
+        public Invoice(string id, int customerId, bool taxExempt, decimal total, DateTime dateIssued, string paymentMethod)
+        {
+            this.id = id;
+            this.customerId = customerId;
+            this.taxExempt = taxExempt;
+            this.total = total;
+            this.dateIssued = dateIssued;
+            this.paymentMethod = paymentMethod;
+            checkNum = null;
+        }
     }
 }
