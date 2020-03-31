@@ -33,6 +33,16 @@ namespace ProjectNeon
             this.description = description;
             this.priceEach = priceEach;
         }
+
+        public Item(string itemCode, byte quantity, string description, decimal priceEach)
+        {
+            id = 0;
+            this.itemCode = itemCode;
+            this.quantity = quantity;
+            this.description = description;
+            this.priceEach = priceEach;
+        }
+
         public Item(int id, string invoiceId, string itemCode, byte quantity, string description, decimal priceEach)
         {
             this.id = id;
@@ -41,6 +51,11 @@ namespace ProjectNeon
             this.quantity = quantity;
             this.description = description;
             this.priceEach = priceEach;
+        }
+
+        public override string ToString()
+        {
+            return $"{itemCode} Qty: {quantity} at ${priceEach} each";
         }
     }
 }
