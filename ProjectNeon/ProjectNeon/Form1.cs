@@ -407,5 +407,14 @@ namespace ProjectNeon
             panelTransactions.Hide();
             panelCustomers.Hide();
         }
+
+        private void txtBxZip_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // allows only numbers to be typed in zip code txtbox
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

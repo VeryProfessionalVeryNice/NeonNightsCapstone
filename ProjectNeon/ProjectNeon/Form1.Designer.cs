@@ -77,10 +77,10 @@
             this.btnShowTransactions = new System.Windows.Forms.Button();
             this.btnShowCustomers = new System.Windows.Forms.Button();
             this.panelManageInvoices = new System.Windows.Forms.Panel();
-            this.panelTransactions = new System.Windows.Forms.Panel();
-            this.panelCustomers = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
+            this.panelTransactions = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
+            this.panelCustomers = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.panelAddInvoice.SuspendLayout();
@@ -418,6 +418,7 @@
             this.txtBxZip.Name = "txtBxZip";
             this.txtBxZip.Size = new System.Drawing.Size(173, 20);
             this.txtBxZip.TabIndex = 5;
+            this.txtBxZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxZip_KeyPress);
             // 
             // label1
             // 
@@ -448,6 +449,60 @@
             // 
             // txtBxState
             // 
+            this.txtBxState.AutoCompleteCustomSource.AddRange(new string[] {
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "DC",
+            "FL",
+            "GA",
+            "HA",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.txtBxState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBxState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBxState.Location = new System.Drawing.Point(16, 285);
             this.txtBxState.MaxLength = 2;
             this.txtBxState.Name = "txtBxState";
@@ -550,22 +605,6 @@
             this.panelManageInvoices.Size = new System.Drawing.Size(849, 519);
             this.panelManageInvoices.TabIndex = 7;
             // 
-            // panelTransactions
-            // 
-            this.panelTransactions.Controls.Add(this.label18);
-            this.panelTransactions.Location = new System.Drawing.Point(141, 23);
-            this.panelTransactions.Name = "panelTransactions";
-            this.panelTransactions.Size = new System.Drawing.Size(849, 519);
-            this.panelTransactions.TabIndex = 26;
-            // 
-            // panelCustomers
-            // 
-            this.panelCustomers.Controls.Add(this.label19);
-            this.panelCustomers.Location = new System.Drawing.Point(141, 23);
-            this.panelCustomers.Name = "panelCustomers";
-            this.panelCustomers.Size = new System.Drawing.Size(849, 519);
-            this.panelCustomers.TabIndex = 0;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -575,6 +614,14 @@
             this.label17.TabIndex = 0;
             this.label17.Text = "Manage Invoices";
             // 
+            // panelTransactions
+            // 
+            this.panelTransactions.Controls.Add(this.label18);
+            this.panelTransactions.Location = new System.Drawing.Point(141, 23);
+            this.panelTransactions.Name = "panelTransactions";
+            this.panelTransactions.Size = new System.Drawing.Size(849, 519);
+            this.panelTransactions.TabIndex = 26;
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -583,6 +630,14 @@
             this.label18.Size = new System.Drawing.Size(68, 13);
             this.label18.TabIndex = 0;
             this.label18.Text = "Transactions";
+            // 
+            // panelCustomers
+            // 
+            this.panelCustomers.Controls.Add(this.label19);
+            this.panelCustomers.Location = new System.Drawing.Point(141, 23);
+            this.panelCustomers.Name = "panelCustomers";
+            this.panelCustomers.Size = new System.Drawing.Size(849, 519);
+            this.panelCustomers.TabIndex = 0;
             // 
             // label19
             // 
