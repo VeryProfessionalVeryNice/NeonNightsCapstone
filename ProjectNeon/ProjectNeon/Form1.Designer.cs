@@ -129,6 +129,7 @@
             this.btnSaveToDatabase.TabIndex = 25;
             this.btnSaveToDatabase.Text = "Save Invoice";
             this.btnSaveToDatabase.UseVisualStyleBackColor = true;
+            this.btnSaveToDatabase.Click += new System.EventHandler(this.btnSaveToDatabase_Click);
             // 
             // btnDeleteItem
             // 
@@ -138,6 +139,7 @@
             this.btnDeleteItem.TabIndex = 24;
             this.btnDeleteItem.Text = "Delete Selected Item";
             this.btnDeleteItem.UseVisualStyleBackColor = true;
+            this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
             // 
             // label16
             // 
@@ -182,6 +184,7 @@
             this.btnAddItem.TabIndex = 19;
             this.btnAddItem.Text = "Add Item";
             this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // label15
             // 

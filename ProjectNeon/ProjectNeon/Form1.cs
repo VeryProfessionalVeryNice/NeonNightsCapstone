@@ -188,6 +188,7 @@ namespace ProjectNeon
             dateIssued.Value = DateTime.Now;
             cmbBxPayment.SelectedIndex = 0;
             txtBxCheckNum.Text = "";
+            lstBxItems.Items.Clear();
             ResetItemFields();
         }
 
