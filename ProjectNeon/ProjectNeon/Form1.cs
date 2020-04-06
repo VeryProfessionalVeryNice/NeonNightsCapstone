@@ -29,7 +29,9 @@ namespace ProjectNeon
 
         private void Form1_Load(object sender, EventArgs e)
         {
- 
+            // TODO: This line of code loads data into the 'database1DataSet1.Customer' table. You can move, or remove it, as needed.
+            this.customerTableAdapter.Fill(this.database1DataSet1.Customer);
+            FillCustomersTab();
         }
 
         private void safePDF_Click(object sender, EventArgs e)
@@ -47,6 +49,8 @@ namespace ProjectNeon
             }
         }
 
+        #region Database
+        #region Database Connections
         private void Connect(SqlConnection conn)
         {
             try
@@ -74,7 +78,7 @@ namespace ProjectNeon
                 Console.WriteLine(ex.Message);
             }
         }
-
+        #endregion
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Closes database connection when the form is closed
@@ -209,6 +213,8 @@ namespace ProjectNeon
                 AddItems();
             }
             ResetAllFields();
+            FillCustomersTab();
+            lblStatus.Text = "Added Invoice";
         }
 
         private int AddCustomer()
@@ -236,7 +242,7 @@ namespace ProjectNeon
                     command.CommandType = CommandType.Text;
                     Connect(conn);
                     id = Convert.ToInt32(command.ExecuteScalar());
-                    MessageBox.Show(id.ToString());
+                    //MessageBox.Show(id.ToString());
                     Disconnect(conn);
                 }
             }
@@ -251,11 +257,10 @@ namespace ProjectNeon
         {
             bool isValid = true;
             //Array of customer fields
-            TextBox[] textBoxes = new TextBox[6]
+            TextBox[] textBoxes = new TextBox[5]
             {
                 txtBxName,
                 txtBxAddress1,
-                txtBxAddress2,
                 txtBxCity,
                 txtBxState,
                 txtBxZip
@@ -310,8 +315,8 @@ namespace ProjectNeon
             decimal total = GetTotal();
 
             SqlConnection conn = new SqlConnection(cntStrng);
-            string query = $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, PaymentMethod, CheckNum)" +
-                $"VALUES ('{txtBxInvoiceId.Text}', '{custId}', '{exempt}', '{total}', '{cmbBxPayment.Text}', '{txtBxCheckNum.Text}');";
+            string query = $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
+                $"VALUES ('{txtBxInvoiceId.Text}', '{custId}', '{exempt}', '{total}', '{dateIssued.Value.ToShortDateString()}', '{cmbBxPayment.Text}', '{txtBxCheckNum.Text}');";
             try
             {
                 //Add customer to database
@@ -322,6 +327,7 @@ namespace ProjectNeon
                     command.ExecuteNonQuery();
                     Disconnect(conn);
                 }
+                UpdateBalance(custId);
             }
             catch (Exception ex)
             {
@@ -382,6 +388,132 @@ namespace ProjectNeon
             return isValid;
         }
 
+        private void UpdateBalance(int id)
+        {
+            decimal total = 0m;
+            SqlConnection conn = new SqlConnection(cntStrng);
+            string sumQuery = $"SELECT SUM(Total) FROM Invoice WHERE CustomerID = '{id}'";
+            
+            try
+            {
+                using (SqlCommand command = new SqlCommand(sumQuery, conn))
+                {
+                    command.CommandType = CommandType.Text;
+                    Connect(conn);
+                    total = Convert.ToDecimal(command.ExecuteScalar());
+                    //MessageBox.Show(total.ToString("C2"));
+                    Disconnect(conn);
+                }
+                total = Convert.ToDecimal(total.ToString("F2"));
+                string updateQuery = $"UPDATE Customer SET Balance = '{total}' WHERE CustomerID = '{id}'";
+                using (SqlCommand command = new SqlCommand(updateQuery, conn))
+                {
+                    command.CommandType = CommandType.Text;
+                    Connect(conn);
+                    command.ExecuteNonQuery();
+                    Disconnect(conn);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+            }
+        }
+
+        #endregion
+
+        private void LoadTestData()
+        {
+            SqlConnection conn = new SqlConnection(cntStrng);
+            Connect(conn);
+            string[,] custData = new string[,] { {"Joes Signs", "Company", "393 Smith Street", "", "Springfield", "MO", "56422" },
+                                                 {"Andrew Miller", "Private", "455 Kansas Exsp", "Suite 3442", "Springfield", "MO", "56426" },
+                                                 {"Austins Signs", "Company", "1244 Glenstone", "Suite 2111", "Springfield", "MO", "21441"} };
+
+            string[,] invData = new string[,] { {"1552", "1", "false", "216.18", "4/2/2020", "Check", "A255531671136" },
+                                                {"1553", "2", "true", "199.98", "4/3/2020", "Cash", "" },
+                                                {"1554", "3", "false", "216.18", "4/4/2020", "Cash", "" } };
+
+            string[,] itemData = new string[,] { {"1552", "New Job", "2", "", "99.99" },
+                                                 {"1553", "New Job", "1", "", "99.99" },
+                                                 {"1553", "Labor", "1", "", "99.99" },
+                                                 {"1554", "New Job", "2", "", "99.99" } };
+
+            //Add test customers to database
+            try
+            {
+                for (int i = 0; i < custData.GetLength(0); i++)
+                {
+
+                    string query = $"INSERT INTO Customer(CompanyName, JobType, AddressLine1, AddressLine2, City, State, Zip)" +
+                        $"VALUES ('{custData[i, 0]}', '{custData[i, 1]}', '{custData[i, 2]}', '{custData[i, 3]}', '{custData[i, 4]}', '{custData[i, 5]}', '{custData[i, 6]}');";
+                    try
+                    {
+                        //Add customer to database
+                        using (SqlCommand command = new SqlCommand(query, conn))
+                        {
+                            command.CommandType = CommandType.Text;
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        lblStatus.Text = ex.Message + " Customer insert error";
+                    }
+                }
+
+                for (int i = 0; i < invData.GetLength(0); i++)
+                {
+                    string query = $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
+                        $"VALUES ('{invData[i, 0]}', '{invData[i, 1]}', '{invData[i, 2]}', '{invData[i, 3]}', '{invData[i, 4]}', '{invData[i, 5]}', '{invData[i, 6]}');";
+                    try
+                    {
+                        //Add customer to database
+                        using (SqlCommand command = new SqlCommand(query, conn))
+                        {
+                            command.CommandType = CommandType.Text;
+                            command.ExecuteNonQuery();
+                        }
+                        UpdateBalance(Convert.ToInt32(invData[i, 1]));
+                    }
+                    catch (Exception ex)
+                    {
+                        lblStatus.Text = ex.Message + " Invoice insert error";
+                    }
+                }
+
+                for (int i = 0; i < itemData.GetLength(0); i++)
+                {
+                    string query = $"INSERT INTO Item(InvoiceID, ItemCode, Quantity, Description, PriceEach)" +
+                    $"VALUES ('{itemData[i, 0]}', '{itemData[i, 1]}', '{itemData[i, 2]}', '{itemData[i, 3]}', '{itemData[i, 4]}');";
+                    try
+                    {
+                        //Add customer to database
+                        using (SqlCommand command = new SqlCommand(query, conn))
+                        {
+                            command.CommandType = CommandType.Text;
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        lblStatus.Text = ex.Message + " Item insert error";
+                    }
+                }
+
+                lblStatus.Text = "Added Test Data";
+
+                FillCustomersTab();
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+            }
+
+            Disconnect(conn);
+        }
+
+
         private void btnShowAddInvoice_Click(object sender, EventArgs e)
         {
             HidePanels();
@@ -421,6 +553,25 @@ namespace ProjectNeon
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnTestData_Click(object sender, EventArgs e)
+        {
+            LoadTestData();
+        }
+
+        private void FillCustomersTab()
+        {
+            try
+            {
+                this.customerTableAdapter.FillBy1(this.database1DataSet1.Customer);
+                dataGridView1.Sort(dataGridView1.Columns[1], 0);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
