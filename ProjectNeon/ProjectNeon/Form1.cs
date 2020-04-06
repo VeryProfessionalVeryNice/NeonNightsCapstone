@@ -242,7 +242,7 @@ namespace ProjectNeon
             }
             catch (Exception ex)
             {
-                lblStatus.Text = ex.Message;
+                lblStatus.Text = ex.Message + " Customer insert error";
             }
             return id;
         }
@@ -293,7 +293,12 @@ namespace ProjectNeon
                 }
                 catch (Exception ex)
                 {
-                    lblStatus.Text = ex.Message;
+                    lblStatus.Text = ex.Message + " Item insert error";
+                }
+                finally
+                {
+
+                    lblStatus.Text = "Added Invoice";
                 }
             }
             Disconnect(conn);
@@ -320,7 +325,7 @@ namespace ProjectNeon
             }
             catch (Exception ex)
             {
-                lblStatus.Text = ex.Message;
+                lblStatus.Text = ex.Message + " Invoice insert error";
             }
         }
 
