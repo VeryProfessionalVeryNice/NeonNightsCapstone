@@ -18,7 +18,9 @@ namespace ProjectNeon
 
         private static string cntStrng = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
                                @"AttachDbFilename=|DataDirectory|\Database1.mdf;" +
-                              "Integrated Security=True;Initial Catalog = Database1";
+                              "Integrated Security=True;";
+
+        private static string cntStrng1 = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=\Neon-Nights\ProjectNeon\ProjectNeon\Database1.mdf;Integrated Security=True";
 
         //Item[] itemAry = new Item[500];
 
@@ -421,9 +423,10 @@ namespace ProjectNeon
         }
 
         #endregion
-
+        #region TestData
         private void LoadTestData()
         {
+            int[] id = new int[3];
             SqlConnection conn = new SqlConnection(cntStrng);
             Connect(conn);
             string[,] custData = new string[,] { {"Joes Signs", "Company", "393 Smith Street", "", "Springfield", "MO", "56422" },
@@ -447,6 +450,7 @@ namespace ProjectNeon
 
                     string query = $"INSERT INTO Customer(CompanyName, JobType, AddressLine1, AddressLine2, City, State, Zip)" +
                         $"VALUES ('{custData[i, 0]}', '{custData[i, 1]}', '{custData[i, 2]}', '{custData[i, 3]}', '{custData[i, 4]}', '{custData[i, 5]}', '{custData[i, 6]}');";
+                    string idQuery = $"SELECT CustomerID FROM Customer WHERE CompanyName = '{custData[i, 0]}'";
                     try
                     {
                         //Add customer to database
@@ -454,6 +458,13 @@ namespace ProjectNeon
                         {
                             command.CommandType = CommandType.Text;
                             command.ExecuteNonQuery();
+                        }
+                        //Gets identity Id from added customer
+                        using (SqlCommand command = new SqlCommand(idQuery, conn))
+                        {
+                            command.CommandType = CommandType.Text;
+                            id[i] = Convert.ToInt32(command.ExecuteScalar());
+                            //MessageBox.Show(id.ToString());
                         }
                     }
                     catch (Exception ex)
@@ -465,7 +476,7 @@ namespace ProjectNeon
                 for (int i = 0; i < invData.GetLength(0); i++)
                 {
                     string query = $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
-                        $"VALUES ('{invData[i, 0]}', '{invData[i, 1]}', '{invData[i, 2]}', '{invData[i, 3]}', '{invData[i, 4]}', '{invData[i, 5]}', '{invData[i, 6]}');";
+                        $"VALUES ('{invData[i, 0]}', '{id[i]}', '{invData[i, 2]}', '{invData[i, 3]}', '{invData[i, 4]}', '{invData[i, 5]}', '{invData[i, 6]}');";
                     try
                     {
                         //Add customer to database
@@ -474,7 +485,7 @@ namespace ProjectNeon
                             command.CommandType = CommandType.Text;
                             command.ExecuteNonQuery();
                         }
-                        UpdateBalance(Convert.ToInt32(invData[i, 1]));
+                        UpdateBalance(Convert.ToInt32(id[i]));
                     }
                     catch (Exception ex)
                     {
@@ -513,7 +524,7 @@ namespace ProjectNeon
             Disconnect(conn);
         }
 
-
+        #endregion
         private void btnShowAddInvoice_Click(object sender, EventArgs e)
         {
             HidePanels();
@@ -572,6 +583,35 @@ namespace ProjectNeon
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnTestCon_Click(object sender, EventArgs e)
+        {
+            //SqlConnection conn = new SqlConnection(cntStrng);
+            //try
+            //{
+            //    Connect(conn);
+            //    lblStatus.Text = "Connection Successful";
+            //}
+            //catch (Exception ex)
+            //{
+            //    lblStatus.Text = "Connection Failed";
+            //}
+            //finally
+            //{
+            //    Disconnect(conn);
+            //}
+        }
+
+        private void SaveDataGrid()
+        {
+            //This is my rough draft for saving the dataGrid
+            DataSet changes = this.database1DataSet1.GetChanges();
+            if (changes != null)
+            {
+                int updatedRow = this.customerTableAdapter.Update(database1DataSet1);
+                this.database1DataSet1.AcceptChanges();
+            }
         }
     }
 }

@@ -96,6 +96,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.btnTestData = new System.Windows.Forms.Button();
             this.customerTableAdapter = new ProjectNeon.Database1DataSet1TableAdapters.CustomerTableAdapter();
+            this.btnTestCon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -676,7 +677,7 @@
             this.dataGridView1.DataSource = this.customerBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 40);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(846, 414);
+            this.dataGridView1.Size = new System.Drawing.Size(854, 414);
             this.dataGridView1.TabIndex = 1;
             // 
             // customerIDDataGridViewTextBoxColumn
@@ -764,11 +765,22 @@
             // 
             this.customerTableAdapter.ClearBeforeFill = true;
             // 
+            // btnTestCon
+            // 
+            this.btnTestCon.Location = new System.Drawing.Point(777, 580);
+            this.btnTestCon.Name = "btnTestCon";
+            this.btnTestCon.Size = new System.Drawing.Size(106, 23);
+            this.btnTestCon.TabIndex = 28;
+            this.btnTestCon.Text = "Test Connection";
+            this.btnTestCon.UseVisualStyleBackColor = true;
+            this.btnTestCon.Click += new System.EventHandler(this.btnTestCon_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1007, 610);
+            this.Controls.Add(this.btnTestCon);
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.btnShowCustomers);
             this.Controls.Add(this.btnShowTransactions);
@@ -874,6 +886,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnTestCon;
     }
 }
 

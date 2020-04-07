@@ -54,7 +54,7 @@ namespace ProjectNeon
         }
 
         public override string ToString()
-        {
+        { 
             return $"{itemCode} Qty: {quantity} at ${priceEach} each";
         }
     }
