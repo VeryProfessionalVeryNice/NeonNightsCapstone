@@ -613,5 +613,10 @@ namespace ProjectNeon
                 this.database1DataSet1.AcceptChanges();
             }
         }
+
+        private void btnSaveDataGrid_Click(object sender, EventArgs e)
+        {
+            SaveDataGrid();
+        }
     }
 }

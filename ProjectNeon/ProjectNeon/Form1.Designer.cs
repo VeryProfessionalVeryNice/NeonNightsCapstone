@@ -82,6 +82,7 @@
             this.panelTransactions = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.panelCustomers = new System.Windows.Forms.Panel();
+            this.btnSaveDataGrid = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -654,12 +655,23 @@
             // 
             // panelCustomers
             // 
+            this.panelCustomers.Controls.Add(this.btnSaveDataGrid);
             this.panelCustomers.Controls.Add(this.dataGridView1);
             this.panelCustomers.Controls.Add(this.label19);
             this.panelCustomers.Location = new System.Drawing.Point(141, 23);
             this.panelCustomers.Name = "panelCustomers";
-            this.panelCustomers.Size = new System.Drawing.Size(866, 519);
+            this.panelCustomers.Size = new System.Drawing.Size(849, 519);
             this.panelCustomers.TabIndex = 0;
+            // 
+            // btnSaveDataGrid
+            // 
+            this.btnSaveDataGrid.Location = new System.Drawing.Point(371, 473);
+            this.btnSaveDataGrid.Name = "btnSaveDataGrid";
+            this.btnSaveDataGrid.Size = new System.Drawing.Size(172, 23);
+            this.btnSaveDataGrid.TabIndex = 2;
+            this.btnSaveDataGrid.Text = "Save Data";
+            this.btnSaveDataGrid.UseVisualStyleBackColor = true;
+            this.btnSaveDataGrid.Click += new System.EventHandler(this.btnSaveDataGrid_Click);
             // 
             // dataGridView1
             // 
@@ -677,7 +689,7 @@
             this.dataGridView1.DataSource = this.customerBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 40);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(854, 414);
+            this.dataGridView1.Size = new System.Drawing.Size(846, 414);
             this.dataGridView1.TabIndex = 1;
             // 
             // customerIDDataGridViewTextBoxColumn
@@ -887,6 +899,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnTestCon;
+        private System.Windows.Forms.Button btnSaveDataGrid;
     }
 }
 
