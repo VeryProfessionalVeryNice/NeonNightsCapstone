@@ -27,7 +27,6 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-[Ll]og/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -62,33 +61,6 @@ artifacts/
 # StyleCop
 StyleCopReport.xml
 
-# Files built by Visual Studio
-*_i.c
-*_p.c
-*_h.h
-*.ilk
-*.obj
-*.iobj
-*.pch
-*.pdb
-*.ipdb
-*.pgc
-*.pgd
-*.rsp
-*.sbr
-*.tlb
-*.tli
-*.tlh
-*.tmp
-*.tmp_proj
-*_wpftmp.csproj
-*.log
-*.vspscc
-*.vssscc
-.builds
-*.pidb
-*.svclog
-*.scc
 
 # Chutzpah Test files
 _Chutzpah*
