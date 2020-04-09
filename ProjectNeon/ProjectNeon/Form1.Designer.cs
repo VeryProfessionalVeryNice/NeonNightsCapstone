@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.database1DataSet = new ProjectNeon.Database1DataSet();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -83,7 +83,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panelCustomers = new System.Windows.Forms.Panel();
             this.btnSaveDataGrid = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
             this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -658,7 +657,6 @@
             // panelCustomers
             // 
             this.panelCustomers.Controls.Add(this.btnSaveDataGrid);
-            this.panelCustomers.Controls.Add(this.dataGridView1);
             this.panelCustomers.Controls.Add(this.dataGridViewCustomer);
             this.panelCustomers.Controls.Add(this.label19);
             this.panelCustomers.Location = new System.Drawing.Point(141, 23);
@@ -676,7 +674,6 @@
             this.btnSaveDataGrid.UseVisualStyleBackColor = true;
             this.btnSaveDataGrid.Click += new System.EventHandler(this.btnSaveDataGrid_Click);
             // 
-            // dataGridView1
             // dataGridViewCustomer
             // 
             this.dataGridViewCustomer.AutoGenerateColumns = false;
@@ -690,11 +687,6 @@
             this.stateDataGridViewTextBoxColumn,
             this.zipDataGridViewTextBoxColumn,
             this.balanceDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.customerBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(846, 414);
-            this.dataGridView1.TabIndex = 1;
             this.dataGridViewCustomer.DataSource = this.customerBindingSource;
             this.dataGridViewCustomer.Location = new System.Drawing.Point(0, 40);
             this.dataGridViewCustomer.Name = "dataGridViewCustomer";
@@ -748,9 +740,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -820,10 +812,10 @@
             this.Controls.Add(this.btnShowManageInvoice);
             this.Controls.Add(this.btnShowAddInvoice);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelManageInvoices);
             this.Controls.Add(this.panelTransactions);
-            this.Controls.Add(this.panelCustomers);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

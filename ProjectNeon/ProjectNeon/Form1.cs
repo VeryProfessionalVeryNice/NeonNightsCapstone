@@ -21,8 +21,6 @@ namespace ProjectNeon
                                @"AttachDbFilename=|DataDirectory|\Database1.mdf;" +
                               "Integrated Security=True;";
 
-        private static string cntStrng1 = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=\Neon-Nights\ProjectNeon\ProjectNeon\Database1.mdf;Integrated Security=True";
-
         //Item[] itemAry = new Item[500];
 
         public Form1()
@@ -36,18 +34,15 @@ namespace ProjectNeon
             this.customerTableAdapter.Fill(this.database1DataSet1.Customer);
             FillCustomersTab();
             
-            LoadTestData(); //autoloading test data for now
+            //LoadTestData(); //autoloading test data for now
         }
 
         private void safePDF_Click(object sender, EventArgs e)
         {
             try
-            {
-
+            { 
                 string path = Directory.GetCurrentDirectory();
                 string target = @"";
-
-
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.GetType().ToString());
@@ -103,7 +98,7 @@ namespace ProjectNeon
             {
                 Connect(conn);
                 SqlDataReader reader = command.ExecuteReader(); //Opens SqlReader
-      while (reader.Read())
+            while (reader.Read())
                 {
                     for (int i = 0; i < 8; i++)
                     {
@@ -528,6 +523,7 @@ namespace ProjectNeon
         }
 
         #endregion
+        #region PanelRotation
         private void btnShowAddInvoice_Click(object sender, EventArgs e)
         {
             HidePanels();
@@ -559,7 +555,7 @@ namespace ProjectNeon
             panelTransactions.Hide();
             panelCustomers.Hide();
         }
-
+        #endregion
         private void txtBxZip_KeyPress(object sender, KeyPressEventArgs e)
         {
             // allows only numbers to be typed in zip code txtbox
@@ -585,7 +581,6 @@ namespace ProjectNeon
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
-
         }
 
         private void btnTestCon_Click(object sender, EventArgs e)
@@ -634,8 +629,6 @@ namespace ProjectNeon
             outstandingBalance = dataGridViewCustomer.CurrentRow.Cells[7].Value.ToString();
             CustomerPayment paymentForm = new CustomerPayment();
             paymentForm.Show();
-
-
         }
 
         private void dataGridViewCustomer_SelectionChanged(object sender, EventArgs e)
