@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[Customer] (
+[CustomerID] INTEGER NOT NULL IDENTITY PRIMARY KEY
+, [CompanyName] VARCHAR(50) NOT NULL
+, [JobType] VARCHAR(50) NOT NULL
+, [AddressLine1] VARCHAR(50) NOT NULL
+, [AddressLine2] VARCHAR(50) NULL
+, [City] VARCHAR(50) NOT NULL
+, [State] VARCHAR(2) NOT NULL
+, [Zip] VARCHAR(5) NOT NULL
+);
+
+GO
+
+CREATE TABLE [Invoice] (
+[InvoiceID] VARCHAR(50) NOT NULL
+, [CustomerID] INT NOT NULL
+, [TaxExempt] BIT NOT NULL
+, [Total] MONEY NOT NULL
+, [DateIssued] DATE NOT NULL
+, [PaymentMethod] VARCHAR(50) NOT NULL
+, [CheckNum] VARCHAR(50) NULL
+, CONSTRAINT [PK_Invoice] PRIMARY KEY ([InvoiceID])
+, CONSTRAINT [FK_Customer] FOREIGN KEY ([CustomerID])
+REFERENCES Customer([CustomerID])
+);
+
+GO
+
+CREATE TABLE [Item] (
+[ItemID] INTEGER NOT NULL IDENTITY PRIMARY KEY
+, [InvoiceID] VARCHAR(50) NOT NULL
+, [ItemCode] VARCHAR(50) NOT NULL
+, [Quantity] TINYINT NOT NULL
+, [Description] VARCHAR(50) NULL
+, [PriceEach] MONEY NOT NULL
+, CONSTRAINT [FK_Invoice] FOREIGN KEY ([InvoiceID])
+REFERENCES Invoice([InvoiceID])
+);
