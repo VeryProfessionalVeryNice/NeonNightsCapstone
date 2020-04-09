@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.database1DataSet = new ProjectNeon.Database1DataSet();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -82,6 +82,7 @@
             this.panelTransactions = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.panelCustomers = new System.Windows.Forms.Panel();
+            this.btnSaveDataGrid = new System.Windows.Forms.Button();
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
             this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -655,12 +656,23 @@
             // 
             // panelCustomers
             // 
+            this.panelCustomers.Controls.Add(this.btnSaveDataGrid);
             this.panelCustomers.Controls.Add(this.dataGridViewCustomer);
             this.panelCustomers.Controls.Add(this.label19);
             this.panelCustomers.Location = new System.Drawing.Point(141, 23);
             this.panelCustomers.Name = "panelCustomers";
-            this.panelCustomers.Size = new System.Drawing.Size(866, 519);
+            this.panelCustomers.Size = new System.Drawing.Size(849, 519);
             this.panelCustomers.TabIndex = 0;
+            // 
+            // btnSaveDataGrid
+            // 
+            this.btnSaveDataGrid.Location = new System.Drawing.Point(371, 473);
+            this.btnSaveDataGrid.Name = "btnSaveDataGrid";
+            this.btnSaveDataGrid.Size = new System.Drawing.Size(172, 23);
+            this.btnSaveDataGrid.TabIndex = 2;
+            this.btnSaveDataGrid.Text = "Save Data";
+            this.btnSaveDataGrid.UseVisualStyleBackColor = true;
+            this.btnSaveDataGrid.Click += new System.EventHandler(this.btnSaveDataGrid_Click);
             // 
             // dataGridViewCustomer
             // 
@@ -728,9 +740,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -800,10 +812,10 @@
             this.Controls.Add(this.btnShowManageInvoice);
             this.Controls.Add(this.btnShowAddInvoice);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelManageInvoices);
             this.Controls.Add(this.panelTransactions);
-            this.Controls.Add(this.panelCustomers);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -900,6 +912,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnTestCon;
+        private System.Windows.Forms.Button btnSaveDataGrid;
         private System.Windows.Forms.Button btnCustomerPayment;
     }
 }
