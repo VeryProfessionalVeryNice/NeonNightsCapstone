@@ -14,6 +14,7 @@ namespace ProjectNeon
 {
     public partial class Form1 : Form
     {
+        
         //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True
 
         private static string cntStrng = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
@@ -34,6 +35,8 @@ namespace ProjectNeon
             // TODO: This line of code loads data into the 'database1DataSet1.Customer' table. You can move, or remove it, as needed.
             this.customerTableAdapter.Fill(this.database1DataSet1.Customer);
             FillCustomersTab();
+            
+            LoadTestData(); //autoloading test data for now
         }
 
         private void safePDF_Click(object sender, EventArgs e)
@@ -576,7 +579,7 @@ namespace ProjectNeon
             try
             {
                 this.customerTableAdapter.FillBy1(this.database1DataSet1.Customer);
-                dataGridView1.Sort(dataGridView1.Columns[1], 0);
+                dataGridViewCustomer.Sort(dataGridViewCustomer.Columns[1], 0);
             }
             catch (System.Exception ex)
             {
@@ -617,6 +620,27 @@ namespace ProjectNeon
         private void btnSaveDataGrid_Click(object sender, EventArgs e)
         {
             SaveDataGrid();
+        }
+        //global variables for passing information between multiple forms
+        public static string selectedCustomerName;
+        public static string outstandingBalance;
+
+        private void btnCustomerPayment_Click(object sender, EventArgs e)
+        {
+            //on clicking detect the row the user has selected and open new customer payment with remaining balance information
+            int rowIndex;
+            rowIndex = dataGridViewCustomer.CurrentCell.RowIndex;
+            selectedCustomerName = dataGridViewCustomer.CurrentRow.Cells[1].Value.ToString();
+            outstandingBalance = dataGridViewCustomer.CurrentRow.Cells[7].Value.ToString();
+            CustomerPayment paymentForm = new CustomerPayment();
+            paymentForm.Show();
+
+
+        }
+
+        private void dataGridViewCustomer_SelectionChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
