@@ -30,10 +30,9 @@ namespace ProjectNeon
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'database1DataSet1.Customer' table. You can move, or remove it, as needed.
-            this.customerTableAdapter.Fill(this.database1DataSet1.Customer);
-            FillCustomersTab();
             
+            FillCustomersTab();
+            FillTransactionsTab();
             //LoadTestData(); //autoloading test data for now
         }
 
@@ -83,51 +82,6 @@ namespace ProjectNeon
         {
             //Closes database connection when the form is closed
           // Disconnect();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            SqlConnection conn = new SqlConnection(cntStrng);
-            string sql = "SELECT * FROM Customer";
-            string[] data = new string[8];
-            SqlCommand command = new SqlCommand(sql, conn);
-            //textBox1.Text = "";
-
-
-            try
-            {
-                Connect(conn);
-                SqlDataReader reader = command.ExecuteReader(); //Opens SqlReader
-            while (reader.Read())
-                {
-                    for (int i = 0; i < 8; i++)
-                    {
-                        data[i] = reader[i].ToString();
-                    }
-
-                    Customer newCust = new Customer
-                    {
-                        Id = Convert.ToInt32(data[0]),
-                        CompanyName = data[1].ToString(),
-                        JobType = data[2].ToString(),
-                        AddressLine1 = data[3].ToString(),
-                        AddressLine2 = data[4].ToString(),
-                        City = data[5].ToString(),
-                        State = data[6].ToString(),
-                        Zip = data[7].ToString()
-                    };
-
-                    //textBox1.Text += newCust.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Disconnect(conn);
-            }
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -214,6 +168,7 @@ namespace ProjectNeon
             }
             ResetAllFields();
             FillCustomersTab();
+            FillTransactionsTab();
             lblStatus.Text = "Added Invoice";
         }
 
@@ -568,6 +523,7 @@ namespace ProjectNeon
         private void btnTestData_Click(object sender, EventArgs e)
         {
             LoadTestData();
+            FillTransactionsTab();
         }
 
         private void FillCustomersTab()
@@ -583,22 +539,32 @@ namespace ProjectNeon
             }
         }
 
+        private void FillTransactionsTab()
+        {
+            string qry = "SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, Invoice.Total, Customer.Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE(YEAR(Invoice.DateIssued) = YEAR(GETDATE())) OR (Customer.Balance > 0)";
+            SqlConnection conn = new SqlConnection(cntStrng);
+            Connect(conn);
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, conn);
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                DataSet data = new DataSet();
+                adpt.Fill(data);
+                dataGridViewTransactions.DataSource = data.Tables[0].DefaultView;
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+            }
+            finally
+            {
+                Disconnect(conn);
+            }
+        }
+
         private void btnTestCon_Click(object sender, EventArgs e)
         {
-            //SqlConnection conn = new SqlConnection(cntStrng);
-            //try
-            //{
-            //    Connect(conn);
-            //    lblStatus.Text = "Connection Successful";
-            //}
-            //catch (Exception ex)
-            //{
-            //    lblStatus.Text = "Connection Failed";
-            //}
-            //finally
-            //{
-            //    Disconnect(conn);
-            //}
+          
         }
 
         private void SaveDataGrid()

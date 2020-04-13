@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.database1DataSet = new ProjectNeon.Database1DataSet();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -99,6 +99,12 @@
             this.customerTableAdapter = new ProjectNeon.Database1DataSet1TableAdapters.CustomerTableAdapter();
             this.btnTestCon = new System.Windows.Forms.Button();
             this.btnCustomerPayment = new System.Windows.Forms.Button();
+            this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
+            this.dataGridViewTransactions = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -111,6 +117,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).BeginInit();
             this.SuspendLayout();
             // 
             // database1DataSet
@@ -639,6 +649,7 @@
             // 
             // panelTransactions
             // 
+            this.panelTransactions.Controls.Add(this.dataGridViewTransactions);
             this.panelTransactions.Controls.Add(this.label18);
             this.panelTransactions.Location = new System.Drawing.Point(141, 23);
             this.panelTransactions.Name = "panelTransactions";
@@ -740,9 +751,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Format = "C2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -799,6 +810,37 @@
             this.btnCustomerPayment.UseVisualStyleBackColor = true;
             this.btnCustomerPayment.Click += new System.EventHandler(this.btnCustomerPayment_Click);
             // 
+            // database1DataSetBindingSource
+            // 
+            this.database1DataSetBindingSource.DataSource = this.database1DataSet;
+            this.database1DataSetBindingSource.Position = 0;
+            // 
+            // customerBindingSource1
+            // 
+            this.customerBindingSource1.DataMember = "Customer";
+            this.customerBindingSource1.DataSource = this.database1DataSetBindingSource;
+            // 
+            // customerTableAdapter1
+            // 
+            this.customerTableAdapter1.ClearBeforeFill = true;
+            // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataMember = "Invoice";
+            this.invoiceBindingSource.DataSource = this.database1DataSetBindingSource;
+            // 
+            // invoiceTableAdapter
+            // 
+            this.invoiceTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTransactions
+            // 
+            this.dataGridViewTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTransactions.Location = new System.Drawing.Point(0, 44);
+            this.dataGridViewTransactions.Name = "dataGridViewTransactions";
+            this.dataGridViewTransactions.Size = new System.Drawing.Size(846, 410);
+            this.dataGridViewTransactions.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -812,10 +854,10 @@
             this.Controls.Add(this.btnShowManageInvoice);
             this.Controls.Add(this.btnShowAddInvoice);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.panelTransactions);
             this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelManageInvoices);
-            this.Controls.Add(this.panelTransactions);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -839,6 +881,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -914,6 +960,12 @@
         private System.Windows.Forms.Button btnTestCon;
         private System.Windows.Forms.Button btnSaveDataGrid;
         private System.Windows.Forms.Button btnCustomerPayment;
+        private System.Windows.Forms.BindingSource database1DataSetBindingSource;
+        private System.Windows.Forms.BindingSource customerBindingSource1;
+        private Database1DataSetTableAdapters.CustomerTableAdapter customerTableAdapter1;
+        private System.Windows.Forms.BindingSource invoiceBindingSource;
+        private Database1DataSetTableAdapters.InvoiceTableAdapter invoiceTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridViewTransactions;
     }
 }
 
