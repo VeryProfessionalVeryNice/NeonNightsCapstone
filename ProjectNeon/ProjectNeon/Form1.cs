@@ -20,8 +20,13 @@ namespace ProjectNeon
         private static string cntStrng = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
                                @"AttachDbFilename=|DataDirectory|\Database1.mdf;" +
                               "Integrated Security=True;";
+        //Default query string for transaction tab
+        string query = "SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE(YEAR(Invoice.DateIssued) = YEAR(GETDATE())) OR (Customer.Balance > 0)";
 
-        //Item[] itemAry = new Item[500];
+        //global variables for passing information between multiple forms
+        public static string selectedCustomerName;
+        public static string outstandingBalance;
+
 
         public Form1()
         {
@@ -32,7 +37,7 @@ namespace ProjectNeon
         {
             
             FillCustomersTab();
-            FillTransactionsTab();
+            FillTransactionsTab(query);
             //LoadTestData(); //autoloading test data for now
         }
 
@@ -86,6 +91,7 @@ namespace ProjectNeon
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            //Adds item to listbox of items
             if (ValidateItem())
             {
                 Item newItem = new Item
@@ -97,6 +103,7 @@ namespace ProjectNeon
                 };
 
                 lstBxItems.Items.Add(newItem);
+                //Empties item input fields
                 ResetItemFields();
             }
         }
@@ -134,6 +141,7 @@ namespace ProjectNeon
 
         private void ResetAllFields()
         {
+            //Resets all fields
             txtBxName.Text = "";
             txtBxAddress1.Text = "";
             txtBxAddress2.Text = "";
@@ -168,7 +176,7 @@ namespace ProjectNeon
             }
             ResetAllFields();
             FillCustomersTab();
-            FillTransactionsTab();
+            FillTransactionsTab(query);
             lblStatus.Text = "Added Invoice";
         }
 
@@ -180,7 +188,7 @@ namespace ProjectNeon
             SqlConnection conn = new SqlConnection(cntStrng);
             string query = $"INSERT INTO Customer(CompanyName, JobType, AddressLine1, AddressLine2, City, State, Zip)" +
                 $"VALUES ('{txtBxName.Text}', '{cmbBxJobType.Text}', '{txtBxAddress1.Text}', '{txtBxAddress2.Text}', '{txtBxCity.Text}', '{txtBxState.Text}', '{txtBxZip.Text}');";
-            string idQuery = $"SELECT CustomerID FROM Customer WHERE CompanyName = '{txtBxName.Text}'";
+            string idQ = "SELECT @@IDENTITY";
             try
             {
                 //Add customer to database
@@ -189,14 +197,8 @@ namespace ProjectNeon
                     command.CommandType = CommandType.Text;
                     Connect(conn);
                     command.ExecuteNonQuery();
-                    Disconnect(conn);
-                }
-                //Gets identity Id from added customer
-                using (SqlCommand command = new SqlCommand(idQuery, conn))
-                {
-                    command.CommandType = CommandType.Text;
-                    Connect(conn);
-                    id = Convert.ToInt32(command.ExecuteScalar());
+                    SqlCommand cmd = new SqlCommand(idQ, conn);
+                    id = Convert.ToInt32(cmd.ExecuteScalar());
                     //MessageBox.Show(id.ToString());
                     Disconnect(conn);
                 }
@@ -523,7 +525,7 @@ namespace ProjectNeon
         private void btnTestData_Click(object sender, EventArgs e)
         {
             LoadTestData();
-            FillTransactionsTab();
+            FillTransactionsTab(query);
         }
 
         private void FillCustomersTab()
@@ -539,17 +541,20 @@ namespace ProjectNeon
             }
         }
 
-        private void FillTransactionsTab()
+        private void FillTransactionsTab(string qry)
         {
-            string qry = "SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, Invoice.Total, Customer.Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE(YEAR(Invoice.DateIssued) = YEAR(GETDATE())) OR (Customer.Balance > 0)";
+            //Query to fill transactions tab
             SqlConnection conn = new SqlConnection(cntStrng);
             Connect(conn);
             try
             {
                 SqlCommand cmd = new SqlCommand(qry, conn);
+                //Create data adapter to fill dataset
                 SqlDataAdapter adpt = new SqlDataAdapter(cmd);
                 DataSet data = new DataSet();
+                //Fill dataset with data from query
                 adpt.Fill(data);
+                //Set datagridviews datasource to dataset
                 dataGridViewTransactions.DataSource = data.Tables[0].DefaultView;
             }
             catch (Exception ex)
@@ -564,15 +569,17 @@ namespace ProjectNeon
 
         private void btnTestCon_Click(object sender, EventArgs e)
         {
-          
+            InvoiceForm invoiceForm = new InvoiceForm();
+            invoiceForm.Show();
         }
 
         private void SaveDataGrid()
         {
-            //This is my rough draft for saving the dataGrid
+            //Gets a dataset of all changes to the datagridview
             DataSet changes = this.database1DataSet1.GetChanges();
             if (changes != null)
             {
+                //Gets updated rows then commits the changes
                 int updatedRow = this.customerTableAdapter.Update(database1DataSet1);
                 this.database1DataSet1.AcceptChanges();
             }
@@ -582,9 +589,7 @@ namespace ProjectNeon
         {
             SaveDataGrid();
         }
-        //global variables for passing information between multiple forms
-        public static string selectedCustomerName;
-        public static string outstandingBalance;
+        
 
         private void btnCustomerPayment_Click(object sender, EventArgs e)
         {
@@ -600,6 +605,13 @@ namespace ProjectNeon
         private void dataGridViewCustomer_SelectionChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //Makes query string to search for typed field in selected column
+            string qry = $"SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, Invoice.Total, Customer.Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE {cmBxSearch.Text} LIKE '%{txtBxSearch.Text}%'";
+            FillTransactionsTab(qry);
         }
     }
 }

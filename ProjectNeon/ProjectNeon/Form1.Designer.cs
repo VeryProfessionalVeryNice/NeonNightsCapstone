@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.database1DataSet = new ProjectNeon.Database1DataSet();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -80,6 +80,7 @@
             this.panelManageInvoices = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panelTransactions = new System.Windows.Forms.Panel();
+            this.dataGridViewTransactions = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
             this.panelCustomers = new System.Windows.Forms.Panel();
             this.btnSaveDataGrid = new System.Windows.Forms.Button();
@@ -104,7 +105,10 @@
             this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
-            this.dataGridViewTransactions = new System.Windows.Forms.DataGridView();
+            this.txtBxSearch = new System.Windows.Forms.TextBox();
+            this.cmBxSearch = new System.Windows.Forms.ComboBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -113,6 +117,7 @@
             this.groupBox1.SuspendLayout();
             this.panelManageInvoices.SuspendLayout();
             this.panelTransactions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).BeginInit();
             this.panelCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
@@ -120,7 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).BeginInit();
             this.SuspendLayout();
             // 
             // database1DataSet
@@ -649,12 +653,24 @@
             // 
             // panelTransactions
             // 
+            this.panelTransactions.Controls.Add(this.label20);
+            this.panelTransactions.Controls.Add(this.lblSearch);
+            this.panelTransactions.Controls.Add(this.cmBxSearch);
+            this.panelTransactions.Controls.Add(this.txtBxSearch);
             this.panelTransactions.Controls.Add(this.dataGridViewTransactions);
             this.panelTransactions.Controls.Add(this.label18);
             this.panelTransactions.Location = new System.Drawing.Point(141, 23);
             this.panelTransactions.Name = "panelTransactions";
             this.panelTransactions.Size = new System.Drawing.Size(849, 519);
             this.panelTransactions.TabIndex = 26;
+            // 
+            // dataGridViewTransactions
+            // 
+            this.dataGridViewTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTransactions.Location = new System.Drawing.Point(0, 106);
+            this.dataGridViewTransactions.Name = "dataGridViewTransactions";
+            this.dataGridViewTransactions.Size = new System.Drawing.Size(846, 410);
+            this.dataGridViewTransactions.TabIndex = 2;
             // 
             // label18
             // 
@@ -751,9 +767,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle7.Format = "C2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -796,7 +812,7 @@
             this.btnTestCon.Name = "btnTestCon";
             this.btnTestCon.Size = new System.Drawing.Size(106, 23);
             this.btnTestCon.TabIndex = 28;
-            this.btnTestCon.Text = "Test Connection";
+            this.btnTestCon.Text = "Test Page";
             this.btnTestCon.UseVisualStyleBackColor = true;
             this.btnTestCon.Click += new System.EventHandler(this.btnTestCon_Click);
             // 
@@ -833,13 +849,44 @@
             // 
             this.invoiceTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTransactions
+            // txtBxSearch
             // 
-            this.dataGridViewTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTransactions.Location = new System.Drawing.Point(0, 44);
-            this.dataGridViewTransactions.Name = "dataGridViewTransactions";
-            this.dataGridViewTransactions.Size = new System.Drawing.Size(846, 410);
-            this.dataGridViewTransactions.TabIndex = 2;
+            this.txtBxSearch.Location = new System.Drawing.Point(73, 55);
+            this.txtBxSearch.Name = "txtBxSearch";
+            this.txtBxSearch.Size = new System.Drawing.Size(151, 20);
+            this.txtBxSearch.TabIndex = 3;
+            this.txtBxSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // cmBxSearch
+            // 
+            this.cmBxSearch.FormattingEnabled = true;
+            this.cmBxSearch.Items.AddRange(new object[] {
+            "CompanyName",
+            "InvoiceID",
+            "DateIssued"});
+            this.cmBxSearch.Location = new System.Drawing.Point(252, 55);
+            this.cmBxSearch.Name = "cmBxSearch";
+            this.cmBxSearch.Size = new System.Drawing.Size(152, 21);
+            this.cmBxSearch.TabIndex = 4;
+            this.cmBxSearch.Text = "CompanyName";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(73, 39);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(41, 13);
+            this.lblSearch.TabIndex = 5;
+            this.lblSearch.Text = "Search";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(230, 59);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(15, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "in";
             // 
             // Form1
             // 
@@ -876,6 +923,7 @@
             this.panelManageInvoices.PerformLayout();
             this.panelTransactions.ResumeLayout(false);
             this.panelTransactions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).EndInit();
             this.panelCustomers.ResumeLayout(false);
             this.panelCustomers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
@@ -884,7 +932,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -966,6 +1013,10 @@
         private System.Windows.Forms.BindingSource invoiceBindingSource;
         private Database1DataSetTableAdapters.InvoiceTableAdapter invoiceTableAdapter;
         private System.Windows.Forms.DataGridView dataGridViewTransactions;
+        private System.Windows.Forms.ComboBox cmBxSearch;
+        private System.Windows.Forms.TextBox txtBxSearch;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblSearch;
     }
 }
 
