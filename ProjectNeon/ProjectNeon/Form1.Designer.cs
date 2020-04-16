@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.database1DataSet = new ProjectNeon.Database1DataSet();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -80,6 +80,10 @@
             this.panelManageInvoices = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panelTransactions = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.cmBxSearch = new System.Windows.Forms.ComboBox();
+            this.txtBxSearch = new System.Windows.Forms.TextBox();
             this.dataGridViewTransactions = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
             this.panelCustomers = new System.Windows.Forms.Panel();
@@ -105,10 +109,7 @@
             this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
-            this.txtBxSearch = new System.Windows.Forms.TextBox();
-            this.cmBxSearch = new System.Windows.Forms.ComboBox();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -125,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // database1DataSet
@@ -135,7 +137,7 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(13, 585);
+            this.lblStatus.Location = new System.Drawing.Point(151, 580);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(52, 13);
             this.lblStatus.TabIndex = 1;
@@ -143,6 +145,7 @@
             // 
             // panelAddInvoice
             // 
+            this.panelAddInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
             this.panelAddInvoice.Controls.Add(this.btnSaveToDatabase);
             this.panelAddInvoice.Controls.Add(this.btnDeleteItem);
             this.panelAddInvoice.Controls.Add(this.label16);
@@ -150,7 +153,7 @@
             this.panelAddInvoice.Controls.Add(this.groupBox3);
             this.panelAddInvoice.Controls.Add(this.groupBox2);
             this.panelAddInvoice.Controls.Add(this.groupBox1);
-            this.panelAddInvoice.Location = new System.Drawing.Point(141, 23);
+            this.panelAddInvoice.Location = new System.Drawing.Point(154, 20);
             this.panelAddInvoice.Name = "panelAddInvoice";
             this.panelAddInvoice.Size = new System.Drawing.Size(849, 519);
             this.panelAddInvoice.TabIndex = 2;
@@ -186,6 +189,7 @@
             // 
             // lstBxItems
             // 
+            this.lstBxItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.lstBxItems.FormattingEnabled = true;
             this.lstBxItems.Location = new System.Drawing.Point(604, 333);
             this.lstBxItems.Name = "lstBxItems";
@@ -231,6 +235,7 @@
             // 
             // txtBxDesc
             // 
+            this.txtBxDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxDesc.Location = new System.Drawing.Point(15, 189);
             this.txtBxDesc.Multiline = true;
             this.txtBxDesc.Name = "txtBxDesc";
@@ -248,6 +253,7 @@
             // 
             // txtBxPriceEach
             // 
+            this.txtBxPriceEach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxPriceEach.Location = new System.Drawing.Point(15, 139);
             this.txtBxPriceEach.Name = "txtBxPriceEach";
             this.txtBxPriceEach.Size = new System.Drawing.Size(173, 20);
@@ -255,6 +261,7 @@
             // 
             // nudQty
             // 
+            this.nudQty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.nudQty.Location = new System.Drawing.Point(15, 88);
             this.nudQty.Maximum = new decimal(new int[] {
             1000,
@@ -286,6 +293,7 @@
             // 
             // txtBxItemCode
             // 
+            this.txtBxItemCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxItemCode.Location = new System.Drawing.Point(15, 44);
             this.txtBxItemCode.Name = "txtBxItemCode";
             this.txtBxItemCode.Size = new System.Drawing.Size(173, 20);
@@ -320,6 +328,7 @@
             // 
             // txtBxInvoiceId
             // 
+            this.txtBxInvoiceId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxInvoiceId.Location = new System.Drawing.Point(15, 39);
             this.txtBxInvoiceId.Name = "txtBxInvoiceId";
             this.txtBxInvoiceId.Size = new System.Drawing.Size(173, 20);
@@ -336,6 +345,7 @@
             // 
             // txtBxCheckNum
             // 
+            this.txtBxCheckNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxCheckNum.Location = new System.Drawing.Point(15, 260);
             this.txtBxCheckNum.Name = "txtBxCheckNum";
             this.txtBxCheckNum.Size = new System.Drawing.Size(173, 20);
@@ -361,6 +371,7 @@
             // 
             // cmbBxPayment
             // 
+            this.cmbBxPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.cmbBxPayment.FormattingEnabled = true;
             this.cmbBxPayment.Items.AddRange(new object[] {
             "Cash",
@@ -382,6 +393,7 @@
             // 
             // dateIssued
             // 
+            this.dateIssued.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.dateIssued.Location = new System.Drawing.Point(15, 135);
             this.dateIssued.Name = "dateIssued";
             this.dateIssued.Size = new System.Drawing.Size(198, 20);
@@ -431,6 +443,7 @@
             // 
             // cmbBxJobType
             // 
+            this.cmbBxJobType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.cmbBxJobType.FormattingEnabled = true;
             this.cmbBxJobType.Items.AddRange(new object[] {
             "Company",
@@ -443,6 +456,7 @@
             // 
             // txtBxName
             // 
+            this.txtBxName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxName.Location = new System.Drawing.Point(16, 39);
             this.txtBxName.Name = "txtBxName";
             this.txtBxName.Size = new System.Drawing.Size(173, 20);
@@ -450,6 +464,7 @@
             // 
             // txtBxZip
             // 
+            this.txtBxZip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxZip.Location = new System.Drawing.Point(16, 344);
             this.txtBxZip.MaxLength = 5;
             this.txtBxZip.Name = "txtBxZip";
@@ -540,6 +555,7 @@
             "WY"});
             this.txtBxState.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtBxState.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtBxState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxState.Location = new System.Drawing.Point(16, 285);
             this.txtBxState.MaxLength = 2;
             this.txtBxState.Name = "txtBxState";
@@ -548,6 +564,7 @@
             // 
             // txtBxAddress1
             // 
+            this.txtBxAddress1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxAddress1.Location = new System.Drawing.Point(16, 97);
             this.txtBxAddress1.Name = "txtBxAddress1";
             this.txtBxAddress1.Size = new System.Drawing.Size(173, 20);
@@ -573,6 +590,7 @@
             // 
             // txtBxCity
             // 
+            this.txtBxCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxCity.Location = new System.Drawing.Point(16, 222);
             this.txtBxCity.Name = "txtBxCity";
             this.txtBxCity.Size = new System.Drawing.Size(173, 20);
@@ -580,6 +598,7 @@
             // 
             // txtBxAddress2
             // 
+            this.txtBxAddress2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxAddress2.Location = new System.Drawing.Point(16, 159);
             this.txtBxAddress2.Name = "txtBxAddress2";
             this.txtBxAddress2.Size = new System.Drawing.Size(173, 20);
@@ -596,46 +615,67 @@
             // 
             // btnShowAddInvoice
             // 
-            this.btnShowAddInvoice.Location = new System.Drawing.Point(12, 96);
+            this.btnShowAddInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnShowAddInvoice.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnShowAddInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowAddInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnShowAddInvoice.Location = new System.Drawing.Point(3, 249);
             this.btnShowAddInvoice.Name = "btnShowAddInvoice";
-            this.btnShowAddInvoice.Size = new System.Drawing.Size(123, 76);
+            this.btnShowAddInvoice.Size = new System.Drawing.Size(148, 76);
             this.btnShowAddInvoice.TabIndex = 3;
             this.btnShowAddInvoice.Text = "Add Invoice";
-            this.btnShowAddInvoice.UseVisualStyleBackColor = true;
+            this.btnShowAddInvoice.UseVisualStyleBackColor = false;
             this.btnShowAddInvoice.Click += new System.EventHandler(this.btnShowAddInvoice_Click);
             // 
             // btnShowManageInvoice
             // 
-            this.btnShowManageInvoice.Location = new System.Drawing.Point(12, 179);
+            this.btnShowManageInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnShowManageInvoice.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnShowManageInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowManageInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowManageInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnShowManageInvoice.Location = new System.Drawing.Point(3, 3);
             this.btnShowManageInvoice.Name = "btnShowManageInvoice";
-            this.btnShowManageInvoice.Size = new System.Drawing.Size(123, 76);
+            this.btnShowManageInvoice.Size = new System.Drawing.Size(148, 76);
             this.btnShowManageInvoice.TabIndex = 4;
             this.btnShowManageInvoice.Text = "Manage Invoices";
-            this.btnShowManageInvoice.UseVisualStyleBackColor = true;
+            this.btnShowManageInvoice.UseVisualStyleBackColor = false;
             this.btnShowManageInvoice.Click += new System.EventHandler(this.btnShowManageInvoice_Click);
             // 
             // btnShowTransactions
             // 
-            this.btnShowTransactions.Location = new System.Drawing.Point(12, 262);
+            this.btnShowTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnShowTransactions.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnShowTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowTransactions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnShowTransactions.Location = new System.Drawing.Point(3, 167);
             this.btnShowTransactions.Name = "btnShowTransactions";
-            this.btnShowTransactions.Size = new System.Drawing.Size(123, 76);
+            this.btnShowTransactions.Size = new System.Drawing.Size(148, 76);
             this.btnShowTransactions.TabIndex = 5;
             this.btnShowTransactions.Text = "Transactions";
-            this.btnShowTransactions.UseVisualStyleBackColor = true;
+            this.btnShowTransactions.UseVisualStyleBackColor = false;
             this.btnShowTransactions.Click += new System.EventHandler(this.btnShowTransactions_Click);
             // 
             // btnShowCustomers
             // 
-            this.btnShowCustomers.Location = new System.Drawing.Point(12, 345);
+            this.btnShowCustomers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnShowCustomers.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnShowCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowCustomers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnShowCustomers.Location = new System.Drawing.Point(3, 85);
             this.btnShowCustomers.Name = "btnShowCustomers";
-            this.btnShowCustomers.Size = new System.Drawing.Size(123, 76);
+            this.btnShowCustomers.Size = new System.Drawing.Size(148, 76);
             this.btnShowCustomers.TabIndex = 6;
             this.btnShowCustomers.Text = "Customers";
-            this.btnShowCustomers.UseVisualStyleBackColor = true;
+            this.btnShowCustomers.UseVisualStyleBackColor = false;
             this.btnShowCustomers.Click += new System.EventHandler(this.btnShowCustomers_Click);
             // 
             // panelManageInvoices
             // 
+            this.panelManageInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
             this.panelManageInvoices.Controls.Add(this.label17);
             this.panelManageInvoices.Location = new System.Drawing.Point(141, 23);
             this.panelManageInvoices.Name = "panelManageInvoices";
@@ -653,6 +693,7 @@
             // 
             // panelTransactions
             // 
+            this.panelTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
             this.panelTransactions.Controls.Add(this.label20);
             this.panelTransactions.Controls.Add(this.lblSearch);
             this.panelTransactions.Controls.Add(this.cmBxSearch);
@@ -663,6 +704,47 @@
             this.panelTransactions.Name = "panelTransactions";
             this.panelTransactions.Size = new System.Drawing.Size(849, 519);
             this.panelTransactions.TabIndex = 26;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(230, 59);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(15, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "in";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(73, 39);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(41, 13);
+            this.lblSearch.TabIndex = 5;
+            this.lblSearch.Text = "Search";
+            // 
+            // cmBxSearch
+            // 
+            this.cmBxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.cmBxSearch.FormattingEnabled = true;
+            this.cmBxSearch.Items.AddRange(new object[] {
+            "CompanyName",
+            "InvoiceID",
+            "DateIssued"});
+            this.cmBxSearch.Location = new System.Drawing.Point(252, 55);
+            this.cmBxSearch.Name = "cmBxSearch";
+            this.cmBxSearch.Size = new System.Drawing.Size(152, 21);
+            this.cmBxSearch.TabIndex = 4;
+            this.cmBxSearch.Text = "CompanyName";
+            // 
+            // txtBxSearch
+            // 
+            this.txtBxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.txtBxSearch.Location = new System.Drawing.Point(73, 55);
+            this.txtBxSearch.Name = "txtBxSearch";
+            this.txtBxSearch.Size = new System.Drawing.Size(151, 20);
+            this.txtBxSearch.TabIndex = 3;
+            this.txtBxSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridViewTransactions
             // 
@@ -683,6 +765,7 @@
             // 
             // panelCustomers
             // 
+            this.panelCustomers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
             this.panelCustomers.Controls.Add(this.btnSaveDataGrid);
             this.panelCustomers.Controls.Add(this.dataGridViewCustomer);
             this.panelCustomers.Controls.Add(this.label19);
@@ -715,6 +798,7 @@
             this.zipDataGridViewTextBoxColumn,
             this.balanceDataGridViewTextBoxColumn});
             this.dataGridViewCustomer.DataSource = this.customerBindingSource;
+            this.dataGridViewCustomer.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dataGridViewCustomer.Location = new System.Drawing.Point(0, 40);
             this.dataGridViewCustomer.Name = "dataGridViewCustomer";
             this.dataGridViewCustomer.Size = new System.Drawing.Size(854, 414);
@@ -767,9 +851,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -794,12 +878,17 @@
             // 
             // btnTestData
             // 
-            this.btnTestData.Location = new System.Drawing.Point(912, 580);
+            this.btnTestData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnTestData.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTestData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTestData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTestData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnTestData.Location = new System.Drawing.Point(915, 577);
             this.btnTestData.Name = "btnTestData";
-            this.btnTestData.Size = new System.Drawing.Size(78, 23);
+            this.btnTestData.Size = new System.Drawing.Size(82, 35);
             this.btnTestData.TabIndex = 27;
             this.btnTestData.Text = "Load Data";
-            this.btnTestData.UseVisualStyleBackColor = true;
+            this.btnTestData.UseVisualStyleBackColor = false;
             this.btnTestData.Click += new System.EventHandler(this.btnTestData_Click);
             // 
             // customerTableAdapter
@@ -808,22 +897,32 @@
             // 
             // btnTestCon
             // 
-            this.btnTestCon.Location = new System.Drawing.Point(777, 580);
+            this.btnTestCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnTestCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTestCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTestCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTestCon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnTestCon.Location = new System.Drawing.Point(780, 577);
             this.btnTestCon.Name = "btnTestCon";
-            this.btnTestCon.Size = new System.Drawing.Size(106, 23);
+            this.btnTestCon.Size = new System.Drawing.Size(110, 35);
             this.btnTestCon.TabIndex = 28;
             this.btnTestCon.Text = "Test Page";
-            this.btnTestCon.UseVisualStyleBackColor = true;
+            this.btnTestCon.UseVisualStyleBackColor = false;
             this.btnTestCon.Click += new System.EventHandler(this.btnTestCon_Click);
             // 
             // btnCustomerPayment
             // 
-            this.btnCustomerPayment.Location = new System.Drawing.Point(582, 548);
+            this.btnCustomerPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnCustomerPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnCustomerPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomerPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomerPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnCustomerPayment.Location = new System.Drawing.Point(585, 545);
             this.btnCustomerPayment.Name = "btnCustomerPayment";
-            this.btnCustomerPayment.Size = new System.Drawing.Size(159, 50);
+            this.btnCustomerPayment.Size = new System.Drawing.Size(163, 62);
             this.btnCustomerPayment.TabIndex = 29;
             this.btnCustomerPayment.Text = "Enter Customer Payment";
-            this.btnCustomerPayment.UseVisualStyleBackColor = true;
+            this.btnCustomerPayment.UseVisualStyleBackColor = false;
             this.btnCustomerPayment.Click += new System.EventHandler(this.btnCustomerPayment_Click);
             // 
             // database1DataSetBindingSource
@@ -849,64 +948,35 @@
             // 
             this.invoiceTableAdapter.ClearBeforeFill = true;
             // 
-            // txtBxSearch
+            // flowLayoutPanel1
             // 
-            this.txtBxSearch.Location = new System.Drawing.Point(73, 55);
-            this.txtBxSearch.Name = "txtBxSearch";
-            this.txtBxSearch.Size = new System.Drawing.Size(151, 20);
-            this.txtBxSearch.TabIndex = 3;
-            this.txtBxSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // cmBxSearch
-            // 
-            this.cmBxSearch.FormattingEnabled = true;
-            this.cmBxSearch.Items.AddRange(new object[] {
-            "CompanyName",
-            "InvoiceID",
-            "DateIssued"});
-            this.cmBxSearch.Location = new System.Drawing.Point(252, 55);
-            this.cmBxSearch.Name = "cmBxSearch";
-            this.cmBxSearch.Size = new System.Drawing.Size(152, 21);
-            this.cmBxSearch.TabIndex = 4;
-            this.cmBxSearch.Text = "CompanyName";
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(73, 39);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(41, 13);
-            this.lblSearch.TabIndex = 5;
-            this.lblSearch.Text = "Search";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(230, 59);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(15, 13);
-            this.label20.TabIndex = 6;
-            this.label20.Text = "in";
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(63)))));
+            this.flowLayoutPanel1.Controls.Add(this.btnShowManageInvoice);
+            this.flowLayoutPanel1.Controls.Add(this.btnShowCustomers);
+            this.flowLayoutPanel1.Controls.Add(this.btnShowTransactions);
+            this.flowLayoutPanel1.Controls.Add(this.btnShowAddInvoice);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(-6, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(154, 617);
+            this.flowLayoutPanel1.TabIndex = 30;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(210)))), ((int)(((byte)(226)))));
             this.ClientSize = new System.Drawing.Size(1007, 610);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnCustomerPayment);
             this.Controls.Add(this.btnTestCon);
             this.Controls.Add(this.btnTestData);
-            this.Controls.Add(this.btnShowCustomers);
-            this.Controls.Add(this.btnShowTransactions);
-            this.Controls.Add(this.btnShowManageInvoice);
-            this.Controls.Add(this.btnShowAddInvoice);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.panelTransactions);
-            this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelManageInvoices);
+            this.Controls.Add(this.panelTransactions);
+            this.Controls.Add(this.panelCustomers);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Neon Nights";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
@@ -932,6 +1002,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1017,6 +1088,7 @@
         private System.Windows.Forms.TextBox txtBxSearch;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
