@@ -590,7 +590,6 @@ namespace ProjectNeon
             SaveDataGrid();
         }
         
-
         private void btnCustomerPayment_Click(object sender, EventArgs e)
         {
             //on clicking detect the row the user has selected and open new customer payment with remaining balance information

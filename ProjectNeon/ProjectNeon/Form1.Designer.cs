@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.database1DataSet = new ProjectNeon.Database1DataSet();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -677,7 +677,7 @@
             // 
             this.panelManageInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
             this.panelManageInvoices.Controls.Add(this.label17);
-            this.panelManageInvoices.Location = new System.Drawing.Point(141, 23);
+            this.panelManageInvoices.Location = new System.Drawing.Point(154, 20);
             this.panelManageInvoices.Name = "panelManageInvoices";
             this.panelManageInvoices.Size = new System.Drawing.Size(849, 519);
             this.panelManageInvoices.TabIndex = 7;
@@ -700,7 +700,7 @@
             this.panelTransactions.Controls.Add(this.txtBxSearch);
             this.panelTransactions.Controls.Add(this.dataGridViewTransactions);
             this.panelTransactions.Controls.Add(this.label18);
-            this.panelTransactions.Location = new System.Drawing.Point(141, 23);
+            this.panelTransactions.Location = new System.Drawing.Point(154, 20);
             this.panelTransactions.Name = "panelTransactions";
             this.panelTransactions.Size = new System.Drawing.Size(849, 519);
             this.panelTransactions.TabIndex = 26;
@@ -769,7 +769,7 @@
             this.panelCustomers.Controls.Add(this.btnSaveDataGrid);
             this.panelCustomers.Controls.Add(this.dataGridViewCustomer);
             this.panelCustomers.Controls.Add(this.label19);
-            this.panelCustomers.Location = new System.Drawing.Point(141, 23);
+            this.panelCustomers.Location = new System.Drawing.Point(154, 20);
             this.panelCustomers.Name = "panelCustomers";
             this.panelCustomers.Size = new System.Drawing.Size(849, 519);
             this.panelCustomers.TabIndex = 0;
@@ -851,9 +851,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -917,7 +917,7 @@
             this.btnCustomerPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomerPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomerPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnCustomerPayment.Location = new System.Drawing.Point(585, 545);
+            this.btnCustomerPayment.Location = new System.Drawing.Point(577, 545);
             this.btnCustomerPayment.Name = "btnCustomerPayment";
             this.btnCustomerPayment.Size = new System.Drawing.Size(163, 62);
             this.btnCustomerPayment.TabIndex = 29;
