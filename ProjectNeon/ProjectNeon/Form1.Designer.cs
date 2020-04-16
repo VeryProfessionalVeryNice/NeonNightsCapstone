@@ -110,6 +110,7 @@
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -960,6 +961,10 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(154, 617);
             this.flowLayoutPanel1.TabIndex = 30;
             // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1089,6 +1094,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }
 
