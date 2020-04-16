@@ -44,8 +44,7 @@ namespace ProjectNeon
             //memoryGraphics.CopyFromScreen(this.InvoicePanel.Location.X, this.InvoicePanel.Location.Y, 0, 0, s);
         }
 
-        private void printDocument2_PrintPage(System.Object sender,
-               System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocument2_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, 0, 0);
         }
