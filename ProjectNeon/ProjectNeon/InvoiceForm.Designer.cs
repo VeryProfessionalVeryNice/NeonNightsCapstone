@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceForm));
             this.lblDate = new System.Windows.Forms.Label();
             this.lblInvoiceNum = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,8 +67,8 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.InvoicePanel = new System.Windows.Forms.Panel();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -85,7 +85,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(27, 12);
+            this.lblDate.Location = new System.Drawing.Point(27, 8);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(40, 13);
             this.lblDate.TabIndex = 0;
@@ -100,28 +100,28 @@
             this.lblInvoiceNum.TabIndex = 1;
             this.lblInvoiceNum.Text = "lblInv#";
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblDate);
-            this.panel1.Location = new System.Drawing.Point(534, 78);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(123, 41);
-            this.panel1.TabIndex = 2;
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(534, 49);
+            this.panel2.Controls.Add(this.lblDate);
+            this.panel2.Location = new System.Drawing.Point(534, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(123, 34);
-            this.panel2.TabIndex = 3;
+            this.panel2.Size = new System.Drawing.Size(123, 37);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(534, 49);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(123, 34);
+            this.panel1.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 10);
+            this.label1.Location = new System.Drawing.Point(37, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 0;
@@ -149,9 +149,9 @@
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lblInvoiceNum);
-            this.panel4.Location = new System.Drawing.Point(654, 78);
+            this.panel4.Location = new System.Drawing.Point(654, 82);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(123, 41);
+            this.panel4.Size = new System.Drawing.Size(123, 37);
             this.panel4.TabIndex = 4;
             // 
             // panel5
@@ -285,7 +285,7 @@
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel12.Location = new System.Drawing.Point(12, 358);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(117, 522);
+            this.panel12.Size = new System.Drawing.Size(121, 522);
             this.panel12.TabIndex = 13;
             // 
             // panel13
@@ -322,6 +322,7 @@
             // 
             // panel17
             // 
+            this.panel17.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel17.Controls.Add(this.label8);
             this.panel17.Location = new System.Drawing.Point(12, 886);
@@ -384,9 +385,10 @@
             // 
             // InvoicePanel
             // 
-            this.InvoicePanel.Location = new System.Drawing.Point(2, 12);
+            this.InvoicePanel.BackColor = System.Drawing.Color.White;
+            this.InvoicePanel.Location = new System.Drawing.Point(-2, 12);
             this.InvoicePanel.Name = "InvoicePanel";
-            this.InvoicePanel.Size = new System.Drawing.Size(795, 945);
+            this.InvoicePanel.Size = new System.Drawing.Size(803, 945);
             this.InvoicePanel.TabIndex = 21;
             // 
             // printPreviewDialog1
@@ -404,6 +406,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(803, 1014);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.panel18);
@@ -421,16 +424,16 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.InvoicePanel);
             this.Name = "InvoiceForm";
             this.Text = "InvoiceForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -461,8 +464,8 @@
 
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblInvoiceNum;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
