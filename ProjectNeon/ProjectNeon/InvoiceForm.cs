@@ -12,6 +12,11 @@ namespace ProjectNeon
         {
             InitializeComponent();
             printDocument2.PrintPage += new PrintPageEventHandler(printDocument2_PrintPage);
+            Panel[] panels = new Panel[] {panel2, panel1, panel3, panel4, panel5, panel6, panel7, panel8, panel9, panel10, panel11, panel12, panel13, panel14, panel15, panel16, panel17, panel18 };
+            foreach (Panel panel in panels)
+            {
+                panel.Parent = InvoicePanel;
+            }
         }
 
         Bitmap memoryImage;
@@ -26,15 +31,38 @@ namespace ProjectNeon
             //print.AllowSomePages = true;
             //if (print.ShowDialog() == DialogResult.OK)
             //        printDocument1.Print();
-            memoryImage = new Bitmap(InvoicePanel.Width, InvoicePanel.Height);
-            InvoicePanel.DrawToBitmap(memoryImage, new Rectangle(0, 0, InvoicePanel.Width, InvoicePanel.Height));
-            //if (printDialog1.ShowDialog() == DialogResult.OK)
-            //    printDocument2.Print();
-            printPreviewDialog1.ShowDialog();
+
+            Print();
+            //printPreviewDialog1.ShowDialog();
         }
 
-        
+        public void GetPrintArea()
+        {
+            memoryImage = new Bitmap(InvoicePanel.Width, InvoicePanel.Height);
+            InvoicePanel.DrawToBitmap(memoryImage, new Rectangle(0, 0, InvoicePanel.Width, InvoicePanel.Height));
+        }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (memoryImage != null)
+            {
+                e.Graphics.DrawImage(memoryImage, 0, 0);
+                base.OnPaint(e);
+            }
+        }
+
+        public void Print()
+        {
+            GetPrintArea();
+            printDialog1.Document = printDocument2;
+            printDialog1.AllowCurrentPage = true;
+            printDialog1.AllowSelection = true;
+            printDialog1.AllowSomePages = true;
+            printDialog1.PrintToFile = true;
+            //printDialog1.ShowDialog();
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+                printDocument2.Print();
+        }
         private void CaptureScreen()
         {
             //Graphics myGraphics = InvoicePanel.CreateGraphics();
@@ -46,7 +74,8 @@ namespace ProjectNeon
 
         private void printDocument2_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(memoryImage, 0, 0);
+            Rectangle pagearea = e.PageBounds;
+            e.Graphics.DrawImage(memoryImage, (pagearea.Width / 2) - (InvoicePanel.Width / 2), InvoicePanel.Location.Y);
         }
     }
 }
