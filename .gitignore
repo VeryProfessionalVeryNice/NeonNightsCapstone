@@ -312,3 +312,11 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+
+### Misc. File Types ***
+*.docx
+*.zip
+*.7z
+
+# Windows thumbnail cache file
+*.db
