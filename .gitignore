@@ -314,7 +314,6 @@ healthchecksdb
 MigrationBackup/
 
 ### Misc. File Types ***
-*.docx
 *.zip
 *.7z
 
