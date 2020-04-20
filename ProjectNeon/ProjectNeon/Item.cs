@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectNeon
 {
-    class Item
+    public class Item
     {
         private int id;
         private string invoiceId;

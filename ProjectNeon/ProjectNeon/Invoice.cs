@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectNeon
 {
-    class Invoice
+    public class Invoice
     {
         private string id;
         private int customerId;
@@ -46,6 +46,11 @@ namespace ProjectNeon
             this.dateIssued = dateIssued;
             this.paymentMethod = paymentMethod;
             checkNum = null;
+        }
+
+        public override string ToString()
+        {
+            return $"Id: {id}";
         }
     }
 }

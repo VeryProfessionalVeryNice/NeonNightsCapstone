@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Windows.Forms;
 
 namespace ProjectNeon
 {
     public partial class Form1 : Form
     {
-        
+
         //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True
 
         private static string cntStrng = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
@@ -26,6 +20,7 @@ namespace ProjectNeon
         //global variables for passing information between multiple forms
         public static string selectedCustomerName;
         public static string outstandingBalance;
+        public static string selectedInvoiceId;
 
 
         public Form1()
@@ -35,7 +30,7 @@ namespace ProjectNeon
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             FillCustomersTab();
             FillTransactionsTab(query);
             //LoadTestData(); //autoloading test data for now
@@ -44,10 +39,11 @@ namespace ProjectNeon
         private void safePDF_Click(object sender, EventArgs e)
         {
             try
-            { 
+            {
                 string path = Directory.GetCurrentDirectory();
                 string target = @"";
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.GetType().ToString());
             }
@@ -73,7 +69,7 @@ namespace ProjectNeon
         {
             try
             {
-                
+
                 conn.Close();//Close Connection
                 //MessageBox.Show("Closed");
             }
@@ -86,7 +82,7 @@ namespace ProjectNeon
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Closes database connection when the form is closed
-          // Disconnect();
+            // Disconnect();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -223,7 +219,7 @@ namespace ProjectNeon
                 txtBxZip
             };
             //Loops through customer fields to check if any are empty
-            foreach(TextBox txtBx in textBoxes)
+            foreach (TextBox txtBx in textBoxes)
             {
                 if (txtBx.Text == "")
                 {
@@ -312,7 +308,7 @@ namespace ProjectNeon
                 total += (item.PriceEach * item.Quantity);
             }
 
-            total = total + GetTax(total);
+            total += GetTax(total);
 
             return total;
         }
@@ -348,9 +344,11 @@ namespace ProjectNeon
         private void UpdateBalance(int id)
         {
             decimal total = 0m;
+            decimal oldTotal = 0m;
             SqlConnection conn = new SqlConnection(cntStrng);
             string sumQuery = $"SELECT SUM(Total) FROM Invoice WHERE CustomerID = '{id}'";
-            
+            string oldQuery = $"SELECT SUM(Balance) FROM Customer WHERE CustomerID = '{id}'";
+
             try
             {
                 using (SqlCommand command = new SqlCommand(sumQuery, conn))
@@ -361,6 +359,19 @@ namespace ProjectNeon
                     //MessageBox.Show(total.ToString("C2"));
                     Disconnect(conn);
                 }
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(oldQuery, conn))
+                    {
+                        command.CommandType = CommandType.Text;
+                        Connect(conn);
+                        oldTotal = Convert.ToDecimal(command.ExecuteScalar());
+                        //MessageBox.Show(total.ToString("C2"));
+                        Disconnect(conn);
+                        total += oldTotal;
+                    }
+                }
+                catch { }
                 total = Convert.ToDecimal(total.ToString("F2"));
                 string updateQuery = $"UPDATE Customer SET Balance = '{total}' WHERE CustomerID = '{id}'";
                 using (SqlCommand command = new SqlCommand(updateQuery, conn))
@@ -589,7 +600,7 @@ namespace ProjectNeon
         {
             SaveDataGrid();
         }
-        
+
         private void btnCustomerPayment_Click(object sender, EventArgs e)
         {
             //on clicking detect the row the user has selected and open new customer payment with remaining balance information
@@ -603,7 +614,7 @@ namespace ProjectNeon
 
         private void dataGridViewCustomer_SelectionChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -611,6 +622,64 @@ namespace ProjectNeon
             //Makes query string to search for typed field in selected column
             string qry = $"SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE {cmBxSearch.Text} LIKE '%{txtBxSearch.Text}%'";
             FillTransactionsTab(qry);
+        }
+
+        private void btnOpenInvoice_Click(object sender, EventArgs e)
+        {
+            //Get index of selected row
+            int index = dataGridViewTransactions.CurrentCell.RowIndex;
+            selectedInvoiceId = dataGridViewTransactions.CurrentRow.Cells[1].Value.ToString();
+            string qry = $"SELECT * FROM Invoice WHERE InvoiceID = {selectedInvoiceId}";
+            string qry2 = $"SELECT * FROM Item WHERE InvoiceID = {selectedInvoiceId}";
+            Invoice newInvoice = new Invoice();
+            Item[] items = new Item[30];
+            SqlConnection conn = new SqlConnection(cntStrng);
+            Connect(conn);
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, conn);
+                //Create data adapter to fill dataset
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                DataSet data = new DataSet();
+                //Fill dataset with data from query
+                adpt.Fill(data);
+                DataTable invoiceTable = data.Tables[0];
+                newInvoice.Id = invoiceTable.Rows[0]["InvoiceID"].ToString();
+                newInvoice.CustomerId = Convert.ToInt32(invoiceTable.Rows[0]["CustomerID"]);
+                newInvoice.TaxExempt = Convert.ToBoolean(invoiceTable.Rows[0]["TaxExempt"]);
+                newInvoice.Total = Convert.ToDecimal(invoiceTable.Rows[0]["Total"]);
+                newInvoice.DateIssued = Convert.ToDateTime(invoiceTable.Rows[0]["DateIssued"]);
+                newInvoice.PaymentMethod = invoiceTable.Rows[0]["PaymentMethod"].ToString();
+                newInvoice.CheckNum = invoiceTable.Rows[0]["CheckNum"].ToString();
+
+                SqlCommand cmd2 = new SqlCommand(qry2, conn);
+                SqlDataAdapter adpt2 = new SqlDataAdapter(cmd2);
+                DataSet data2 = new DataSet();
+                adpt2.Fill(data2);
+                DataTable itemTable = data2.Tables[0];
+                for (int i = 0; i < itemTable.Rows.Count; i++)
+                {
+                    items[i] = new Item();
+                    items[i].Id = Convert.ToInt32(itemTable.Rows[i]["ItemID"]);
+                    items[i].InvoiceId = itemTable.Rows[i]["InvoiceID"].ToString();
+                    items[i].ItemCode = itemTable.Rows[i]["ItemCode"].ToString();
+                    items[i].Quantity = Convert.ToByte(itemTable.Rows[i]["Quantity"]);
+                    items[i].Description = itemTable.Rows[i]["Description"].ToString();
+                    items[i].PriceEach = Convert.ToDecimal(itemTable.Rows[i]["PriceEach"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+            }
+            finally
+            {
+                Disconnect(conn);
+            }
+            AlterInvoice alterInvoice = new AlterInvoice(cntStrng, items, newInvoice);
+            alterInvoice.ShowDialog();
+            FillTransactionsTab(query);
+            FillCustomersTab();
         }
     }
 }

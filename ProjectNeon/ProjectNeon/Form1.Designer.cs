@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
@@ -79,6 +79,8 @@
             this.panelManageInvoices = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panelTransactions = new System.Windows.Forms.Panel();
+            this.btnVoid = new System.Windows.Forms.Button();
+            this.btnOpenInvoice = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.cmBxSearch = new System.Windows.Forms.ComboBox();
@@ -87,10 +89,18 @@
             this.dataGridViewTransactions = new System.Windows.Forms.DataGridView();
             this.panelCustomers = new System.Windows.Forms.Panel();
             this.btnSaveDataGrid = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
+            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressLine1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressLine2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet1 = new ProjectNeon.Database1DataSet1();
-            this.label19 = new System.Windows.Forms.Label();
             this.btnTestData = new System.Windows.Forms.Button();
             this.btnTestCon = new System.Windows.Forms.Button();
             this.btnCustomerPayment = new System.Windows.Forms.Button();
@@ -103,14 +113,6 @@
             this.customerTableAdapter = new ProjectNeon.Database1DataSet1TableAdapters.CustomerTableAdapter();
             this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
-            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressLine1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressLine2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
@@ -689,6 +691,8 @@
             // panelTransactions
             // 
             this.panelTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
+            this.panelTransactions.Controls.Add(this.btnVoid);
+            this.panelTransactions.Controls.Add(this.btnOpenInvoice);
             this.panelTransactions.Controls.Add(this.label20);
             this.panelTransactions.Controls.Add(this.lblSearch);
             this.panelTransactions.Controls.Add(this.cmBxSearch);
@@ -699,6 +703,35 @@
             this.panelTransactions.Name = "panelTransactions";
             this.panelTransactions.Size = new System.Drawing.Size(849, 519);
             this.panelTransactions.TabIndex = 26;
+            // 
+            // btnVoid
+            // 
+            this.btnVoid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnVoid.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnVoid.Location = new System.Drawing.Point(731, 173);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(110, 50);
+            this.btnVoid.TabIndex = 30;
+            this.btnVoid.Text = "Void  Invoice";
+            this.btnVoid.UseVisualStyleBackColor = false;
+            // 
+            // btnOpenInvoice
+            // 
+            this.btnOpenInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnOpenInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnOpenInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnOpenInvoice.Location = new System.Drawing.Point(731, 110);
+            this.btnOpenInvoice.Name = "btnOpenInvoice";
+            this.btnOpenInvoice.Size = new System.Drawing.Size(110, 50);
+            this.btnOpenInvoice.TabIndex = 29;
+            this.btnOpenInvoice.Text = "Open Invoice";
+            this.btnOpenInvoice.UseVisualStyleBackColor = false;
+            this.btnOpenInvoice.Click += new System.EventHandler(this.btnOpenInvoice_Click);
             // 
             // label20
             // 
@@ -754,7 +787,7 @@
             this.dataGridViewTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTransactions.Location = new System.Drawing.Point(73, 86);
             this.dataGridViewTransactions.Name = "dataGridViewTransactions";
-            this.dataGridViewTransactions.Size = new System.Drawing.Size(692, 410);
+            this.dataGridViewTransactions.Size = new System.Drawing.Size(652, 410);
             this.dataGridViewTransactions.TabIndex = 2;
             // 
             // panelCustomers
@@ -778,6 +811,15 @@
             this.btnSaveDataGrid.UseVisualStyleBackColor = true;
             this.btnSaveDataGrid.Click += new System.EventHandler(this.btnSaveDataGrid_Click);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(10, 12);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(56, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Customers";
+            // 
             // dataGridViewCustomer
             // 
             this.dataGridViewCustomer.AutoGenerateColumns = false;
@@ -799,6 +841,58 @@
             this.dataGridViewCustomer.TabIndex = 1;
             this.dataGridViewCustomer.SelectionChanged += new System.EventHandler(this.dataGridViewCustomer_SelectionChanged);
             // 
+            // customerIDDataGridViewTextBoxColumn
+            // 
+            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn.HeaderText = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
+            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // companyNameDataGridViewTextBoxColumn
+            // 
+            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
+            this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
+            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
+            // 
+            // addressLine1DataGridViewTextBoxColumn
+            // 
+            this.addressLine1DataGridViewTextBoxColumn.DataPropertyName = "AddressLine1";
+            this.addressLine1DataGridViewTextBoxColumn.HeaderText = "AddressLine1";
+            this.addressLine1DataGridViewTextBoxColumn.Name = "addressLine1DataGridViewTextBoxColumn";
+            // 
+            // addressLine2DataGridViewTextBoxColumn
+            // 
+            this.addressLine2DataGridViewTextBoxColumn.DataPropertyName = "AddressLine2";
+            this.addressLine2DataGridViewTextBoxColumn.HeaderText = "AddressLine2";
+            this.addressLine2DataGridViewTextBoxColumn.Name = "addressLine2DataGridViewTextBoxColumn";
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            // 
+            // zipDataGridViewTextBoxColumn
+            // 
+            this.zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
+            this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
+            this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
+            // 
+            // balanceDataGridViewTextBoxColumn
+            // 
+            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
+            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
+            // 
             // customerBindingSource
             // 
             this.customerBindingSource.DataMember = "Customer";
@@ -808,15 +902,6 @@
             // 
             this.database1DataSet1.DataSetName = "Database1DataSet1";
             this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(10, 12);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 13);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Customers";
             // 
             // btnTestData
             // 
@@ -911,58 +996,6 @@
             // 
             this.invoiceTableAdapter.ClearBeforeFill = true;
             // 
-            // customerIDDataGridViewTextBoxColumn
-            // 
-            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.HeaderText = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
-            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            // 
-            // addressLine1DataGridViewTextBoxColumn
-            // 
-            this.addressLine1DataGridViewTextBoxColumn.DataPropertyName = "AddressLine1";
-            this.addressLine1DataGridViewTextBoxColumn.HeaderText = "AddressLine1";
-            this.addressLine1DataGridViewTextBoxColumn.Name = "addressLine1DataGridViewTextBoxColumn";
-            // 
-            // addressLine2DataGridViewTextBoxColumn
-            // 
-            this.addressLine2DataGridViewTextBoxColumn.DataPropertyName = "AddressLine2";
-            this.addressLine2DataGridViewTextBoxColumn.HeaderText = "AddressLine2";
-            this.addressLine2DataGridViewTextBoxColumn.Name = "addressLine2DataGridViewTextBoxColumn";
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            // 
-            // stateDataGridViewTextBoxColumn
-            // 
-            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
-            // 
-            // zipDataGridViewTextBoxColumn
-            // 
-            this.zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
-            this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
-            this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
-            // 
-            // balanceDataGridViewTextBoxColumn
-            // 
-            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
-            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -974,10 +1007,10 @@
             this.Controls.Add(this.btnTestCon);
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.panelTransactions);
             this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelManageInvoices);
+            this.Controls.Add(this.panelTransactions);
             this.Name = "Form1";
             this.Text = "Neon Nights";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -1092,6 +1125,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnVoid;
+        private System.Windows.Forms.Button btnOpenInvoice;
     }
 }
 

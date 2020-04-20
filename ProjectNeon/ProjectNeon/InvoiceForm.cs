@@ -46,7 +46,7 @@ namespace ProjectNeon
         {
             if (memoryImage != null)
             {
-                e.Graphics.DrawImage(memoryImage, 0, 0);
+                e.Graphics.DrawImage(memoryImage, 10, 10);
                 base.OnPaint(e);
             }
         }
