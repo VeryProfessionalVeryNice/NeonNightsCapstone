@@ -40,8 +40,8 @@ namespace ProjectNeon
         {
             try
             {
-                string path = Directory.GetCurrentDirectory();
-                string target = @"";
+                //string path = Directory.GetCurrentDirectory();
+                //string target = @"";
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace ProjectNeon
             try
             {
                 conn.Open();
-                lblStatus.Text = "Connected to database successfully";
+                //lblStatus.Text = "Connected to database successfully";
                 //MessageBox.Show("Success");
             }
             catch (Exception ex)
@@ -317,7 +317,7 @@ namespace ProjectNeon
         {
             if (ckBxTaxExempt.Checked)
             {
-                return total;
+                return 0;
             }
             else
             {
@@ -580,8 +580,8 @@ namespace ProjectNeon
 
         private void btnTestCon_Click(object sender, EventArgs e)
         {
-            InvoiceForm invoiceForm = new InvoiceForm();
-            invoiceForm.Show();
+            //InvoiceForm invoiceForm = new InvoiceForm();
+            //invoiceForm.Show();
         }
 
         private void SaveDataGrid()
@@ -627,23 +627,132 @@ namespace ProjectNeon
         private void btnOpenInvoice_Click(object sender, EventArgs e)
         {
             //Get index of selected row
+            try
+            {
+                int index = dataGridViewTransactions.CurrentCell.RowIndex;
+                selectedInvoiceId = dataGridViewTransactions.CurrentRow.Cells[1].Value.ToString();
+                string qry = $"SELECT * FROM Invoice WHERE InvoiceID = {selectedInvoiceId}";
+                string qry2 = $"SELECT * FROM Item WHERE InvoiceID = {selectedInvoiceId}";
+                Invoice newInvoice = new Invoice();
+                Item[] items = new Item[30];
+                SqlConnection conn = new SqlConnection(cntStrng);
+                Connect(conn);
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(qry, conn);
+                    //Create data adapter to fill dataset
+                    SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                    DataSet data = new DataSet();
+                    //Fill dataset with data from query
+                    adpt.Fill(data);
+                    DataTable invoiceTable = data.Tables[0];
+                    newInvoice.Id = invoiceTable.Rows[0]["InvoiceID"].ToString();
+                    newInvoice.CustomerId = Convert.ToInt32(invoiceTable.Rows[0]["CustomerID"]);
+                    newInvoice.TaxExempt = Convert.ToBoolean(invoiceTable.Rows[0]["TaxExempt"]);
+                    newInvoice.Total = Convert.ToDecimal(invoiceTable.Rows[0]["Total"]);
+                    newInvoice.DateIssued = Convert.ToDateTime(invoiceTable.Rows[0]["DateIssued"]);
+                    newInvoice.PaymentMethod = invoiceTable.Rows[0]["PaymentMethod"].ToString();
+                    newInvoice.CheckNum = invoiceTable.Rows[0]["CheckNum"].ToString();
+
+                    SqlCommand cmd2 = new SqlCommand(qry2, conn);
+                    SqlDataAdapter adpt2 = new SqlDataAdapter(cmd2);
+                    DataSet data2 = new DataSet();
+                    adpt2.Fill(data2);
+                    DataTable itemTable = data2.Tables[0];
+                    for (int i = 0; i < itemTable.Rows.Count; i++)
+                    {
+                        items[i] = new Item();
+                        items[i].Id = Convert.ToInt32(itemTable.Rows[i]["ItemID"]);
+                        items[i].InvoiceId = itemTable.Rows[i]["InvoiceID"].ToString();
+                        items[i].ItemCode = itemTable.Rows[i]["ItemCode"].ToString();
+                        items[i].Quantity = Convert.ToByte(itemTable.Rows[i]["Quantity"]);
+                        items[i].Description = itemTable.Rows[i]["Description"].ToString();
+                        items[i].PriceEach = Convert.ToDecimal(itemTable.Rows[i]["PriceEach"]);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblStatus.Text = ex.Message;
+                }
+                finally
+                {
+                    Disconnect(conn);
+                }
+                AlterInvoice alterInvoice = new AlterInvoice(cntStrng, items, newInvoice);
+                alterInvoice.ShowDialog();
+                FillTransactionsTab(query);
+                FillCustomersTab();
+            }
+            catch
+            {
+                lblStatus.Text = "Please select an invoice to open";
+            }
+        }
+
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
             int index = dataGridViewTransactions.CurrentCell.RowIndex;
             selectedInvoiceId = dataGridViewTransactions.CurrentRow.Cells[1].Value.ToString();
-            string qry = $"SELECT * FROM Invoice WHERE InvoiceID = {selectedInvoiceId}";
+            //Show messagebox to make sure that they want to delete invoice
+            DialogResult result = MessageBox.Show($"Are you sure you want to void invoice #{selectedInvoiceId}. It will be deleted permanetly.", $"Void Invoice #{selectedInvoiceId}", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK)
+            {
+                string qry = $"DELETE FROM Invoice WHERE InvoiceID = '{selectedInvoiceId}'";
+                string qry2 = $"DELETE FROM Item WHERE InvoiceID = '{selectedInvoiceId}'";
+                SqlConnection conn = new SqlConnection(cntStrng);
+                Connect(conn);
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(qry2, conn))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.ExecuteNonQuery();
+                    }
+                    using (SqlCommand command = new SqlCommand(qry, conn))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.ExecuteNonQuery();
+                    }
+                    lblStatus.Text = "Invoice successfully deleted";
+                } 
+                catch (Exception ex) 
+                {
+                    lblStatus.Text = ex.Message;
+                }
+                finally
+                {
+                    FillTransactionsTab(query);
+                    Disconnect(conn);
+                }
+            }
+        }
+
+        private void PrintInvoice(Customer cust, Invoice inv, Item[] items)
+        {
+            InvoiceForm invoiceForm = new InvoiceForm(cust, inv, items);
+            invoiceForm.ShowDialog();
+        }
+
+        private void btnPrintInvoice_Click(object sender, EventArgs e)
+        {
+            int index = dataGridViewTransactions.CurrentCell.RowIndex;
+            selectedInvoiceId = dataGridViewTransactions.CurrentRow.Cells[1].Value.ToString();
+            string qry1 = $"SELECT * FROM Invoice WHERE InvoiceID = {selectedInvoiceId}";
             string qry2 = $"SELECT * FROM Item WHERE InvoiceID = {selectedInvoiceId}";
+            Customer newCust = new Customer();
             Invoice newInvoice = new Invoice();
             Item[] items = new Item[30];
             SqlConnection conn = new SqlConnection(cntStrng);
             Connect(conn);
             try
             {
-                SqlCommand cmd = new SqlCommand(qry, conn);
+                SqlCommand cmd1 = new SqlCommand(qry1, conn);
                 //Create data adapter to fill dataset
-                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
-                DataSet data = new DataSet();
+                SqlDataAdapter adpt1 = new SqlDataAdapter(cmd1);
+                DataSet data1 = new DataSet();
                 //Fill dataset with data from query
-                adpt.Fill(data);
-                DataTable invoiceTable = data.Tables[0];
+                adpt1.Fill(data1);
+                DataTable invoiceTable = data1.Tables[0];
                 newInvoice.Id = invoiceTable.Rows[0]["InvoiceID"].ToString();
                 newInvoice.CustomerId = Convert.ToInt32(invoiceTable.Rows[0]["CustomerID"]);
                 newInvoice.TaxExempt = Convert.ToBoolean(invoiceTable.Rows[0]["TaxExempt"]);
@@ -651,6 +760,21 @@ namespace ProjectNeon
                 newInvoice.DateIssued = Convert.ToDateTime(invoiceTable.Rows[0]["DateIssued"]);
                 newInvoice.PaymentMethod = invoiceTable.Rows[0]["PaymentMethod"].ToString();
                 newInvoice.CheckNum = invoiceTable.Rows[0]["CheckNum"].ToString();
+
+                string qry = $"SELECT * FROM Customer WHERE CustomerID = {newInvoice.CustomerId}";
+                SqlCommand cmd = new SqlCommand(qry, conn);
+                SqlDataAdapter adpt = new SqlDataAdapter(cmd);
+                DataSet data = new DataSet();
+                adpt.Fill(data);
+                DataTable customerTable = data.Tables[0];
+                newCust.Id = Convert.ToInt32(customerTable.Rows[0]["CustomerID"]);
+                newCust.CompanyName = customerTable.Rows[0]["CompanyName"].ToString();
+                newCust.JobType = customerTable.Rows[0]["JobType"].ToString();
+                newCust.AddressLine1 = customerTable.Rows[0]["AddressLine1"].ToString();
+                newCust.AddressLine2 = customerTable.Rows[0]["AddressLine2"].ToString();
+                newCust.City = customerTable.Rows[0]["City"].ToString();
+                newCust.State = customerTable.Rows[0]["State"].ToString();
+                newCust.Zip = customerTable.Rows[0]["Zip"].ToString();
 
                 SqlCommand cmd2 = new SqlCommand(qry2, conn);
                 SqlDataAdapter adpt2 = new SqlDataAdapter(cmd2);
@@ -667,6 +791,8 @@ namespace ProjectNeon
                     items[i].Description = itemTable.Rows[i]["Description"].ToString();
                     items[i].PriceEach = Convert.ToDecimal(itemTable.Rows[i]["PriceEach"]);
                 }
+
+                PrintInvoice(newCust, newInvoice, items);
             }
             catch (Exception ex)
             {
@@ -676,10 +802,6 @@ namespace ProjectNeon
             {
                 Disconnect(conn);
             }
-            AlterInvoice alterInvoice = new AlterInvoice(cntStrng, items, newInvoice);
-            alterInvoice.ShowDialog();
-            FillTransactionsTab(query);
-            FillCustomersTab();
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
@@ -113,6 +113,7 @@
             this.customerTableAdapter = new ProjectNeon.Database1DataSet1TableAdapters.CustomerTableAdapter();
             this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
+            this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
@@ -691,6 +692,7 @@
             // panelTransactions
             // 
             this.panelTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
+            this.panelTransactions.Controls.Add(this.btnPrintInvoice);
             this.panelTransactions.Controls.Add(this.btnVoid);
             this.panelTransactions.Controls.Add(this.btnOpenInvoice);
             this.panelTransactions.Controls.Add(this.label20);
@@ -711,12 +713,13 @@
             this.btnVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnVoid.Location = new System.Drawing.Point(731, 173);
+            this.btnVoid.Location = new System.Drawing.Point(731, 247);
             this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Size = new System.Drawing.Size(110, 50);
+            this.btnVoid.Size = new System.Drawing.Size(110, 69);
             this.btnVoid.TabIndex = 30;
             this.btnVoid.Text = "Void  Invoice";
             this.btnVoid.UseVisualStyleBackColor = false;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // btnOpenInvoice
             // 
@@ -725,9 +728,9 @@
             this.btnOpenInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnOpenInvoice.Location = new System.Drawing.Point(731, 110);
+            this.btnOpenInvoice.Location = new System.Drawing.Point(731, 153);
             this.btnOpenInvoice.Name = "btnOpenInvoice";
-            this.btnOpenInvoice.Size = new System.Drawing.Size(110, 50);
+            this.btnOpenInvoice.Size = new System.Drawing.Size(110, 69);
             this.btnOpenInvoice.TabIndex = 29;
             this.btnOpenInvoice.Text = "Open Invoice";
             this.btnOpenInvoice.UseVisualStyleBackColor = false;
@@ -887,9 +890,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -996,6 +999,21 @@
             // 
             this.invoiceTableAdapter.ClearBeforeFill = true;
             // 
+            // btnPrintInvoice
+            // 
+            this.btnPrintInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnPrintInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnPrintInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnPrintInvoice.Location = new System.Drawing.Point(731, 341);
+            this.btnPrintInvoice.Name = "btnPrintInvoice";
+            this.btnPrintInvoice.Size = new System.Drawing.Size(110, 69);
+            this.btnPrintInvoice.TabIndex = 31;
+            this.btnPrintInvoice.Text = "Save Invoice to PDF";
+            this.btnPrintInvoice.UseVisualStyleBackColor = false;
+            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1007,10 +1025,10 @@
             this.Controls.Add(this.btnTestCon);
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.panelTransactions);
             this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelManageInvoices);
-            this.Controls.Add(this.panelTransactions);
             this.Name = "Form1";
             this.Text = "Neon Nights";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -1127,6 +1145,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnVoid;
         private System.Windows.Forms.Button btnOpenInvoice;
+        private System.Windows.Forms.Button btnPrintInvoice;
     }
 }
 

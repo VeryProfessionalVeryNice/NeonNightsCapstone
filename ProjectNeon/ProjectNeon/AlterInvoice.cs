@@ -103,7 +103,7 @@ namespace ProjectNeon
                     decimal priceEach = Convert.ToDecimal(txtBxPriceEach.Text);
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     return false;
                 }
@@ -178,10 +178,10 @@ namespace ProjectNeon
                             command.ExecuteNonQuery();
                         }
                     }
-                    catch (Exception ex) { }
+                    catch { }
                 }
             }
-            catch (Exception ex) { }
+            catch { }
             finally
             {
                 Disconnect(conn);
@@ -207,7 +207,7 @@ namespace ProjectNeon
         {
             if (ckBxTaxExempt.Checked)
             {
-                return total;
+                return 0m;
             }
             else
             {
