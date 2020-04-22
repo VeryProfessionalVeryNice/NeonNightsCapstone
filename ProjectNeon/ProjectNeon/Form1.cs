@@ -495,18 +495,21 @@ namespace ProjectNeon
         private void btnShowAddInvoice_Click(object sender, EventArgs e)
         {
             HidePanels();
+            btnCustomerPayment.Visible = false;
             panelAddInvoice.Show();
         }
 
         private void btnShowManageInvoice_Click(object sender, EventArgs e)
         {
             HidePanels();
+            btnCustomerPayment.Visible = false;
             panelManageInvoices.Show();
         }
 
         private void btnShowTransactions_Click(object sender, EventArgs e)
         {
             HidePanels();
+            btnCustomerPayment.Visible = false;
             panelTransactions.Show();
         }
 
@@ -514,6 +517,7 @@ namespace ProjectNeon
         {
             HidePanels();
             panelCustomers.Show();
+            btnCustomerPayment.Visible = true;
         }
 
         private void HidePanels()

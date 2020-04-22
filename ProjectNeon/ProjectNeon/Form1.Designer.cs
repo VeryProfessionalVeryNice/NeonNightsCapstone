@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
@@ -79,6 +81,7 @@
             this.panelManageInvoices = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panelTransactions = new System.Windows.Forms.Panel();
+            this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnVoid = new System.Windows.Forms.Button();
             this.btnOpenInvoice = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
@@ -113,7 +116,6 @@
             this.customerTableAdapter = new ProjectNeon.Database1DataSet1TableAdapters.CustomerTableAdapter();
             this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
-            this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
@@ -706,6 +708,21 @@
             this.panelTransactions.Size = new System.Drawing.Size(849, 519);
             this.panelTransactions.TabIndex = 26;
             // 
+            // btnPrintInvoice
+            // 
+            this.btnPrintInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnPrintInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnPrintInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnPrintInvoice.Location = new System.Drawing.Point(731, 341);
+            this.btnPrintInvoice.Name = "btnPrintInvoice";
+            this.btnPrintInvoice.Size = new System.Drawing.Size(110, 69);
+            this.btnPrintInvoice.TabIndex = 31;
+            this.btnPrintInvoice.Text = "Save Invoice to PDF";
+            this.btnPrintInvoice.UseVisualStyleBackColor = false;
+            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
+            // 
             // btnVoid
             // 
             this.btnVoid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
@@ -787,6 +804,8 @@
             // 
             // dataGridViewTransactions
             // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.dataGridViewTransactions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTransactions.Location = new System.Drawing.Point(73, 86);
             this.dataGridViewTransactions.Name = "dataGridViewTransactions";
@@ -825,6 +844,8 @@
             // 
             // dataGridViewCustomer
             // 
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.dataGridViewCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewCustomer.AutoGenerateColumns = false;
             this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -890,9 +911,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Format = "C2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -949,6 +970,7 @@
             this.btnCustomerPayment.TabIndex = 29;
             this.btnCustomerPayment.Text = "Enter Customer Payment";
             this.btnCustomerPayment.UseVisualStyleBackColor = false;
+            this.btnCustomerPayment.Visible = false;
             this.btnCustomerPayment.Click += new System.EventHandler(this.btnCustomerPayment_Click);
             // 
             // customerBindingSource1
@@ -999,21 +1021,6 @@
             // 
             this.invoiceTableAdapter.ClearBeforeFill = true;
             // 
-            // btnPrintInvoice
-            // 
-            this.btnPrintInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
-            this.btnPrintInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnPrintInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrintInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnPrintInvoice.Location = new System.Drawing.Point(731, 341);
-            this.btnPrintInvoice.Name = "btnPrintInvoice";
-            this.btnPrintInvoice.Size = new System.Drawing.Size(110, 69);
-            this.btnPrintInvoice.TabIndex = 31;
-            this.btnPrintInvoice.Text = "Save Invoice to PDF";
-            this.btnPrintInvoice.UseVisualStyleBackColor = false;
-            this.btnPrintInvoice.Click += new System.EventHandler(this.btnPrintInvoice_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1025,10 +1032,10 @@
             this.Controls.Add(this.btnTestCon);
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.panelTransactions);
-            this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelManageInvoices);
+            this.Controls.Add(this.panelTransactions);
+            this.Controls.Add(this.panelCustomers);
             this.Name = "Form1";
             this.Text = "Neon Nights";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
