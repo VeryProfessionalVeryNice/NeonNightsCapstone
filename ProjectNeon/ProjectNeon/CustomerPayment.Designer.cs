@@ -52,12 +52,15 @@
             // 
             // btnRecordPayment
             // 
-            this.btnRecordPayment.Location = new System.Drawing.Point(21, 359);
+            this.btnRecordPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnRecordPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecordPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnRecordPayment.Location = new System.Drawing.Point(21, 343);
             this.btnRecordPayment.Name = "btnRecordPayment";
-            this.btnRecordPayment.Size = new System.Drawing.Size(228, 54);
+            this.btnRecordPayment.Size = new System.Drawing.Size(228, 66);
             this.btnRecordPayment.TabIndex = 28;
             this.btnRecordPayment.Text = "Record Payment";
-            this.btnRecordPayment.UseVisualStyleBackColor = true;
+            this.btnRecordPayment.UseVisualStyleBackColor = false;
             // 
             // groupBox2
             // 
@@ -78,6 +81,7 @@
             // 
             // txtBxPaymentAmount
             // 
+            this.txtBxPaymentAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxPaymentAmount.Location = new System.Drawing.Point(7, 75);
             this.txtBxPaymentAmount.Name = "txtBxPaymentAmount";
             this.txtBxPaymentAmount.Size = new System.Drawing.Size(197, 20);
@@ -95,6 +99,7 @@
             // 
             // txtBxCheckNum
             // 
+            this.txtBxCheckNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxCheckNum.Location = new System.Drawing.Point(6, 154);
             this.txtBxCheckNum.Name = "txtBxCheckNum";
             this.txtBxCheckNum.Size = new System.Drawing.Size(197, 20);
@@ -122,6 +127,7 @@
             // 
             // cmbBxPayment
             // 
+            this.cmbBxPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.cmbBxPayment.FormattingEnabled = true;
             this.cmbBxPayment.Items.AddRange(new object[] {
             "Cash",
@@ -144,7 +150,8 @@
             // 
             // paymentDate
             // 
-            this.paymentDate.Location = new System.Drawing.Point(6, 36);
+            this.paymentDate.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.paymentDate.Location = new System.Drawing.Point(7, 36);
             this.paymentDate.Name = "paymentDate";
             this.paymentDate.Size = new System.Drawing.Size(198, 20);
             this.paymentDate.TabIndex = 9;
@@ -164,6 +171,7 @@
             // 
             // txtBxBalance
             // 
+            this.txtBxBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxBalance.Enabled = false;
             this.txtBxBalance.Location = new System.Drawing.Point(16, 80);
             this.txtBxBalance.Name = "txtBxBalance";
@@ -181,6 +189,7 @@
             // 
             // txtBxName
             // 
+            this.txtBxName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxName.Enabled = false;
             this.txtBxName.Location = new System.Drawing.Point(16, 39);
             this.txtBxName.Name = "txtBxName";
@@ -205,7 +214,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 435);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(210)))), ((int)(((byte)(226)))));
+            this.ClientSize = new System.Drawing.Size(267, 427);
             this.Controls.Add(this.btnRecordPayment);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

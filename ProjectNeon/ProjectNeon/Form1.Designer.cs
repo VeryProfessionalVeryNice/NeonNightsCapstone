@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
@@ -804,8 +804,8 @@
             // 
             // dataGridViewTransactions
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
-            this.dataGridViewTransactions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.dataGridViewTransactions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTransactions.Location = new System.Drawing.Point(73, 86);
             this.dataGridViewTransactions.Name = "dataGridViewTransactions";
@@ -844,8 +844,8 @@
             // 
             // dataGridViewCustomer
             // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
-            this.dataGridViewCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.dataGridViewCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewCustomer.AutoGenerateColumns = false;
             this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -911,9 +911,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle9.Format = "C2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Format = "C2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -934,7 +934,7 @@
             this.btnTestData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTestData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTestData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnTestData.Location = new System.Drawing.Point(915, 577);
+            this.btnTestData.Location = new System.Drawing.Point(750, 572);
             this.btnTestData.Name = "btnTestData";
             this.btnTestData.Size = new System.Drawing.Size(82, 35);
             this.btnTestData.TabIndex = 27;
@@ -949,7 +949,7 @@
             this.btnTestCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTestCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTestCon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnTestCon.Location = new System.Drawing.Point(780, 577);
+            this.btnTestCon.Location = new System.Drawing.Point(634, 572);
             this.btnTestCon.Name = "btnTestCon";
             this.btnTestCon.Size = new System.Drawing.Size(110, 35);
             this.btnTestCon.TabIndex = 28;
@@ -964,7 +964,7 @@
             this.btnCustomerPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomerPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomerPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnCustomerPayment.Location = new System.Drawing.Point(585, 545);
+            this.btnCustomerPayment.Location = new System.Drawing.Point(840, 545);
             this.btnCustomerPayment.Name = "btnCustomerPayment";
             this.btnCustomerPayment.Size = new System.Drawing.Size(163, 62);
             this.btnCustomerPayment.TabIndex = 29;
