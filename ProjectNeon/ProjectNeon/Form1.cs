@@ -694,7 +694,7 @@ namespace ProjectNeon
             int index = dataGridViewTransactions.CurrentCell.RowIndex;
             selectedInvoiceId = dataGridViewTransactions.CurrentRow.Cells[1].Value.ToString();
             //Show messagebox to make sure that they want to delete invoice
-            DialogResult result = MessageBox.Show($"Are you sure you want to void invoice #{selectedInvoiceId}. It will be deleted permanetly.", $"Void Invoice #{selectedInvoiceId}", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show($"Are you sure you want to void invoice #{selectedInvoiceId}. It will be deleted permanently.", $"Void Invoice #{selectedInvoiceId}", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
                 string qry = $"DELETE FROM Invoice WHERE InvoiceID = '{selectedInvoiceId}'";
