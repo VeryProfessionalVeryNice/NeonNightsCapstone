@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,11 @@ namespace ProjectNeon
         private void CustomerPayment_Load(object sender, EventArgs e)
         {
             txtBxName.Text = Form1.selectedCustomerName;
-            txtBxBalance.Text = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", Form1.outstandingBalance);
-            
+            //txtBxBalance.Text = string.Format("{0:C}", Form1.outstandingBalance);
+            //Convert balance from string to decimal for display and calculation pruposes
+            decimal decOutstandingBalance = Convert.ToDecimal(Form1.outstandingBalance);
+            txtBxBalance.Text = decOutstandingBalance.ToString("C", CultureInfo.CurrentCulture);
+
         }
         
         private void txtBxPaymentAmount_KeyPress(object sender, KeyPressEventArgs e)
@@ -34,6 +38,22 @@ namespace ProjectNeon
             if (e.KeyChar == '.' && txtBxPaymentAmount.Text.Contains("."))
             {
                 e.Handled = true;
+            }
+        }
+
+        //only show check number txtBx when check option is selected
+        private void cmbBxPayment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBxPayment.SelectedIndex == 1)
+            {
+                lblCheckNumber.Visible = true;
+                txtBxCheckNum.Visible = true;
+                
+            }
+            if (cmbBxPayment.SelectedIndex == 0)
+            {
+                lblCheckNumber.Visible = false;
+                txtBxCheckNum.Visible = false;
             }
         }
     }
