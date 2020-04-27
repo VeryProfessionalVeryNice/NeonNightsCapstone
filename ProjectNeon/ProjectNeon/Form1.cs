@@ -21,7 +21,8 @@ namespace ProjectNeon
         public static string selectedCustomerName;
         public static string outstandingBalance;
         public static string selectedInvoiceId;
-
+        //used for displaying error in messagebox
+        public string error;
 
         public Form1()
         {
@@ -164,16 +165,31 @@ namespace ProjectNeon
 
         private void btnSaveToDatabase_Click(object sender, EventArgs e)
         {
-            if (ValidateCustomer() && ValidateInvoice())
+            if (ValidateItem())
+                btnAddItem_Click(sender, e);
+            if (ValidateFields())
             {
                 int custId = AddCustomer();
                 AddInvoice(custId);
                 AddItems();
+                lblStatus.Text = "Added Invoice";
+                ResetAllFields();
+                FillCustomersTab();
+                FillTransactionsTab(query);
             }
-            ResetAllFields();
-            FillCustomersTab();
-            FillTransactionsTab(query);
-            lblStatus.Text = "Added Invoice";
+            else
+            {
+                lblStatus.Text = "Not all required fields where correct";
+                MessageBox.Show($"Required field(s) {error} not entered correctly");
+            }
+        }
+
+        private bool ValidateFields()
+        {
+            if (ValidateCustomer() && ValidateInvoice() && ValidateItemBox())
+                return true;
+            else
+                return false;
         }
 
         private int AddCustomer()
@@ -206,8 +222,23 @@ namespace ProjectNeon
             return id;
         }
 
+        private bool ValidateItemBox()
+        {
+            if (lstBxItems.Items.Count > 0)
+                return true;
+            else
+            {
+                if (error == "")
+                    error += "No items added";
+                else
+                    error += ", No items added";
+                return false;
+            }
+        }
+
         private bool ValidateCustomer()
         {
+            
             bool isValid = true;
             //Array of customer fields
             TextBox[] textBoxes = new TextBox[5]
@@ -225,9 +256,13 @@ namespace ProjectNeon
                 {
                     //if field is empty set isValid to false
                     isValid = false;
+                    if (error == "")
+                        error += txtBx.Name.Remove(0, 5);
+                    else
+                        error += ", " + txtBx.Name.Remove(0, 5);
                 }
             }
-
+            
             return isValid;
         }
 
@@ -330,12 +365,22 @@ namespace ProjectNeon
             bool isValid = true;
 
             if (txtBxInvoiceId.Text == "")
+            {
                 isValid = false;
+                if (error == "")
+                    error += txtBxInvoiceId.Name.Remove(0, 5);
+                else
+                    error += ", " + txtBxInvoiceId.Name.Remove(0, 5);
+            }
 
             if (cmbBxPayment.Text == "Check")
             {
                 if (txtBxCheckNum.Text == "")
                     isValid = false;
+                if (error == "")
+                    error += txtBxCheckNum.Name.Remove(0, 5);
+                else
+                    error += ", " + txtBxCheckNum.Name.Remove(0, 5);
             }
 
             return isValid;
@@ -344,7 +389,6 @@ namespace ProjectNeon
         private void UpdateBalance(int id)
         {
             decimal total = 0m;
-            decimal oldTotal = 0m;
             SqlConnection conn = new SqlConnection(cntStrng);
             string sumQuery = $"SELECT SUM(Total) FROM Invoice WHERE CustomerID = '{id}'";
             string oldQuery = $"SELECT SUM(Balance) FROM Customer WHERE CustomerID = '{id}'";
@@ -365,7 +409,7 @@ namespace ProjectNeon
                     {
                         command.CommandType = CommandType.Text;
                         Connect(conn);
-                        oldTotal = Convert.ToDecimal(command.ExecuteScalar());
+                        decimal oldTotal = Convert.ToDecimal(command.ExecuteScalar());
                         //MessageBox.Show(total.ToString("C2"));
                         Disconnect(conn);
                         total += oldTotal;
@@ -503,7 +547,6 @@ namespace ProjectNeon
         {
             HidePanels();
             btnCustomerPayment.Visible = false;
-            panelManageInvoices.Show();
         }
 
         private void btnShowTransactions_Click(object sender, EventArgs e)
@@ -523,7 +566,6 @@ namespace ProjectNeon
         private void HidePanels()
         {
             panelAddInvoice.Hide();
-            panelManageInvoices.Hide();
             panelTransactions.Hide();
             panelCustomers.Hide();
         }

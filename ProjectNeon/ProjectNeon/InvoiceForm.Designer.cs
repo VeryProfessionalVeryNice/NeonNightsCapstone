@@ -187,6 +187,8 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.InvoicePanel = new System.Windows.Forms.Panel();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.chBxPaid = new System.Windows.Forms.CheckBox();
+            this.lblPaid = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -210,18 +212,18 @@
             // 
             // lblDate
             // 
-            this.lblDate.Location = new System.Drawing.Point(-1, 12);
+            this.lblDate.Location = new System.Drawing.Point(3, 12);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(123, 13);
+            this.lblDate.Size = new System.Drawing.Size(115, 13);
             this.lblDate.TabIndex = 0;
             this.lblDate.Text = "lblDate";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblInvoiceNum
             // 
-            this.lblInvoiceNum.Location = new System.Drawing.Point(-1, 12);
+            this.lblInvoiceNum.Location = new System.Drawing.Point(8, 12);
             this.lblInvoiceNum.Name = "lblInvoiceNum";
-            this.lblInvoiceNum.Size = new System.Drawing.Size(123, 13);
+            this.lblInvoiceNum.Size = new System.Drawing.Size(106, 13);
             this.lblInvoiceNum.TabIndex = 1;
             this.lblInvoiceNum.Text = "lblInv#";
             this.lblInvoiceNum.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -230,7 +232,7 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.lblDate);
-            this.panel2.Location = new System.Drawing.Point(543, 47);
+            this.panel2.Location = new System.Drawing.Point(541, 69);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(123, 37);
             this.panel2.TabIndex = 2;
@@ -239,7 +241,7 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(543, 14);
+            this.panel1.Location = new System.Drawing.Point(541, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(123, 34);
             this.panel1.TabIndex = 3;
@@ -257,7 +259,7 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(663, 14);
+            this.panel3.Location = new System.Drawing.Point(661, 36);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(123, 34);
             this.panel3.TabIndex = 5;
@@ -275,7 +277,7 @@
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lblInvoiceNum);
-            this.panel4.Location = new System.Drawing.Point(663, 47);
+            this.panel4.Location = new System.Drawing.Point(661, 69);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(123, 37);
             this.panel4.TabIndex = 4;
@@ -284,7 +286,7 @@
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.lblName);
-            this.panel5.Location = new System.Drawing.Point(21, 107);
+            this.panel5.Location = new System.Drawing.Point(21, 98);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(244, 36);
             this.panel5.TabIndex = 6;
@@ -302,7 +304,7 @@
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.lblAddress);
-            this.panel6.Location = new System.Drawing.Point(21, 149);
+            this.panel6.Location = new System.Drawing.Point(21, 140);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(244, 97);
             this.panel6.TabIndex = 7;
@@ -321,7 +323,7 @@
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.label3);
-            this.panel7.Location = new System.Drawing.Point(21, 281);
+            this.panel7.Location = new System.Drawing.Point(21, 250);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(121, 36);
             this.panel7.TabIndex = 8;
@@ -339,7 +341,7 @@
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.label4);
-            this.panel8.Location = new System.Drawing.Point(135, 281);
+            this.panel8.Location = new System.Drawing.Point(135, 250);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(121, 36);
             this.panel8.TabIndex = 9;
@@ -357,7 +359,7 @@
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.label5);
-            this.panel9.Location = new System.Drawing.Point(253, 281);
+            this.panel9.Location = new System.Drawing.Point(253, 250);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(306, 36);
             this.panel9.TabIndex = 10;
@@ -375,7 +377,7 @@
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.label6);
-            this.panel10.Location = new System.Drawing.Point(555, 281);
+            this.panel10.Location = new System.Drawing.Point(555, 250);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(121, 36);
             this.panel10.TabIndex = 11;
@@ -393,7 +395,7 @@
             // 
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.label7);
-            this.panel11.Location = new System.Drawing.Point(673, 281);
+            this.panel11.Location = new System.Drawing.Point(673, 250);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(121, 36);
             this.panel11.TabIndex = 12;
@@ -425,7 +427,7 @@
             this.panel12.Controls.Add(this.lblQty5);
             this.panel12.Controls.Add(this.lblQty3);
             this.panel12.Controls.Add(this.lblQty1);
-            this.panel12.Location = new System.Drawing.Point(21, 323);
+            this.panel12.Location = new System.Drawing.Point(21, 292);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(121, 599);
             this.panel12.TabIndex = 13;
@@ -583,7 +585,7 @@
             this.panel13.Controls.Add(this.lblCode5);
             this.panel13.Controls.Add(this.lblCode3);
             this.panel13.Controls.Add(this.lblCode1);
-            this.panel13.Location = new System.Drawing.Point(135, 323);
+            this.panel13.Location = new System.Drawing.Point(135, 292);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(121, 599);
             this.panel13.TabIndex = 14;
@@ -756,7 +758,7 @@
             this.panel14.Controls.Add(this.lblDesc3);
             this.panel14.Controls.Add(this.lblTax1);
             this.panel14.Controls.Add(this.lblDesc1);
-            this.panel14.Location = new System.Drawing.Point(253, 323);
+            this.panel14.Location = new System.Drawing.Point(253, 292);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(306, 599);
             this.panel14.TabIndex = 15;
@@ -1064,7 +1066,7 @@
             this.panel15.Controls.Add(this.lblPrice3);
             this.panel15.Controls.Add(this.lblPer1);
             this.panel15.Controls.Add(this.lblPrice1);
-            this.panel15.Location = new System.Drawing.Point(555, 323);
+            this.panel15.Location = new System.Drawing.Point(555, 292);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(121, 599);
             this.panel15.TabIndex = 16;
@@ -1372,7 +1374,7 @@
             this.panel16.Controls.Add(this.lblAmt3);
             this.panel16.Controls.Add(this.lblTaxAmt1);
             this.panel16.Controls.Add(this.lblAmt1);
-            this.panel16.Location = new System.Drawing.Point(673, 323);
+            this.panel16.Location = new System.Drawing.Point(673, 292);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(121, 599);
             this.panel16.TabIndex = 17;
@@ -1652,7 +1654,7 @@
             this.panel17.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel17.Controls.Add(this.label8);
-            this.panel17.Location = new System.Drawing.Point(21, 928);
+            this.panel17.Location = new System.Drawing.Point(21, 895);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(538, 54);
             this.panel17.TabIndex = 18;
@@ -1671,7 +1673,7 @@
             this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel18.Controls.Add(this.lblTotal);
             this.panel18.Controls.Add(this.label9);
-            this.panel18.Location = new System.Drawing.Point(555, 928);
+            this.panel18.Location = new System.Drawing.Point(555, 895);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(239, 54);
             this.panel18.TabIndex = 19;
@@ -1702,7 +1704,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(379, 997);
+            this.btnPrint.Location = new System.Drawing.Point(379, 966);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 20;
@@ -1713,11 +1715,18 @@
             // InvoicePanel
             // 
             this.InvoicePanel.BackColor = System.Drawing.Color.White;
+            this.InvoicePanel.Controls.Add(this.lblPaid);
             this.InvoicePanel.Controls.Add(this.panel18);
             this.InvoicePanel.Controls.Add(this.panel17);
-            this.InvoicePanel.Location = new System.Drawing.Point(12, 0);
+            this.InvoicePanel.Controls.Add(this.panel1);
+            this.InvoicePanel.Controls.Add(this.panel2);
+            this.InvoicePanel.Controls.Add(this.panel4);
+            this.InvoicePanel.Controls.Add(this.panel3);
+            this.InvoicePanel.Controls.Add(this.panel5);
+            this.InvoicePanel.Controls.Add(this.panel6);
+            this.InvoicePanel.Location = new System.Drawing.Point(12, 2);
             this.InvoicePanel.Name = "InvoicePanel";
-            this.InvoicePanel.Size = new System.Drawing.Size(845, 991);
+            this.InvoicePanel.Size = new System.Drawing.Size(845, 958);
             this.InvoicePanel.TabIndex = 21;
             // 
             // printPreviewDialog1
@@ -1731,12 +1740,35 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // chBxPaid
+            // 
+            this.chBxPaid.AutoSize = true;
+            this.chBxPaid.Location = new System.Drawing.Point(470, 970);
+            this.chBxPaid.Name = "chBxPaid";
+            this.chBxPaid.Size = new System.Drawing.Size(88, 17);
+            this.chBxPaid.TabIndex = 22;
+            this.chBxPaid.Text = "Save as paid";
+            this.chBxPaid.UseVisualStyleBackColor = true;
+            this.chBxPaid.CheckedChanged += new System.EventHandler(this.chBxPaid_CheckedChanged);
+            // 
+            // lblPaid
+            // 
+            this.lblPaid.AutoSize = true;
+            this.lblPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaid.Location = new System.Drawing.Point(564, 131);
+            this.lblPaid.Name = "lblPaid";
+            this.lblPaid.Size = new System.Drawing.Size(182, 73);
+            this.lblPaid.TabIndex = 20;
+            this.lblPaid.Text = "PAID";
+            this.lblPaid.Click += new System.EventHandler(this.lblPaid_Click);
+            // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(851, 1048);
+            this.ClientSize = new System.Drawing.Size(851, 993);
+            this.Controls.Add(this.chBxPaid);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.panel16);
             this.Controls.Add(this.panel15);
@@ -1747,12 +1779,6 @@
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.InvoicePanel);
             this.Name = "InvoiceForm";
@@ -1791,7 +1817,9 @@
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.InvoicePanel.ResumeLayout(false);
+            this.InvoicePanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1955,5 +1983,7 @@
         private System.Windows.Forms.Label lblTaxAmt5;
         private System.Windows.Forms.Label lblTaxAmt3;
         private System.Windows.Forms.Label lblTaxAmt1;
+        private System.Windows.Forms.CheckBox chBxPaid;
+        private System.Windows.Forms.Label lblPaid;
     }
 }

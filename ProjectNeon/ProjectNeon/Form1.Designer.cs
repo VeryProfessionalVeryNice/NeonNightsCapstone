@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
@@ -75,11 +75,8 @@
             this.txtBxAddress2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnShowAddInvoice = new System.Windows.Forms.Button();
-            this.btnShowManageInvoice = new System.Windows.Forms.Button();
             this.btnShowTransactions = new System.Windows.Forms.Button();
             this.btnShowCustomers = new System.Windows.Forms.Button();
-            this.panelManageInvoices = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
             this.panelTransactions = new System.Windows.Forms.Panel();
             this.btnPrintInvoice = new System.Windows.Forms.Button();
             this.btnVoid = new System.Windows.Forms.Button();
@@ -121,7 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panelManageInvoices.SuspendLayout();
             this.panelTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).BeginInit();
             this.panelCustomers.SuspendLayout();
@@ -620,28 +616,13 @@
             this.btnShowAddInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowAddInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowAddInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnShowAddInvoice.Location = new System.Drawing.Point(3, 249);
+            this.btnShowAddInvoice.Location = new System.Drawing.Point(3, 167);
             this.btnShowAddInvoice.Name = "btnShowAddInvoice";
             this.btnShowAddInvoice.Size = new System.Drawing.Size(148, 76);
             this.btnShowAddInvoice.TabIndex = 3;
             this.btnShowAddInvoice.Text = "Add Invoice";
             this.btnShowAddInvoice.UseVisualStyleBackColor = false;
             this.btnShowAddInvoice.Click += new System.EventHandler(this.btnShowAddInvoice_Click);
-            // 
-            // btnShowManageInvoice
-            // 
-            this.btnShowManageInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
-            this.btnShowManageInvoice.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnShowManageInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowManageInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowManageInvoice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnShowManageInvoice.Location = new System.Drawing.Point(3, 3);
-            this.btnShowManageInvoice.Name = "btnShowManageInvoice";
-            this.btnShowManageInvoice.Size = new System.Drawing.Size(148, 76);
-            this.btnShowManageInvoice.TabIndex = 4;
-            this.btnShowManageInvoice.Text = "Manage Invoices";
-            this.btnShowManageInvoice.UseVisualStyleBackColor = false;
-            this.btnShowManageInvoice.Click += new System.EventHandler(this.btnShowManageInvoice_Click);
             // 
             // btnShowTransactions
             // 
@@ -650,7 +631,7 @@
             this.btnShowTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowTransactions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnShowTransactions.Location = new System.Drawing.Point(3, 167);
+            this.btnShowTransactions.Location = new System.Drawing.Point(3, 85);
             this.btnShowTransactions.Name = "btnShowTransactions";
             this.btnShowTransactions.Size = new System.Drawing.Size(148, 76);
             this.btnShowTransactions.TabIndex = 5;
@@ -665,31 +646,13 @@
             this.btnShowCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowCustomers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnShowCustomers.Location = new System.Drawing.Point(3, 85);
+            this.btnShowCustomers.Location = new System.Drawing.Point(3, 3);
             this.btnShowCustomers.Name = "btnShowCustomers";
             this.btnShowCustomers.Size = new System.Drawing.Size(148, 76);
             this.btnShowCustomers.TabIndex = 6;
             this.btnShowCustomers.Text = "Customers";
             this.btnShowCustomers.UseVisualStyleBackColor = false;
             this.btnShowCustomers.Click += new System.EventHandler(this.btnShowCustomers_Click);
-            // 
-            // panelManageInvoices
-            // 
-            this.panelManageInvoices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
-            this.panelManageInvoices.Controls.Add(this.label17);
-            this.panelManageInvoices.Location = new System.Drawing.Point(154, 20);
-            this.panelManageInvoices.Name = "panelManageInvoices";
-            this.panelManageInvoices.Size = new System.Drawing.Size(849, 519);
-            this.panelManageInvoices.TabIndex = 7;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 12);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 13);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Manage Invoices";
             // 
             // panelTransactions
             // 
@@ -804,8 +767,8 @@
             // 
             // dataGridViewTransactions
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
-            this.dataGridViewTransactions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.dataGridViewTransactions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTransactions.Location = new System.Drawing.Point(73, 86);
             this.dataGridViewTransactions.Name = "dataGridViewTransactions";
@@ -844,8 +807,8 @@
             // 
             // dataGridViewCustomer
             // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
-            this.dataGridViewCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
+            this.dataGridViewCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCustomer.AutoGenerateColumns = false;
             this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -911,9 +874,9 @@
             // balanceDataGridViewTextBoxColumn
             // 
             this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            dataGridViewCellStyle12.Format = "C2";
-            dataGridViewCellStyle12.NullValue = null;
-            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.balanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             // 
@@ -996,7 +959,6 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(63)))));
-            this.flowLayoutPanel1.Controls.Add(this.btnShowManageInvoice);
             this.flowLayoutPanel1.Controls.Add(this.btnShowCustomers);
             this.flowLayoutPanel1.Controls.Add(this.btnShowTransactions);
             this.flowLayoutPanel1.Controls.Add(this.btnShowAddInvoice);
@@ -1033,7 +995,6 @@
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.panelAddInvoice);
-            this.Controls.Add(this.panelManageInvoices);
             this.Controls.Add(this.panelTransactions);
             this.Controls.Add(this.panelCustomers);
             this.Name = "Form1";
@@ -1049,8 +1010,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panelManageInvoices.ResumeLayout(false);
-            this.panelManageInvoices.PerformLayout();
             this.panelTransactions.ResumeLayout(false);
             this.panelTransactions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).EndInit();
@@ -1113,11 +1072,8 @@
         private System.Windows.Forms.TextBox txtBxAddress2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnShowAddInvoice;
-        private System.Windows.Forms.Button btnShowManageInvoice;
         private System.Windows.Forms.Button btnShowTransactions;
         private System.Windows.Forms.Button btnShowCustomers;
-        private System.Windows.Forms.Panel panelManageInvoices;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panelTransactions;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panelCustomers;
