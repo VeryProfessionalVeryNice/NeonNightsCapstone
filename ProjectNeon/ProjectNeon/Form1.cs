@@ -165,8 +165,10 @@ namespace ProjectNeon
 
         private void btnSaveToDatabase_Click(object sender, EventArgs e)
         {
+            //If there is a valid item typed in, but not entered will be entered before being added to database
             if (ValidateItem())
                 btnAddItem_Click(sender, e);
+            //Validate all fields then add to database if everything is valid
             if (ValidateFields())
             {
                 int custId = AddCustomer();
@@ -179,6 +181,7 @@ namespace ProjectNeon
             }
             else
             {
+                //Display errors is form does not validate
                 lblStatus.Text = "Not all required fields where correct";
                 MessageBox.Show($"Required field(s) {error} not entered correctly");
             }
