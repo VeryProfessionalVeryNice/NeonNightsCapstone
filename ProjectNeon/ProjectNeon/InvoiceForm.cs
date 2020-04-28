@@ -42,17 +42,19 @@ namespace ProjectNeon
                     quantityAry[i].Text = items[i].Quantity.ToString();
                     itemCodeAry[i].Text = items[i].ItemCode;
                     descAry[i].Text = items[i].Description;
-                    priceAry[i].Text = items[i].PriceEach.ToString("F2");
+                    priceAry[i].Text = items[i].PriceEach.ToString("C2");
                     amountAry[i].Text = GetItemAmount(items[i].Quantity, items[i].PriceEach);
                     if (!invoice.TaxExempt)
                     {
                         taxAmtAry[i].Text = GetTaxAmount(Convert.ToDecimal(amountAry[i].Text));
+                        amountAry[i].Text = $"${amountAry[i].Text}";
                     }
                     else
                     {
                         taxAmtAry[i].Visible = false;
                         percentAry[i].Visible = false;
                         salesTaxAry[i].Visible = false;
+                        amountAry[i].Text = $"${amountAry[i].Text}";
                     }
                 } 
                 else
@@ -185,7 +187,7 @@ namespace ProjectNeon
         private string GetTaxAmount(decimal total)
         {
             decimal tax = total * taxRate;
-            return (total + tax).ToString("F2");
+            return (tax).ToString("C2");
         }
 
         private void chBxPaid_CheckedChanged(object sender, EventArgs e)
@@ -203,11 +205,6 @@ namespace ProjectNeon
                 lblPaid.Visible = true;
             else
                 lblPaid.Visible = false;
-        }
-
-        private void lblPaid_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

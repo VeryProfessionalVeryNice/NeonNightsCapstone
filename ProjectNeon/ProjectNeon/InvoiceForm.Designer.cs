@@ -186,9 +186,9 @@
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.btnPrint = new System.Windows.Forms.Button();
             this.InvoicePanel = new System.Windows.Forms.Panel();
+            this.lblPaid = new System.Windows.Forms.Label();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.chBxPaid = new System.Windows.Forms.CheckBox();
-            this.lblPaid = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1381,273 +1381,273 @@
             // 
             // lblTaxAmt15
             // 
-            this.lblTaxAmt15.AutoSize = true;
-            this.lblTaxAmt15.Location = new System.Drawing.Point(71, 582);
+            this.lblTaxAmt15.Location = new System.Drawing.Point(20, 582);
             this.lblTaxAmt15.Name = "lblTaxAmt15";
-            this.lblTaxAmt15.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt15.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt15.TabIndex = 75;
             this.lblTaxAmt15.Text = "label11";
+            this.lblTaxAmt15.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt15
             // 
-            this.lblAmt15.AutoSize = true;
-            this.lblAmt15.Location = new System.Drawing.Point(71, 569);
+            this.lblAmt15.Location = new System.Drawing.Point(20, 569);
             this.lblAmt15.Name = "lblAmt15";
-            this.lblAmt15.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt15.Size = new System.Drawing.Size(92, 13);
             this.lblAmt15.TabIndex = 30;
             this.lblAmt15.Text = "label11";
+            this.lblAmt15.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt14
             // 
-            this.lblTaxAmt14.AutoSize = true;
-            this.lblTaxAmt14.Location = new System.Drawing.Point(71, 542);
+            this.lblTaxAmt14.Location = new System.Drawing.Point(20, 542);
             this.lblTaxAmt14.Name = "lblTaxAmt14";
-            this.lblTaxAmt14.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt14.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt14.TabIndex = 74;
             this.lblTaxAmt14.Text = "label11";
+            this.lblTaxAmt14.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt14
             // 
-            this.lblAmt14.AutoSize = true;
-            this.lblAmt14.Location = new System.Drawing.Point(71, 529);
+            this.lblAmt14.Location = new System.Drawing.Point(20, 529);
             this.lblAmt14.Name = "lblAmt14";
-            this.lblAmt14.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt14.Size = new System.Drawing.Size(92, 13);
             this.lblAmt14.TabIndex = 29;
             this.lblAmt14.Text = "label11";
+            this.lblAmt14.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt2
             // 
-            this.lblTaxAmt2.AutoSize = true;
-            this.lblTaxAmt2.Location = new System.Drawing.Point(71, 62);
+            this.lblTaxAmt2.Location = new System.Drawing.Point(20, 62);
             this.lblTaxAmt2.Name = "lblTaxAmt2";
-            this.lblTaxAmt2.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt2.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt2.TabIndex = 73;
             this.lblTaxAmt2.Text = "label11";
+            this.lblTaxAmt2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt2
             // 
-            this.lblAmt2.AutoSize = true;
-            this.lblAmt2.Location = new System.Drawing.Point(71, 49);
+            this.lblAmt2.Location = new System.Drawing.Point(20, 49);
             this.lblAmt2.Name = "lblAmt2";
-            this.lblAmt2.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt2.Size = new System.Drawing.Size(92, 13);
             this.lblAmt2.TabIndex = 28;
             this.lblAmt2.Text = "label11";
+            this.lblAmt2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt4
             // 
-            this.lblTaxAmt4.AutoSize = true;
-            this.lblTaxAmt4.Location = new System.Drawing.Point(71, 142);
+            this.lblTaxAmt4.Location = new System.Drawing.Point(20, 142);
             this.lblTaxAmt4.Name = "lblTaxAmt4";
-            this.lblTaxAmt4.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt4.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt4.TabIndex = 72;
             this.lblTaxAmt4.Text = "label11";
+            this.lblTaxAmt4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt4
             // 
-            this.lblAmt4.AutoSize = true;
-            this.lblAmt4.Location = new System.Drawing.Point(71, 129);
+            this.lblAmt4.Location = new System.Drawing.Point(20, 129);
             this.lblAmt4.Name = "lblAmt4";
-            this.lblAmt4.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt4.Size = new System.Drawing.Size(92, 13);
             this.lblAmt4.TabIndex = 27;
             this.lblAmt4.Text = "label11";
+            this.lblAmt4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt13
             // 
-            this.lblTaxAmt13.AutoSize = true;
-            this.lblTaxAmt13.Location = new System.Drawing.Point(71, 502);
+            this.lblTaxAmt13.Location = new System.Drawing.Point(20, 502);
             this.lblTaxAmt13.Name = "lblTaxAmt13";
-            this.lblTaxAmt13.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt13.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt13.TabIndex = 71;
             this.lblTaxAmt13.Text = "label11";
+            this.lblTaxAmt13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt13
             // 
-            this.lblAmt13.AutoSize = true;
-            this.lblAmt13.Location = new System.Drawing.Point(71, 489);
+            this.lblAmt13.Location = new System.Drawing.Point(20, 489);
             this.lblAmt13.Name = "lblAmt13";
-            this.lblAmt13.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt13.Size = new System.Drawing.Size(92, 13);
             this.lblAmt13.TabIndex = 26;
             this.lblAmt13.Text = "label11";
+            this.lblAmt13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt12
             // 
-            this.lblTaxAmt12.AutoSize = true;
-            this.lblTaxAmt12.Location = new System.Drawing.Point(71, 462);
+            this.lblTaxAmt12.Location = new System.Drawing.Point(20, 462);
             this.lblTaxAmt12.Name = "lblTaxAmt12";
-            this.lblTaxAmt12.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt12.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt12.TabIndex = 70;
             this.lblTaxAmt12.Text = "label11";
+            this.lblTaxAmt12.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt12
             // 
-            this.lblAmt12.AutoSize = true;
-            this.lblAmt12.Location = new System.Drawing.Point(71, 449);
+            this.lblAmt12.Location = new System.Drawing.Point(20, 449);
             this.lblAmt12.Name = "lblAmt12";
-            this.lblAmt12.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt12.Size = new System.Drawing.Size(92, 13);
             this.lblAmt12.TabIndex = 25;
             this.lblAmt12.Text = "label11";
+            this.lblAmt12.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt11
             // 
-            this.lblTaxAmt11.AutoSize = true;
-            this.lblTaxAmt11.Location = new System.Drawing.Point(71, 422);
+            this.lblTaxAmt11.Location = new System.Drawing.Point(20, 422);
             this.lblTaxAmt11.Name = "lblTaxAmt11";
-            this.lblTaxAmt11.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt11.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt11.TabIndex = 69;
             this.lblTaxAmt11.Text = "label11";
+            this.lblTaxAmt11.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt11
             // 
-            this.lblAmt11.AutoSize = true;
-            this.lblAmt11.Location = new System.Drawing.Point(71, 409);
+            this.lblAmt11.Location = new System.Drawing.Point(20, 409);
             this.lblAmt11.Name = "lblAmt11";
-            this.lblAmt11.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt11.Size = new System.Drawing.Size(92, 13);
             this.lblAmt11.TabIndex = 24;
             this.lblAmt11.Text = "label11";
+            this.lblAmt11.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt10
             // 
-            this.lblTaxAmt10.AutoSize = true;
-            this.lblTaxAmt10.Location = new System.Drawing.Point(71, 382);
+            this.lblTaxAmt10.Location = new System.Drawing.Point(20, 382);
             this.lblTaxAmt10.Name = "lblTaxAmt10";
-            this.lblTaxAmt10.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt10.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt10.TabIndex = 68;
             this.lblTaxAmt10.Text = "label11";
+            this.lblTaxAmt10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt10
             // 
-            this.lblAmt10.AutoSize = true;
-            this.lblAmt10.Location = new System.Drawing.Point(71, 369);
+            this.lblAmt10.Location = new System.Drawing.Point(20, 369);
             this.lblAmt10.Name = "lblAmt10";
-            this.lblAmt10.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt10.Size = new System.Drawing.Size(92, 13);
             this.lblAmt10.TabIndex = 23;
             this.lblAmt10.Text = "label11";
+            this.lblAmt10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt9
             // 
-            this.lblTaxAmt9.AutoSize = true;
-            this.lblTaxAmt9.Location = new System.Drawing.Point(71, 342);
+            this.lblTaxAmt9.Location = new System.Drawing.Point(20, 342);
             this.lblTaxAmt9.Name = "lblTaxAmt9";
-            this.lblTaxAmt9.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt9.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt9.TabIndex = 67;
             this.lblTaxAmt9.Text = "label11";
+            this.lblTaxAmt9.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt9
             // 
-            this.lblAmt9.AutoSize = true;
-            this.lblAmt9.Location = new System.Drawing.Point(71, 329);
+            this.lblAmt9.Location = new System.Drawing.Point(20, 329);
             this.lblAmt9.Name = "lblAmt9";
-            this.lblAmt9.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt9.Size = new System.Drawing.Size(92, 13);
             this.lblAmt9.TabIndex = 22;
             this.lblAmt9.Text = "label11";
+            this.lblAmt9.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt8
             // 
-            this.lblTaxAmt8.AutoSize = true;
-            this.lblTaxAmt8.Location = new System.Drawing.Point(71, 302);
+            this.lblTaxAmt8.Location = new System.Drawing.Point(20, 302);
             this.lblTaxAmt8.Name = "lblTaxAmt8";
-            this.lblTaxAmt8.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt8.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt8.TabIndex = 66;
             this.lblTaxAmt8.Text = "label11";
+            this.lblTaxAmt8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt8
             // 
-            this.lblAmt8.AutoSize = true;
-            this.lblAmt8.Location = new System.Drawing.Point(71, 289);
+            this.lblAmt8.Location = new System.Drawing.Point(20, 289);
             this.lblAmt8.Name = "lblAmt8";
-            this.lblAmt8.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt8.Size = new System.Drawing.Size(92, 13);
             this.lblAmt8.TabIndex = 21;
             this.lblAmt8.Text = "label11";
+            this.lblAmt8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt7
             // 
-            this.lblTaxAmt7.AutoSize = true;
-            this.lblTaxAmt7.Location = new System.Drawing.Point(71, 262);
+            this.lblTaxAmt7.Location = new System.Drawing.Point(20, 262);
             this.lblTaxAmt7.Name = "lblTaxAmt7";
-            this.lblTaxAmt7.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt7.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt7.TabIndex = 65;
             this.lblTaxAmt7.Text = "label11";
+            this.lblTaxAmt7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt7
             // 
-            this.lblAmt7.AutoSize = true;
-            this.lblAmt7.Location = new System.Drawing.Point(71, 249);
+            this.lblAmt7.Location = new System.Drawing.Point(20, 249);
             this.lblAmt7.Name = "lblAmt7";
-            this.lblAmt7.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt7.Size = new System.Drawing.Size(92, 13);
             this.lblAmt7.TabIndex = 20;
             this.lblAmt7.Text = "label11";
+            this.lblAmt7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt6
             // 
-            this.lblTaxAmt6.AutoSize = true;
-            this.lblTaxAmt6.Location = new System.Drawing.Point(71, 222);
+            this.lblTaxAmt6.Location = new System.Drawing.Point(20, 222);
             this.lblTaxAmt6.Name = "lblTaxAmt6";
-            this.lblTaxAmt6.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt6.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt6.TabIndex = 64;
             this.lblTaxAmt6.Text = "label11";
+            this.lblTaxAmt6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt6
             // 
-            this.lblAmt6.AutoSize = true;
-            this.lblAmt6.Location = new System.Drawing.Point(71, 209);
+            this.lblAmt6.Location = new System.Drawing.Point(20, 209);
             this.lblAmt6.Name = "lblAmt6";
-            this.lblAmt6.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt6.Size = new System.Drawing.Size(92, 13);
             this.lblAmt6.TabIndex = 19;
             this.lblAmt6.Text = "label11";
+            this.lblAmt6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt5
             // 
-            this.lblTaxAmt5.AutoSize = true;
-            this.lblTaxAmt5.Location = new System.Drawing.Point(71, 182);
+            this.lblTaxAmt5.Location = new System.Drawing.Point(20, 182);
             this.lblTaxAmt5.Name = "lblTaxAmt5";
-            this.lblTaxAmt5.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt5.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt5.TabIndex = 63;
             this.lblTaxAmt5.Text = "label11";
+            this.lblTaxAmt5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt5
             // 
-            this.lblAmt5.AutoSize = true;
-            this.lblAmt5.Location = new System.Drawing.Point(71, 169);
+            this.lblAmt5.Location = new System.Drawing.Point(20, 169);
             this.lblAmt5.Name = "lblAmt5";
-            this.lblAmt5.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt5.Size = new System.Drawing.Size(92, 13);
             this.lblAmt5.TabIndex = 18;
             this.lblAmt5.Text = "label11";
+            this.lblAmt5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt3
             // 
-            this.lblTaxAmt3.AutoSize = true;
-            this.lblTaxAmt3.Location = new System.Drawing.Point(71, 102);
+            this.lblTaxAmt3.Location = new System.Drawing.Point(20, 102);
             this.lblTaxAmt3.Name = "lblTaxAmt3";
-            this.lblTaxAmt3.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt3.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt3.TabIndex = 62;
             this.lblTaxAmt3.Text = "label37";
+            this.lblTaxAmt3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt3
             // 
-            this.lblAmt3.AutoSize = true;
-            this.lblAmt3.Location = new System.Drawing.Point(71, 89);
+            this.lblAmt3.Location = new System.Drawing.Point(20, 89);
             this.lblAmt3.Name = "lblAmt3";
-            this.lblAmt3.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt3.Size = new System.Drawing.Size(92, 13);
             this.lblAmt3.TabIndex = 17;
             this.lblAmt3.Text = "label82";
+            this.lblAmt3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblTaxAmt1
             // 
-            this.lblTaxAmt1.AutoSize = true;
-            this.lblTaxAmt1.Location = new System.Drawing.Point(71, 22);
+            this.lblTaxAmt1.Location = new System.Drawing.Point(20, 22);
             this.lblTaxAmt1.Name = "lblTaxAmt1";
-            this.lblTaxAmt1.Size = new System.Drawing.Size(41, 13);
+            this.lblTaxAmt1.Size = new System.Drawing.Size(92, 13);
             this.lblTaxAmt1.TabIndex = 61;
             this.lblTaxAmt1.Text = "label11";
+            this.lblTaxAmt1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAmt1
             // 
-            this.lblAmt1.AutoSize = true;
-            this.lblAmt1.Location = new System.Drawing.Point(71, 9);
+            this.lblAmt1.Location = new System.Drawing.Point(20, 9);
             this.lblAmt1.Name = "lblAmt1";
-            this.lblAmt1.Size = new System.Drawing.Size(41, 13);
+            this.lblAmt1.Size = new System.Drawing.Size(92, 13);
             this.lblAmt1.TabIndex = 16;
             this.lblAmt1.Text = "label11";
+            this.lblAmt1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel17
             // 
@@ -1729,6 +1729,16 @@
             this.InvoicePanel.Size = new System.Drawing.Size(845, 958);
             this.InvoicePanel.TabIndex = 21;
             // 
+            // lblPaid
+            // 
+            this.lblPaid.AutoSize = true;
+            this.lblPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaid.Location = new System.Drawing.Point(564, 131);
+            this.lblPaid.Name = "lblPaid";
+            this.lblPaid.Size = new System.Drawing.Size(182, 73);
+            this.lblPaid.TabIndex = 20;
+            this.lblPaid.Text = "PAID";
+            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -1750,17 +1760,6 @@
             this.chBxPaid.Text = "Save as paid";
             this.chBxPaid.UseVisualStyleBackColor = true;
             this.chBxPaid.CheckedChanged += new System.EventHandler(this.chBxPaid_CheckedChanged);
-            // 
-            // lblPaid
-            // 
-            this.lblPaid.AutoSize = true;
-            this.lblPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaid.Location = new System.Drawing.Point(564, 131);
-            this.lblPaid.Name = "lblPaid";
-            this.lblPaid.Size = new System.Drawing.Size(182, 73);
-            this.lblPaid.TabIndex = 20;
-            this.lblPaid.Text = "PAID";
-            this.lblPaid.Click += new System.EventHandler(this.lblPaid_Click);
             // 
             // InvoiceForm
             // 
@@ -1811,7 +1810,6 @@
             this.panel14.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.panel18.ResumeLayout(false);

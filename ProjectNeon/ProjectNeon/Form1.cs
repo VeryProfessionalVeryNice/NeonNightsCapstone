@@ -171,6 +171,7 @@ namespace ProjectNeon
             //Validate all fields then add to database if everything is valid
             if (ValidateFields())
             {
+                string invId = txtBxInvoiceId.Text;
                 int custId = AddCustomer();
                 AddInvoice(custId);
                 AddItems();
@@ -178,6 +179,10 @@ namespace ProjectNeon
                 ResetAllFields();
                 FillCustomersTab();
                 FillTransactionsTab(query);
+                if (chBxPrint.Checked)
+                {
+                    PrintInvoicePdf(invId);
+                }
             }
             else
             {
@@ -654,11 +659,18 @@ namespace ProjectNeon
         {
             //on clicking detect the row the user has selected and open new customer payment with remaining balance information
             int rowIndex;
-            rowIndex = dataGridViewCustomer.CurrentCell.RowIndex;
-            selectedCustomerName = dataGridViewCustomer.CurrentRow.Cells[1].Value.ToString();
-            outstandingBalance = dataGridViewCustomer.CurrentRow.Cells[7].Value.ToString();
-            CustomerPayment paymentForm = new CustomerPayment();
-            paymentForm.Show();
+            try
+            {
+                rowIndex = dataGridViewCustomer.CurrentCell.RowIndex;
+                selectedCustomerName = dataGridViewCustomer.CurrentRow.Cells[1].Value.ToString();
+                outstandingBalance = dataGridViewCustomer.CurrentRow.Cells[7].Value.ToString();
+                CustomerPayment paymentForm = new CustomerPayment();
+                paymentForm.Show();
+            } catch
+            {
+                lblStatus.Text = "No Customer Selected";
+            }
+            
         }
 
         private void dataGridViewCustomer_SelectionChanged(object sender, EventArgs e)
@@ -786,6 +798,11 @@ namespace ProjectNeon
         {
             int index = dataGridViewTransactions.CurrentCell.RowIndex;
             selectedInvoiceId = dataGridViewTransactions.CurrentRow.Cells[1].Value.ToString();
+            PrintInvoicePdf(selectedInvoiceId);
+        }
+
+        private void PrintInvoicePdf(string selectedInvoiceId)
+        {
             string qry1 = $"SELECT * FROM Invoice WHERE InvoiceID = {selectedInvoiceId}";
             string qry2 = $"SELECT * FROM Item WHERE InvoiceID = {selectedInvoiceId}";
             Customer newCust = new Customer();
