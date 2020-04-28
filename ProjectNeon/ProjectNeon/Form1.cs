@@ -23,6 +23,8 @@ namespace ProjectNeon
         public static string selectedInvoiceId;
         //used for displaying error in messagebox
         public string error;
+        //SQLConnection
+        SqlConnection conn = new SqlConnection(cntStrng);
 
         public Form1()
         {
@@ -31,7 +33,7 @@ namespace ProjectNeon
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //Fill customer and transaction tabs
             FillCustomersTab();
             FillTransactionsTab(query);
             //LoadTestData(); //autoloading test data for now
@@ -54,6 +56,7 @@ namespace ProjectNeon
         #region Database Connections
         private void Connect(SqlConnection conn)
         {
+            //Open database connection
             try
             {
                 conn.Open();
@@ -68,6 +71,7 @@ namespace ProjectNeon
 
         private void Disconnect(SqlConnection conn)
         {
+            //close database connection
             try
             {
 
@@ -84,13 +88,15 @@ namespace ProjectNeon
         {
             //Closes database connection when the form is closed
             // Disconnect();
+            //We dont need this anymore
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            //Adds item to listbox of items
+            //Adds item to listbox of items if it validates
             if (ValidateItem())
             {
+                //Create item object if good
                 Item newItem = new Item
                 {
                     ItemCode = txtBxItemCode.Text,
@@ -98,7 +104,7 @@ namespace ProjectNeon
                     Description = txtBxDesc.Text,
                     PriceEach = Convert.ToDecimal(txtBxPriceEach.Text)
                 };
-
+                //Adds item object to listbox
                 lstBxItems.Items.Add(newItem);
                 //Empties item input fields
                 ResetItemFields();
@@ -112,6 +118,7 @@ namespace ProjectNeon
             {
                 try
                 {
+                    //if the price doesn't convert it will throw an exception
                     decimal priceEach = Convert.ToDecimal(txtBxPriceEach.Text);
                     return true;
                 }
@@ -171,14 +178,19 @@ namespace ProjectNeon
             //Validate all fields then add to database if everything is valid
             if (ValidateFields())
             {
+                //Gets invoice id for printing invoice at invoice creation
                 string invId = txtBxInvoiceId.Text;
+                //Adds customer and gets the customerID
                 int custId = AddCustomer();
+                //Adds invoice
                 AddInvoice(custId);
+                //Adds items
                 AddItems();
                 lblStatus.Text = "Added Invoice";
                 ResetAllFields();
                 FillCustomersTab();
                 FillTransactionsTab(query);
+                //Prints to pdf if checkbox is checked
                 if (chBxPrint.Checked)
                 {
                     PrintInvoicePdf(invId);
@@ -205,7 +217,7 @@ namespace ProjectNeon
             //Int to hold customer Id to tie invoice to customer
             int id = 0;
 
-            SqlConnection conn = new SqlConnection(cntStrng);
+            
             string query = $"INSERT INTO Customer(CompanyName, JobType, AddressLine1, AddressLine2, City, State, Zip)" +
                 $"VALUES ('{txtBxName.Text}', '{cmbBxJobType.Text}', '{txtBxAddress1.Text}', '{txtBxAddress2.Text}', '{txtBxCity.Text}', '{txtBxState.Text}', '{txtBxZip.Text}');";
             string idQ = "SELECT @@IDENTITY";
@@ -276,7 +288,7 @@ namespace ProjectNeon
 
         private void AddItems()
         {
-            SqlConnection conn = new SqlConnection(cntStrng);
+            //SqlConnection conn = new SqlConnection(cntStrng);
             Connect(conn);
 
             foreach (Item item in lstBxItems.Items)
@@ -310,7 +322,7 @@ namespace ProjectNeon
             bool exempt = GetTaxStatus();
             decimal total = GetTotal();
 
-            SqlConnection conn = new SqlConnection(cntStrng);
+            //SqlConnection conn = new SqlConnection(cntStrng);
             string query = $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
                 $"VALUES ('{txtBxInvoiceId.Text}', '{custId}', '{exempt}', '{total}', '{dateIssued.Value.ToShortDateString()}', '{cmbBxPayment.Text}', '{txtBxCheckNum.Text}');";
             try
@@ -323,7 +335,10 @@ namespace ProjectNeon
                     command.ExecuteNonQuery();
                     Disconnect(conn);
                 }
-                UpdateBalance(custId);
+                if (!chBxCustPaid.Checked)
+                    UpdateBalance(custId);
+                else
+                    SetBalanceToZero(custId);
             }
             catch (Exception ex)
             {
@@ -397,7 +412,7 @@ namespace ProjectNeon
         private void UpdateBalance(int id)
         {
             decimal total = 0m;
-            SqlConnection conn = new SqlConnection(cntStrng);
+            //SqlConnection conn = new SqlConnection(cntStrng);
             string sumQuery = $"SELECT SUM(Total) FROM Invoice WHERE CustomerID = '{id}'";
             string oldQuery = $"SELECT SUM(Balance) FROM Customer WHERE CustomerID = '{id}'";
 
@@ -440,6 +455,24 @@ namespace ProjectNeon
             }
         }
 
+        private void SetBalanceToZero(int id)
+        {
+            try
+            {
+                string updateQuery = $"UPDATE Customer SET Balance = '0' WHERE CustomerID = '{id}'";
+                using (SqlCommand command = new SqlCommand(updateQuery, conn))
+                {
+                    command.CommandType = CommandType.Text;
+                    Connect(conn);
+                    command.ExecuteNonQuery();
+                    Disconnect(conn);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text = ex.Message;
+            }
+        }
         #endregion
         #region TestData
         private void LoadTestData()
@@ -609,7 +642,7 @@ namespace ProjectNeon
         private void FillTransactionsTab(string qry)
         {
             //Query to fill transactions tab
-            SqlConnection conn = new SqlConnection(cntStrng);
+            //SqlConnection conn = new SqlConnection(cntStrng);
             Connect(conn);
             try
             {
@@ -696,7 +729,7 @@ namespace ProjectNeon
                 string qry2 = $"SELECT * FROM Item WHERE InvoiceID = {selectedInvoiceId}";
                 Invoice newInvoice = new Invoice();
                 Item[] items = new Item[30];
-                SqlConnection conn = new SqlConnection(cntStrng);
+                //SqlConnection conn = new SqlConnection(cntStrng);
                 Connect(conn);
                 try
                 {
@@ -760,7 +793,7 @@ namespace ProjectNeon
             {
                 string qry = $"DELETE FROM Invoice WHERE InvoiceID = '{selectedInvoiceId}'";
                 string qry2 = $"DELETE FROM Item WHERE InvoiceID = '{selectedInvoiceId}'";
-                SqlConnection conn = new SqlConnection(cntStrng);
+                //SqlConnection conn = new SqlConnection(cntStrng);
                 Connect(conn);
                 try
                 {
@@ -808,7 +841,7 @@ namespace ProjectNeon
             Customer newCust = new Customer();
             Invoice newInvoice = new Invoice();
             Item[] items = new Item[30];
-            SqlConnection conn = new SqlConnection(cntStrng);
+            //SqlConnection conn = new SqlConnection(cntStrng);
             Connect(conn);
             try
             {
@@ -819,6 +852,7 @@ namespace ProjectNeon
                 //Fill dataset with data from query
                 adpt1.Fill(data1);
                 DataTable invoiceTable = data1.Tables[0];
+                //Create invoice object with information
                 newInvoice.Id = invoiceTable.Rows[0]["InvoiceID"].ToString();
                 newInvoice.CustomerId = Convert.ToInt32(invoiceTable.Rows[0]["CustomerID"]);
                 newInvoice.TaxExempt = Convert.ToBoolean(invoiceTable.Rows[0]["TaxExempt"]);
@@ -833,6 +867,7 @@ namespace ProjectNeon
                 DataSet data = new DataSet();
                 adpt.Fill(data);
                 DataTable customerTable = data.Tables[0];
+                //Create customer object with information
                 newCust.Id = Convert.ToInt32(customerTable.Rows[0]["CustomerID"]);
                 newCust.CompanyName = customerTable.Rows[0]["CompanyName"].ToString();
                 newCust.JobType = customerTable.Rows[0]["JobType"].ToString();
@@ -847,6 +882,7 @@ namespace ProjectNeon
                 DataSet data2 = new DataSet();
                 adpt2.Fill(data2);
                 DataTable itemTable = data2.Tables[0];
+                //Fill an item array with items from invoice
                 for (int i = 0; i < itemTable.Rows.Count; i++)
                 {
                     items[i] = new Item();
@@ -857,7 +893,7 @@ namespace ProjectNeon
                     items[i].Description = itemTable.Rows[i]["Description"].ToString();
                     items[i].PriceEach = Convert.ToDecimal(itemTable.Rows[i]["PriceEach"]);
                 }
-
+                //Send objects to be printed
                 PrintInvoice(newCust, newInvoice, items);
             }
             catch (Exception ex)
@@ -869,5 +905,6 @@ namespace ProjectNeon
                 Disconnect(conn);
             }
         }
+
     }
 }

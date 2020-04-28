@@ -35,6 +35,8 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
+            this.chBxCustPaid = new System.Windows.Forms.CheckBox();
+            this.chBxPrint = new System.Windows.Forms.CheckBox();
             this.btnSaveToDatabase = new System.Windows.Forms.Button();
             this.btnDeleteItem = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
@@ -113,7 +115,6 @@
             this.customerTableAdapter = new ProjectNeon.Database1DataSet1TableAdapters.CustomerTableAdapter();
             this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
-            this.chBxPrint = new System.Windows.Forms.CheckBox();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
@@ -143,6 +144,7 @@
             // panelAddInvoice
             // 
             this.panelAddInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(209)))));
+            this.panelAddInvoice.Controls.Add(this.chBxCustPaid);
             this.panelAddInvoice.Controls.Add(this.chBxPrint);
             this.panelAddInvoice.Controls.Add(this.btnSaveToDatabase);
             this.panelAddInvoice.Controls.Add(this.btnDeleteItem);
@@ -155,6 +157,26 @@
             this.panelAddInvoice.Name = "panelAddInvoice";
             this.panelAddInvoice.Size = new System.Drawing.Size(849, 519);
             this.panelAddInvoice.TabIndex = 2;
+            // 
+            // chBxCustPaid
+            // 
+            this.chBxCustPaid.AutoSize = true;
+            this.chBxCustPaid.Location = new System.Drawing.Point(430, 333);
+            this.chBxCustPaid.Name = "chBxCustPaid";
+            this.chBxCustPaid.Size = new System.Drawing.Size(113, 17);
+            this.chBxCustPaid.TabIndex = 27;
+            this.chBxCustPaid.Text = "Customer has paid";
+            this.chBxCustPaid.UseVisualStyleBackColor = true;
+            // 
+            // chBxPrint
+            // 
+            this.chBxPrint.AutoSize = true;
+            this.chBxPrint.Location = new System.Drawing.Point(315, 333);
+            this.chBxPrint.Name = "chBxPrint";
+            this.chBxPrint.Size = new System.Drawing.Size(89, 17);
+            this.chBxPrint.TabIndex = 26;
+            this.chBxPrint.Text = "Save as PDF";
+            this.chBxPrint.UseVisualStyleBackColor = true;
             // 
             // btnSaveToDatabase
             // 
@@ -235,11 +257,12 @@
             // 
             this.txtBxDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxDesc.Location = new System.Drawing.Point(15, 189);
+            this.txtBxDesc.MaxLength = 50;
             this.txtBxDesc.Multiline = true;
             this.txtBxDesc.Name = "txtBxDesc";
             this.txtBxDesc.Size = new System.Drawing.Size(173, 46);
             this.txtBxDesc.TabIndex = 17;
-            // 
+            //
             // label14
             // 
             this.label14.AutoSize = true;
@@ -985,16 +1008,6 @@
             // 
             this.invoiceTableAdapter.ClearBeforeFill = true;
             // 
-            // chBxPrint
-            // 
-            this.chBxPrint.AutoSize = true;
-            this.chBxPrint.Location = new System.Drawing.Point(315, 333);
-            this.chBxPrint.Name = "chBxPrint";
-            this.chBxPrint.Size = new System.Drawing.Size(89, 17);
-            this.chBxPrint.TabIndex = 26;
-            this.chBxPrint.Text = "Save as PDF";
-            this.chBxPrint.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1122,6 +1135,7 @@
         private System.Windows.Forms.Button btnOpenInvoice;
         private System.Windows.Forms.Button btnPrintInvoice;
         private System.Windows.Forms.CheckBox chBxPrint;
+        private System.Windows.Forms.CheckBox chBxCustPaid;
     }
 }
 
