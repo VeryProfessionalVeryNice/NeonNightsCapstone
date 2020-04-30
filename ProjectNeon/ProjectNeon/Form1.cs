@@ -18,9 +18,8 @@ namespace ProjectNeon
         string query = "SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE(YEAR(Invoice.DateIssued) = YEAR(GETDATE())) OR (Customer.Balance > 0)";
 
         //global variables for passing information between multiple forms
-        public static string selectedCustomerName;
-        public static string outstandingBalance;
         public static string selectedInvoiceId;
+
         //used for displaying error in messagebox
         public string error;
         //SQLConnection
@@ -692,12 +691,16 @@ namespace ProjectNeon
         {
             //on clicking detect the row the user has selected and open new customer payment with remaining balance information
             int rowIndex;
+            string selectedCustomerName;
+            string outstandingBalance;
+
             try
             {
+
                 rowIndex = dataGridViewCustomer.CurrentCell.RowIndex;
                 selectedCustomerName = dataGridViewCustomer.CurrentRow.Cells[1].Value.ToString();
                 outstandingBalance = dataGridViewCustomer.CurrentRow.Cells[7].Value.ToString();
-                CustomerPayment paymentForm = new CustomerPayment();
+                CustomerPayment paymentForm = new CustomerPayment(selectedCustomerName, outstandingBalance, selectedInvoiceId);
                 paymentForm.Show();
             } catch
             {
