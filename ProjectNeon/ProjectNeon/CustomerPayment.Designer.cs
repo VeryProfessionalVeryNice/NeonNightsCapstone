@@ -61,6 +61,7 @@
             this.btnRecordPayment.TabIndex = 28;
             this.btnRecordPayment.Text = "Record Payment";
             this.btnRecordPayment.UseVisualStyleBackColor = false;
+            this.btnRecordPayment.Click += new System.EventHandler(this.btnRecordPayment_Click);
             // 
             // groupBox2
             // 

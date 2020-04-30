@@ -66,5 +66,11 @@ namespace ProjectNeon
                 txtBxCheckNum.Visible = false;
             }
         }
+
+        private void btnRecordPayment_Click(object sender, EventArgs e)
+        {
+            //Apply payment to database and create messagebox telling user payment has been applied
+            //MessageBox.Show()
+        }
     }
 }
