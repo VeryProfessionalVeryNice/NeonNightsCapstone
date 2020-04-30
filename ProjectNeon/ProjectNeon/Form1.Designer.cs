@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
@@ -262,7 +263,7 @@
             this.txtBxDesc.Name = "txtBxDesc";
             this.txtBxDesc.Size = new System.Drawing.Size(173, 46);
             this.txtBxDesc.TabIndex = 17;
-            //
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1022,6 +1023,7 @@
             this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelTransactions);
             this.Controls.Add(this.panelCustomers);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Neon Nights";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
