@@ -216,6 +216,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Content Include="Resources\logo.png" />
     <Content Include="Resources\neon.ico" />
     <None Include="Resources\SplashLogo.png" />
   </ItemGroup>

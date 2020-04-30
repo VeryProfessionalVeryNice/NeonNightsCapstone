@@ -189,6 +189,7 @@
             this.lblPaid = new System.Windows.Forms.Label();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.chBxPaid = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -208,6 +209,7 @@
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
             this.InvoicePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDate
@@ -1715,6 +1717,7 @@
             // InvoicePanel
             // 
             this.InvoicePanel.BackColor = System.Drawing.Color.White;
+            this.InvoicePanel.Controls.Add(this.pictureBox1);
             this.InvoicePanel.Controls.Add(this.lblPaid);
             this.InvoicePanel.Controls.Add(this.panel18);
             this.InvoicePanel.Controls.Add(this.panel17);
@@ -1760,6 +1763,16 @@
             this.chBxPaid.Text = "Save as paid";
             this.chBxPaid.UseVisualStyleBackColor = true;
             this.chBxPaid.CheckedChanged += new System.EventHandler(this.chBxPaid_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProjectNeon.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(344, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
             // 
             // InvoiceForm
             // 
@@ -1817,6 +1830,7 @@
             this.panel18.PerformLayout();
             this.InvoicePanel.ResumeLayout(false);
             this.InvoicePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1984,5 +1998,6 @@
         private System.Windows.Forms.Label lblTaxAmt1;
         private System.Windows.Forms.CheckBox chBxPaid;
         private System.Windows.Forms.Label lblPaid;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
