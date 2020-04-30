@@ -13,18 +13,28 @@ namespace ProjectNeon
 {
     public partial class CustomerPayment : Form
     {
+        
+
+        public CustomerPayment(string selectedCustomerName, string outstandingBalance, string selectedInvoiceId)
+        {
+            InitializeComponent();
+            txtBxName.Text = selectedCustomerName;
+            decimal decOutstandingBalance = Convert.ToDecimal(outstandingBalance);
+            txtBxBalance.Text = decOutstandingBalance.ToString("C", CultureInfo.CurrentCulture);
+        }
         public CustomerPayment()
         {
             InitializeComponent();
+
         }
 
         private void CustomerPayment_Load(object sender, EventArgs e)
         {
-            txtBxName.Text = Form1.selectedCustomerName;
+            //txtBxName.Text = selectedCustomerName;
             //txtBxBalance.Text = string.Format("{0:C}", Form1.outstandingBalance);
             //Convert balance from string to decimal for display and calculation pruposes
-            decimal decOutstandingBalance = Convert.ToDecimal(Form1.outstandingBalance);
-            txtBxBalance.Text = decOutstandingBalance.ToString("C", CultureInfo.CurrentCulture);
+            //decimal decOutstandingBalance = Convert.ToDecimal(Form1.outstandingBalance);
+            //txtBxBalance.Text = decOutstandingBalance.ToString("C", CultureInfo.CurrentCulture);
 
         }
         
