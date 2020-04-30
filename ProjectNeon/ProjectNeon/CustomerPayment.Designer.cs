@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerPayment));
             this.btnRecordPayment = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtBxPaymentAmount = new System.Windows.Forms.TextBox();
@@ -220,6 +221,7 @@
             this.Controls.Add(this.btnRecordPayment);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustomerPayment";
             this.Text = "Customer Payment";
             this.Load += new System.EventHandler(this.CustomerPayment_Load);

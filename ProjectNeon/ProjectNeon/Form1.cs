@@ -717,8 +717,12 @@ namespace ProjectNeon
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //Makes query string to search for typed field in selected column
-            string qry = $"SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE {cmBxSearch.Text} LIKE '%{txtBxSearch.Text}%'";
-            FillTransactionsTab(qry);
+            if (cmBxSearch.Text != "")
+            {
+                string qry = $"SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE {cmBxSearch.Text} LIKE '%{txtBxSearch.Text}%'";
+                FillTransactionsTab(qry);
+            }
+            
         }
 
         private void btnOpenInvoice_Click(object sender, EventArgs e)

@@ -1020,9 +1020,9 @@
             this.Controls.Add(this.btnTestCon);
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelTransactions);
             this.Controls.Add(this.panelCustomers);
+            this.Controls.Add(this.panelAddInvoice);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Neon Nights";

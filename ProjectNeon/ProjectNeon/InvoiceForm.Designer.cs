@@ -1780,6 +1780,7 @@
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.InvoicePanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InvoiceForm";
             this.Text = "InvoiceForm";
             this.panel2.ResumeLayout(false);

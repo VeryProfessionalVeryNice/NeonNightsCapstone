@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlterInvoice));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtBxId = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtBxCheckNum = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -38,6 +40,7 @@
             this.dateIssued = new System.Windows.Forms.DateTimePicker();
             this.ckBxTaxExempt = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAlterItem = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtBxDesc = new System.Windows.Forms.TextBox();
@@ -51,8 +54,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.lstBxItems = new System.Windows.Forms.ListBox();
             this.btnSaveChanges = new System.Windows.Forms.Button();
-            this.txtBxId = new System.Windows.Forms.TextBox();
-            this.btnAlterItem = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
@@ -75,6 +76,14 @@
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "‌Invoice Information";
+            // 
+            // txtBxId
+            // 
+            this.txtBxId.Location = new System.Drawing.Point(15, 44);
+            this.txtBxId.Name = "txtBxId";
+            this.txtBxId.ReadOnly = true;
+            this.txtBxId.Size = new System.Drawing.Size(173, 20);
+            this.txtBxId.TabIndex = 20;
             // 
             // label11
             // 
@@ -170,6 +179,16 @@
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Item Information";
+            // 
+            // btnAlterItem
+            // 
+            this.btnAlterItem.Location = new System.Drawing.Point(15, 257);
+            this.btnAlterItem.Name = "btnAlterItem";
+            this.btnAlterItem.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterItem.TabIndex = 20;
+            this.btnAlterItem.Text = "Alter Item";
+            this.btnAlterItem.UseVisualStyleBackColor = true;
+            this.btnAlterItem.Click += new System.EventHandler(this.btnAlterItem_Click);
             // 
             // btnAddItem
             // 
@@ -308,24 +327,6 @@
             this.btnSaveChanges.UseVisualStyleBackColor = true;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
-            // txtBxId
-            // 
-            this.txtBxId.Location = new System.Drawing.Point(15, 44);
-            this.txtBxId.Name = "txtBxId";
-            this.txtBxId.ReadOnly = true;
-            this.txtBxId.Size = new System.Drawing.Size(173, 20);
-            this.txtBxId.TabIndex = 20;
-            // 
-            // btnAlterItem
-            // 
-            this.btnAlterItem.Location = new System.Drawing.Point(15, 257);
-            this.btnAlterItem.Name = "btnAlterItem";
-            this.btnAlterItem.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterItem.TabIndex = 20;
-            this.btnAlterItem.Text = "Alter Item";
-            this.btnAlterItem.UseVisualStyleBackColor = true;
-            this.btnAlterItem.Click += new System.EventHandler(this.btnAlterItem_Click);
-            // 
             // AlterInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +338,7 @@
             this.Controls.Add(this.lstBxItems);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlterInvoice";
             this.Text = "AlterInvoice";
             this.groupBox2.ResumeLayout(false);
