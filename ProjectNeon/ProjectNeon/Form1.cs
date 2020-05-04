@@ -693,18 +693,25 @@ namespace ProjectNeon
             int rowIndex;
             string selectedCustomerName;
             string outstandingBalance;
+            int customerID;
 
             try
             {
-
                 rowIndex = dataGridViewCustomer.CurrentCell.RowIndex;
                 selectedCustomerName = dataGridViewCustomer.CurrentRow.Cells[1].Value.ToString();
                 outstandingBalance = dataGridViewCustomer.CurrentRow.Cells[7].Value.ToString();
-                CustomerPayment paymentForm = new CustomerPayment(selectedCustomerName, outstandingBalance, selectedInvoiceId);
-                paymentForm.Show();
-            } catch
+                customerID = (int)dataGridViewCustomer.CurrentRow.Cells[0].Value;
+                CustomerPayment paymentForm = new CustomerPayment(selectedCustomerName, outstandingBalance, selectedInvoiceId, cntStrng, customerID);
+                paymentForm.ShowDialog();
+            } 
+            catch
             {
                 lblStatus.Text = "No Customer Selected";
+            }
+            finally
+            {
+                FillCustomersTab();
+                FillTransactionsTab(query);
             }
             
         }

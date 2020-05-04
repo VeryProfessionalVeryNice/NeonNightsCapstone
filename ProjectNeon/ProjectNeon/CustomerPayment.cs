@@ -8,18 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ProjectNeon
 {
     public partial class CustomerPayment : Form
     {
-        
-
-        public CustomerPayment(string selectedCustomerName, string outstandingBalance, string selectedInvoiceId)
+        string cntString;
+        string id;
+        int custID;
+        decimal decOutstandingBalance;
+        public CustomerPayment(string selectedCustomerName, string outstandingBalance, string selectedInvoiceId, string conn1, int customerID)
         {
             InitializeComponent();
+            //Set connection string
+            cntString = conn1;
+            id = selectedInvoiceId;
+            custID = customerID;
             txtBxName.Text = selectedCustomerName;
-            decimal decOutstandingBalance = Convert.ToDecimal(outstandingBalance);
+            decOutstandingBalance = Convert.ToDecimal(outstandingBalance);
             txtBxBalance.Text = decOutstandingBalance.ToString("C", CultureInfo.CurrentCulture);
         }
         public CustomerPayment()
@@ -27,6 +34,34 @@ namespace ProjectNeon
             InitializeComponent();
 
         }
+
+        #region Database Connections
+        private void Connect(SqlConnection conn)
+        {
+            try
+            {
+                conn.Open();
+                //MessageBox.Show("Success");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Disconnect(SqlConnection conn)
+        {
+            try
+            {
+                conn.Close();//Close Connection
+                //MessageBox.Show("Closed");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        #endregion
 
         private void CustomerPayment_Load(object sender, EventArgs e)
         {
@@ -71,6 +106,35 @@ namespace ProjectNeon
         {
             //Apply payment to database and create messagebox telling user payment has been applied
             //MessageBox.Show()
+            decimal balance = decOutstandingBalance - Convert.ToDecimal(txtBxPaymentAmount.Text);
+            //MessageBox.Show(balance.ToString());
+            string invoiceSql = $"UPDATE Invoice SET DateIssued = '{paymentDate.Value.ToShortDateString()}', PaymentMethod = '{cmbBxPayment.Text}', CheckNum = '{txtBxCheckNum.Text}' WHERE InvoiceID = '{id}'";
+            string customerSql = $"UPDATE Customer SET Balance = '{balance}' WHERE CustomerID = '{custID}'";
+            SqlConnection conn = new SqlConnection(cntString);
+            Connect(conn);
+            try
+            {
+                using (SqlCommand command = new SqlCommand(invoiceSql, conn))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+                using (SqlCommand command = new SqlCommand(customerSql, conn))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+                MessageBox.Show("Payment successfully recorded", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Disconnect(conn);
+                this.Close();
+            }
         }
     }
 }
