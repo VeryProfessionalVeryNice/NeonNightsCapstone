@@ -105,7 +105,7 @@
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet1 = new ProjectNeon.Database1DataSet1();
             this.btnTestData = new System.Windows.Forms.Button();
-            this.btnTestCon = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.btnCustomerPayment = new System.Windows.Forms.Button();
             this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -931,20 +931,20 @@
             this.btnTestData.UseVisualStyleBackColor = false;
             this.btnTestData.Click += new System.EventHandler(this.btnTestData_Click);
             // 
-            // btnTestCon
+            // btnSettings
             // 
-            this.btnTestCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
-            this.btnTestCon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnTestCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTestCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTestCon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnTestCon.Location = new System.Drawing.Point(634, 572);
-            this.btnTestCon.Name = "btnTestCon";
-            this.btnTestCon.Size = new System.Drawing.Size(110, 35);
-            this.btnTestCon.TabIndex = 28;
-            this.btnTestCon.Text = "Test Page";
-            this.btnTestCon.UseVisualStyleBackColor = false;
-            this.btnTestCon.Click += new System.EventHandler(this.btnTestCon_Click);
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnSettings.Location = new System.Drawing.Point(634, 572);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(110, 35);
+            this.btnSettings.TabIndex = 28;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnTestCon_Click);
             // 
             // btnCustomerPayment
             // 
@@ -1017,7 +1017,7 @@
             this.ClientSize = new System.Drawing.Size(1007, 610);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnCustomerPayment);
-            this.Controls.Add(this.btnTestCon);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.panelCustomers);
@@ -1110,7 +1110,7 @@
         private System.Windows.Forms.BindingSource customerBindingSource;
         private Database1DataSet1TableAdapters.CustomerTableAdapter customerTableAdapter;
         private System.Windows.Forms.DataGridView dataGridViewCustomer;
-        private System.Windows.Forms.Button btnTestCon;
+        private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnSaveDataGrid;
         private System.Windows.Forms.Button btnCustomerPayment;
         private System.Windows.Forms.BindingSource database1DataSetBindingSource;

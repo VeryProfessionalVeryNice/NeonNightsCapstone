@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ProjectNeon
 {
@@ -20,6 +21,9 @@ namespace ProjectNeon
         //global variables for passing information between multiple forms
         public static string selectedInvoiceId;
 
+        //Global tax rate loaded from xml file
+        public decimal taxRate;
+
         //used for displaying error in messagebox
         public string error;
         //SQLConnection
@@ -35,6 +39,7 @@ namespace ProjectNeon
             //Fill customer and transaction tabs
             FillCustomersTab();
             FillTransactionsTab(query);
+            taxRate = GetTaxRate();
             //LoadTestData(); //autoloading test data for now
         }
 
@@ -378,7 +383,7 @@ namespace ProjectNeon
             }
             else
             {
-                return total * 0.081m;
+                return total * taxRate;
             }
         }
 
@@ -666,8 +671,19 @@ namespace ProjectNeon
 
         private void btnTestCon_Click(object sender, EventArgs e)
         {
-            //InvoiceForm invoiceForm = new InvoiceForm();
-            //invoiceForm.Show();
+            ChangeSetting setting = new ChangeSetting(taxRate);
+            setting.ShowDialog();
+            taxRate = GetTaxRate();
+        }
+
+        public decimal GetTaxRate()
+        {
+            //Loads xml file and sets tax rate from it
+            XmlDocument document = new XmlDocument();
+            document.Load("TaxRate.xml");
+            XmlNode node = document.LastChild.FirstChild;
+            //MessageBox.Show(node.InnerText);
+            return Convert.ToDecimal(node.InnerText);
         }
 
         private void SaveDataGrid()
@@ -786,7 +802,7 @@ namespace ProjectNeon
                 {
                     Disconnect(conn);
                 }
-                AlterInvoice alterInvoice = new AlterInvoice(cntStrng, items, newInvoice);
+                AlterInvoice alterInvoice = new AlterInvoice(cntStrng, items, newInvoice, taxRate);
                 alterInvoice.ShowDialog();
                 FillTransactionsTab(query);
                 FillCustomersTab();

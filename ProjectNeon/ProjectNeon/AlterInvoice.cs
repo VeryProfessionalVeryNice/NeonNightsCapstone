@@ -20,11 +20,13 @@ namespace ProjectNeon
         int index;
         string cntString;
         Invoice newInvoice = new Invoice();
-        public AlterInvoice(string conn, Item[] items, Invoice invoice)
+        decimal taxRate;
+        public AlterInvoice(string conn, Item[] items, Invoice invoice, decimal tax)
         {
             cntString = conn;
             newItems = items;
             newInvoice = invoice;
+            taxRate = tax;
             //MessageBox.Show(newInvoice.Id);
             InitializeComponent();
             //Fill fields with information
@@ -156,6 +158,7 @@ namespace ProjectNeon
             decimal total = GetTotal();
             //query to update invoice information
             string sql = $"UPDATE Invoice SET TaxExempt = '{exempt}', Total = '{total}', DateIssued = '{dateIssued.Value.ToShortDateString()}', PaymentMethod = '{cmbBxPayment.Text}', CheckNum = '{txtBxCheckNum.Text}' WHERE InvoiceID = {newInvoice.Id}";
+            string sql2 = $"UPDATE Customer SET Balance = '{total}' WHERE CustomerID = '{newInvoice.CustomerId}'";
             SqlConnection conn = new SqlConnection(cntString);
             Connect(conn);
             try
@@ -179,6 +182,11 @@ namespace ProjectNeon
                         }
                     }
                     catch { }
+                }
+                using (SqlCommand command = new SqlCommand(sql2, conn))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
                 }
             }
             catch { }
@@ -211,7 +219,7 @@ namespace ProjectNeon
             }
             else
             {
-                return total * 0.081m;
+                return total * taxRate;
             }
         }
 

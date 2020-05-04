@@ -107,6 +107,12 @@
     <Compile Include="AlterInvoice.Designer.cs">
       <DependentUpon>AlterInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeSetting.Designer.cs">
+      <DependentUpon>ChangeSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerPayment.cs">
       <SubType>Form</SubType>
@@ -148,6 +154,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AlterInvoice.resx">
       <DependentUpon>AlterInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeSetting.resx">
+      <DependentUpon>ChangeSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerPayment.resx">
       <DependentUpon>CustomerPayment.cs</DependentUpon>
@@ -218,6 +227,7 @@
     </Content>
     <Content Include="Resources\logo.png" />
     <Content Include="Resources\neon.ico" />
+    <Content Include="TaxRate.xml" />
     <None Include="Resources\SplashLogo.png" />
   </ItemGroup>
   <ItemGroup>
