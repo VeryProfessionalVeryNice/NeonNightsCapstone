@@ -853,7 +853,7 @@ namespace ProjectNeon
 
         private void PrintInvoice(Customer cust, Invoice inv, Item[] items)
         {
-            InvoiceForm invoiceForm = new InvoiceForm(cust, inv, items);
+            InvoiceForm invoiceForm = new InvoiceForm(cust, inv, items, taxRate);
             invoiceForm.ShowDialog();
         }
 

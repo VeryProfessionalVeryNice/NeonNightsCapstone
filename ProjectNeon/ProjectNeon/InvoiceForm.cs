@@ -17,8 +17,9 @@ namespace ProjectNeon
         private Label[] taxAmtAry;
         private decimal taxRate = 0.081m;
         private bool isPaid = false;
-        public InvoiceForm(Customer cust, Invoice invoice, Item[] items)
+        public InvoiceForm(Customer cust, Invoice invoice, Item[] items, decimal tax)
         {
+            taxRate = tax;
             InitializeComponent();
             //Assigns labels to arrays for filling with information or hiding
             quantityAry = CreateQtyArray();
@@ -48,6 +49,7 @@ namespace ProjectNeon
                     {
                         taxAmtAry[i].Text = GetTaxAmount(Convert.ToDecimal(amountAry[i].Text));
                         amountAry[i].Text = $"${amountAry[i].Text}";
+                        percentAry[i].Text = (taxRate * 100).ToString("F2") + "%";
                     }
                     else
                     {
