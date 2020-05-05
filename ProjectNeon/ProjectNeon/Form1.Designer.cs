@@ -198,7 +198,7 @@
             // btnDeleteItem
             // 
             this.btnDeleteItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteItem.Location = new System.Drawing.Point(770, 502);
+            this.btnDeleteItem.Location = new System.Drawing.Point(745, 499);
             this.btnDeleteItem.Name = "btnDeleteItem";
             this.btnDeleteItem.Size = new System.Drawing.Size(210, 27);
             this.btnDeleteItem.TabIndex = 24;
@@ -210,7 +210,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(766, 319);
+            this.label16.Location = new System.Drawing.Point(706, 326);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(106, 20);
             this.label16.TabIndex = 23;
@@ -222,9 +222,9 @@
             this.lstBxItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstBxItems.FormattingEnabled = true;
             this.lstBxItems.ItemHeight = 20;
-            this.lstBxItems.Location = new System.Drawing.Point(770, 349);
+            this.lstBxItems.Location = new System.Drawing.Point(710, 349);
             this.lstBxItems.Name = "lstBxItems";
-            this.lstBxItems.Size = new System.Drawing.Size(210, 144);
+            this.lstBxItems.Size = new System.Drawing.Size(270, 144);
             this.lstBxItems.TabIndex = 22;
             // 
             // groupBox3
@@ -1066,9 +1066,9 @@
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnTestData);
             this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.panelAddInvoice);
             this.Controls.Add(this.panelTransactions);
             this.Controls.Add(this.panelCustomers);
-            this.Controls.Add(this.panelAddInvoice);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Neon Nights";
