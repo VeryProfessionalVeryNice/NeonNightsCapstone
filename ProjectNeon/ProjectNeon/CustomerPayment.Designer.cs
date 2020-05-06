@@ -177,7 +177,7 @@
             // 
             this.txtBxBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxBalance.Enabled = false;
-            this.txtBxBalance.Location = new System.Drawing.Point(143, 128);
+            this.txtBxBalance.Location = new System.Drawing.Point(11, 128);
             this.txtBxBalance.Name = "txtBxBalance";
             this.txtBxBalance.Size = new System.Drawing.Size(227, 34);
             this.txtBxBalance.TabIndex = 19;
@@ -186,7 +186,7 @@
             // 
             this.lblOutstandingBalance.AutoSize = true;
             this.lblOutstandingBalance.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lblOutstandingBalance.Location = new System.Drawing.Point(139, 91);
+            this.lblOutstandingBalance.Location = new System.Drawing.Point(0, 91);
             this.lblOutstandingBalance.Name = "lblOutstandingBalance";
             this.lblOutstandingBalance.Size = new System.Drawing.Size(232, 28);
             this.lblOutstandingBalance.TabIndex = 20;
@@ -196,7 +196,7 @@
             // 
             this.txtBxName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(222)))), ((int)(((byte)(226)))));
             this.txtBxName.Enabled = false;
-            this.txtBxName.Location = new System.Drawing.Point(144, 54);
+            this.txtBxName.Location = new System.Drawing.Point(11, 54);
             this.txtBxName.Name = "txtBxName";
             this.txtBxName.Size = new System.Drawing.Size(227, 34);
             this.txtBxName.TabIndex = 0;
@@ -205,7 +205,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(295, 23);
+            this.label1.Location = new System.Drawing.Point(0, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 28);
             this.label1.TabIndex = 1;
