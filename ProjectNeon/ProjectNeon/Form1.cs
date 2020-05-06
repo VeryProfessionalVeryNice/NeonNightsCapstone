@@ -13,10 +13,12 @@ namespace ProjectNeon
         //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True
 
         private static string cntStrng = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
-                               @"AttachDbFilename=|DataDirectory|\Database1.mdf;" +
-                              "Integrated Security=True;";
+                                         @"AttachDbFilename=|DataDirectory|\Database1.mdf;" +
+                                         "Integrated Security=True;";
+
         //Default query string for transaction tab
-        string query = "SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE(YEAR(Invoice.DateIssued) = YEAR(GETDATE())) OR (Customer.Balance > 0)";
+        string query =
+            "SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE(YEAR(Invoice.DateIssued) = YEAR(GETDATE())) OR (Customer.Balance > 0)";
 
         //global variables for passing information between multiple forms
         public static string selectedInvoiceId;
@@ -26,6 +28,7 @@ namespace ProjectNeon
 
         //used for displaying error in messagebox
         public string error;
+
         //SQLConnection
         SqlConnection conn = new SqlConnection(cntStrng);
 
@@ -57,7 +60,9 @@ namespace ProjectNeon
         }
 
         #region Database
+
         #region Database Connections
+
         private void Connect(SqlConnection conn)
         {
             //Open database connection
@@ -79,7 +84,7 @@ namespace ProjectNeon
             try
             {
 
-                conn.Close();//Close Connection
+                conn.Close(); //Close Connection
                 //MessageBox.Show("Closed");
             }
             catch (Exception ex)
@@ -87,7 +92,9 @@ namespace ProjectNeon
                 Console.WriteLine(ex.Message);
             }
         }
+
         #endregion
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Closes database connection when the form is closed
@@ -221,9 +228,9 @@ namespace ProjectNeon
             //Int to hold customer Id to tie invoice to customer
             int id = 0;
 
-            
+
             string query = $"INSERT INTO Customer(CompanyName, JobType, AddressLine1, AddressLine2, City, State, Zip)" +
-                $"VALUES ('{txtBxName.Text}', '{cmbBxJobType.Text}', '{txtBxAddress1.Text}', '{txtBxAddress2.Text}', '{txtBxCity.Text}', '{txtBxState.Text}', '{txtBxZip.Text}');";
+                           $"VALUES ('{txtBxName.Text}', '{cmbBxJobType.Text}', '{txtBxAddress1.Text}', '{txtBxAddress2.Text}', '{txtBxCity.Text}', '{txtBxState.Text}', '{txtBxZip.Text}');";
             string idQ = "SELECT @@IDENTITY";
             try
             {
@@ -243,6 +250,7 @@ namespace ProjectNeon
             {
                 lblStatus.Text = ex.Message + " Customer insert error";
             }
+
             return id;
         }
 
@@ -262,7 +270,7 @@ namespace ProjectNeon
 
         private bool ValidateCustomer()
         {
-            
+
             bool isValid = true;
             //Array of customer fields
             TextBox[] textBoxes = new TextBox[5]
@@ -286,7 +294,7 @@ namespace ProjectNeon
                         error += ", " + txtBx.Name.Remove(0, 5);
                 }
             }
-            
+
             return isValid;
         }
 
@@ -298,7 +306,7 @@ namespace ProjectNeon
             foreach (Item item in lstBxItems.Items)
             {
                 string query = $"INSERT INTO Item(InvoiceID, ItemCode, Quantity, Description, PriceEach)" +
-                $"VALUES ('{txtBxInvoiceId.Text}', '{item.ItemCode}', '{item.Quantity}', '{item.Description}', '{item.PriceEach}');";
+                               $"VALUES ('{txtBxInvoiceId.Text}', '{item.ItemCode}', '{item.Quantity}', '{item.Description}', '{item.PriceEach}');";
                 try
                 {
                     //Add customer to database
@@ -318,6 +326,7 @@ namespace ProjectNeon
                     lblStatus.Text = "Added Invoice";
                 }
             }
+
             Disconnect(conn);
         }
 
@@ -327,7 +336,8 @@ namespace ProjectNeon
             decimal total = GetTotal();
 
             //SqlConnection conn = new SqlConnection(cntStrng);
-            string query = $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
+            string query =
+                $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
                 $"VALUES ('{txtBxInvoiceId.Text}', '{custId}', '{exempt}', '{total}', '{dateIssued.Value.ToShortDateString()}', '{cmbBxPayment.Text}', '{txtBxCheckNum.Text}');";
             try
             {
@@ -339,6 +349,7 @@ namespace ProjectNeon
                     command.ExecuteNonQuery();
                     Disconnect(conn);
                 }
+
                 if (!chBxCustPaid.Checked)
                     UpdateBalance(custId);
                 else
@@ -430,6 +441,7 @@ namespace ProjectNeon
                     //MessageBox.Show(total.ToString("C2"));
                     Disconnect(conn);
                 }
+
                 try
                 {
                     using (SqlCommand command = new SqlCommand(oldQuery, conn))
@@ -442,7 +454,10 @@ namespace ProjectNeon
                         total += oldTotal;
                     }
                 }
-                catch { }
+                catch
+                {
+                }
+
                 total = Convert.ToDecimal(total.ToString("F2"));
                 string updateQuery = $"UPDATE Customer SET Balance = '{total}' WHERE CustomerID = '{id}'";
                 using (SqlCommand command = new SqlCommand(updateQuery, conn))
@@ -477,25 +492,37 @@ namespace ProjectNeon
                 lblStatus.Text = ex.Message;
             }
         }
+
         #endregion
+
         #region TestData
+
         private void LoadTestData()
         {
             int[] id = new int[3];
             SqlConnection conn = new SqlConnection(cntStrng);
             Connect(conn);
-            string[,] custData = new string[,] { {"Joes Signs", "Company", "393 Smith Street", "", "Springfield", "MO", "56422" },
-                                                 {"Andrew Miller", "Private", "455 Kansas Exsp", "Suite 3442", "Springfield", "MO", "56426" },
-                                                 {"Austins Signs", "Company", "1244 Glenstone", "Suite 2111", "Springfield", "MO", "21441"} };
+            string[,] custData = new string[,]
+            {
+                {"Joes Signs", "Company", "393 Smith Street", "", "Springfield", "MO", "56422"},
+                {"Andrew Miller", "Private", "455 Kansas Exsp", "Suite 3442", "Springfield", "MO", "56426"},
+                {"Austins Signs", "Company", "1244 Glenstone", "Suite 2111", "Springfield", "MO", "21441"}
+            };
 
-            string[,] invData = new string[,] { {"1552", "1", "false", "216.18", "4/2/2020", "Check", "A255531671136" },
-                                                {"1553", "2", "true", "199.98", "4/3/2020", "Cash", "" },
-                                                {"1554", "3", "false", "216.18", "4/4/2020", "Cash", "" } };
+            string[,] invData = new string[,]
+            {
+                {"1552", "1", "false", "216.18", "4/2/2020", "Check", "A255531671136"},
+                {"1553", "2", "true", "199.98", "4/3/2020", "Cash", ""},
+                {"1554", "3", "false", "216.18", "4/4/2020", "Cash", ""}
+            };
 
-            string[,] itemData = new string[,] { {"1552", "New Job", "2", "", "99.99" },
-                                                 {"1553", "New Job", "1", "", "99.99" },
-                                                 {"1553", "Labor", "1", "", "99.99" },
-                                                 {"1554", "New Job", "2", "", "99.99" } };
+            string[,] itemData = new string[,]
+            {
+                {"1552", "New Job", "2", "", "99.99"},
+                {"1553", "New Job", "1", "", "99.99"},
+                {"1553", "Labor", "1", "", "99.99"},
+                {"1554", "New Job", "2", "", "99.99"}
+            };
 
             //Add test customers to database
             try
@@ -503,7 +530,8 @@ namespace ProjectNeon
                 for (int i = 0; i < custData.GetLength(0); i++)
                 {
 
-                    string query = $"INSERT INTO Customer(CompanyName, JobType, AddressLine1, AddressLine2, City, State, Zip)" +
+                    string query =
+                        $"INSERT INTO Customer(CompanyName, JobType, AddressLine1, AddressLine2, City, State, Zip)" +
                         $"VALUES ('{custData[i, 0]}', '{custData[i, 1]}', '{custData[i, 2]}', '{custData[i, 3]}', '{custData[i, 4]}', '{custData[i, 5]}', '{custData[i, 6]}');";
                     string idQuery = $"SELECT CustomerID FROM Customer WHERE CompanyName = '{custData[i, 0]}'";
                     try
@@ -514,6 +542,7 @@ namespace ProjectNeon
                             command.CommandType = CommandType.Text;
                             command.ExecuteNonQuery();
                         }
+
                         //Gets identity Id from added customer
                         using (SqlCommand command = new SqlCommand(idQuery, conn))
                         {
@@ -530,7 +559,8 @@ namespace ProjectNeon
 
                 for (int i = 0; i < invData.GetLength(0); i++)
                 {
-                    string query = $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
+                    string query =
+                        $"INSERT INTO Invoice(InvoiceID, CustomerID, TaxExempt, Total, DateIssued, PaymentMethod, CheckNum)" +
                         $"VALUES ('{invData[i, 0]}', '{id[i]}', '{invData[i, 2]}', '{invData[i, 3]}', '{invData[i, 4]}', '{invData[i, 5]}', '{invData[i, 6]}');";
                     try
                     {
@@ -540,6 +570,7 @@ namespace ProjectNeon
                             command.CommandType = CommandType.Text;
                             command.ExecuteNonQuery();
                         }
+
                         UpdateBalance(Convert.ToInt32(id[i]));
                     }
                     catch (Exception ex)
@@ -551,7 +582,7 @@ namespace ProjectNeon
                 for (int i = 0; i < itemData.GetLength(0); i++)
                 {
                     string query = $"INSERT INTO Item(InvoiceID, ItemCode, Quantity, Description, PriceEach)" +
-                    $"VALUES ('{itemData[i, 0]}', '{itemData[i, 1]}', '{itemData[i, 2]}', '{itemData[i, 3]}', '{itemData[i, 4]}');";
+                                   $"VALUES ('{itemData[i, 0]}', '{itemData[i, 1]}', '{itemData[i, 2]}', '{itemData[i, 3]}', '{itemData[i, 4]}');";
                     try
                     {
                         //Add customer to database
@@ -580,7 +611,9 @@ namespace ProjectNeon
         }
 
         #endregion
+
         #region PanelRotation
+
         private void btnShowAddInvoice_Click(object sender, EventArgs e)
         {
             HidePanels();
@@ -614,7 +647,29 @@ namespace ProjectNeon
             panelTransactions.Hide();
             panelCustomers.Hide();
         }
+
         #endregion
+
+        //displays check number input appropriately based on payment selection
+        private void cmbBxPayment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBxPayment.SelectedIndex == 1)
+            {
+                txtBxCheckNum.Enabled = true;
+                txtBxCheckNum.Visible = true;
+                label10.Visible = true;
+
+            }
+
+            if (cmbBxPayment.SelectedIndex == 0)
+            {
+                txtBxCheckNum.Enabled = false;
+                txtBxCheckNum.Text = null;
+                txtBxCheckNum.Visible = false;
+                label10.Visible = false;
+            }
+        }
+
         private void txtBxZip_KeyPress(object sender, KeyPressEventArgs e)
         {
             // allows only numbers to be typed in zip code txtbox
@@ -716,10 +771,11 @@ namespace ProjectNeon
                 rowIndex = dataGridViewCustomer.CurrentCell.RowIndex;
                 selectedCustomerName = dataGridViewCustomer.CurrentRow.Cells[1].Value.ToString();
                 outstandingBalance = dataGridViewCustomer.CurrentRow.Cells[7].Value.ToString();
-                customerID = (int)dataGridViewCustomer.CurrentRow.Cells[0].Value;
-                CustomerPayment paymentForm = new CustomerPayment(selectedCustomerName, outstandingBalance, selectedInvoiceId, cntStrng, customerID);
+                customerID = (int) dataGridViewCustomer.CurrentRow.Cells[0].Value;
+                CustomerPayment paymentForm = new CustomerPayment(selectedCustomerName, outstandingBalance,
+                    selectedInvoiceId, cntStrng, customerID);
                 paymentForm.ShowDialog();
-            } 
+            }
             catch
             {
                 lblStatus.Text = "No Customer Selected";
@@ -729,7 +785,7 @@ namespace ProjectNeon
                 FillCustomersTab();
                 FillTransactionsTab(query);
             }
-            
+
         }
 
         private void dataGridViewCustomer_SelectionChanged(object sender, EventArgs e)
@@ -742,10 +798,11 @@ namespace ProjectNeon
             //Makes query string to search for typed field in selected column
             if (cmBxSearch.Text != "")
             {
-                string qry = $"SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE {cmBxSearch.Text} LIKE '%{txtBxSearch.Text}%'";
+                string qry =
+                    $"SELECT Customer.CompanyName, Invoice.InvoiceID, Invoice.DateIssued, DATEDIFF(day, Invoice.DateIssued, GETDATE()) AS Aging, FORMAT(Invoice.Total, 'C2') AS Total, FORMAT(Customer.Balance, 'C2') AS Balance FROM (Invoice INNER JOIN Customer ON Invoice.CustomerID = Customer.CustomerID) WHERE {cmBxSearch.Text} LIKE '%{txtBxSearch.Text}%'";
                 FillTransactionsTab(qry);
             }
-            
+
         }
 
         private void btnOpenInvoice_Click(object sender, EventArgs e)
@@ -802,6 +859,7 @@ namespace ProjectNeon
                 {
                     Disconnect(conn);
                 }
+
                 AlterInvoice alterInvoice = new AlterInvoice(cntStrng, items, newInvoice, taxRate);
                 alterInvoice.ShowDialog();
                 FillTransactionsTab(query);
@@ -818,7 +876,10 @@ namespace ProjectNeon
             int index = dataGridViewTransactions.CurrentCell.RowIndex;
             selectedInvoiceId = dataGridViewTransactions.CurrentRow.Cells[1].Value.ToString();
             //Show messagebox to make sure that they want to delete invoice
-            DialogResult result = MessageBox.Show($"Are you sure you want to void invoice #{selectedInvoiceId}. It will be deleted permanently.", $"Void Invoice #{selectedInvoiceId}", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult result =
+                MessageBox.Show(
+                    $"Are you sure you want to void invoice #{selectedInvoiceId}. It will be deleted permanently.",
+                    $"Void Invoice #{selectedInvoiceId}", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
                 string qry = $"DELETE FROM Invoice WHERE InvoiceID = '{selectedInvoiceId}'";
@@ -832,14 +893,16 @@ namespace ProjectNeon
                         command.CommandType = CommandType.Text;
                         command.ExecuteNonQuery();
                     }
+
                     using (SqlCommand command = new SqlCommand(qry, conn))
                     {
                         command.CommandType = CommandType.Text;
                         command.ExecuteNonQuery();
                     }
+
                     lblStatus.Text = "Invoice successfully deleted";
-                } 
-                catch (Exception ex) 
+                }
+                catch (Exception ex)
                 {
                     lblStatus.Text = ex.Message;
                 }
@@ -923,6 +986,7 @@ namespace ProjectNeon
                     items[i].Description = itemTable.Rows[i]["Description"].ToString();
                     items[i].PriceEach = Convert.ToDecimal(itemTable.Rows[i]["PriceEach"]);
                 }
+
                 //Send objects to be printed
                 PrintInvoice(newCust, newInvoice, items);
             }
@@ -936,5 +1000,6 @@ namespace ProjectNeon
             }
         }
 
+        
     }
 }
