@@ -265,7 +265,7 @@
             this.groupBox3.Controls.Add(this.txtBxItemCode);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(625, 5);
+            this.groupBox3.Location = new System.Drawing.Point(642, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(251, 348);
             this.groupBox3.TabIndex = 21;
@@ -320,7 +320,7 @@
             this.txtBxPriceEach.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F);
             this.txtBxPriceEach.Location = new System.Drawing.Point(3, 190);
             this.txtBxPriceEach.Name = "txtBxPriceEach";
-            this.txtBxPriceEach.Size = new System.Drawing.Size(117, 32);
+            this.txtBxPriceEach.Size = new System.Drawing.Size(177, 32);
             this.txtBxPriceEach.TabIndex = 15;
             this.txtBxPriceEach.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxPriceEach_KeyPress);
             // 
@@ -340,7 +340,7 @@
             0,
             0});
             this.nudQty.Name = "nudQty";
-            this.nudQty.Size = new System.Drawing.Size(117, 32);
+            this.nudQty.Size = new System.Drawing.Size(177, 32);
             this.nudQty.TabIndex = 14;
             this.nudQty.Value = new decimal(new int[] {
             1,
@@ -364,7 +364,7 @@
             this.txtBxItemCode.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F);
             this.txtBxItemCode.Location = new System.Drawing.Point(3, 62);
             this.txtBxItemCode.Name = "txtBxItemCode";
-            this.txtBxItemCode.Size = new System.Drawing.Size(117, 32);
+            this.txtBxItemCode.Size = new System.Drawing.Size(177, 32);
             this.txtBxItemCode.TabIndex = 12;
             this.txtBxItemCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxItemCode_KeyPress);
             // 
@@ -391,7 +391,7 @@
             this.groupBox2.Controls.Add(this.dateIssued);
             this.groupBox2.Controls.Add(this.ckBxTaxExempt);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(282, 5);
+            this.groupBox2.Location = new System.Drawing.Point(287, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(337, 348);
             this.groupBox2.TabIndex = 20;
@@ -551,7 +551,7 @@
             "Private"});
             this.cmbBxJobType.Location = new System.Drawing.Point(17, 440);
             this.cmbBxJobType.Name = "cmbBxJobType";
-            this.cmbBxJobType.Size = new System.Drawing.Size(173, 33);
+            this.cmbBxJobType.Size = new System.Drawing.Size(224, 33);
             this.cmbBxJobType.TabIndex = 6;
             this.cmbBxJobType.Text = "Company";
             // 
@@ -572,7 +572,7 @@
             this.txtBxZip.Location = new System.Drawing.Point(16, 376);
             this.txtBxZip.MaxLength = 5;
             this.txtBxZip.Name = "txtBxZip";
-            this.txtBxZip.Size = new System.Drawing.Size(173, 32);
+            this.txtBxZip.Size = new System.Drawing.Size(225, 32);
             this.txtBxZip.TabIndex = 5;
             this.txtBxZip.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxZip_KeyPress);
             // 
@@ -667,7 +667,7 @@
             this.txtBxState.Location = new System.Drawing.Point(17, 309);
             this.txtBxState.MaxLength = 2;
             this.txtBxState.Name = "txtBxState";
-            this.txtBxState.Size = new System.Drawing.Size(173, 32);
+            this.txtBxState.Size = new System.Drawing.Size(224, 32);
             this.txtBxState.TabIndex = 4;
             this.txtBxState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxState_KeyPress);
             // 
@@ -707,7 +707,7 @@
             this.txtBxCity.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxCity.Location = new System.Drawing.Point(16, 242);
             this.txtBxCity.Name = "txtBxCity";
-            this.txtBxCity.Size = new System.Drawing.Size(173, 32);
+            this.txtBxCity.Size = new System.Drawing.Size(225, 32);
             this.txtBxCity.TabIndex = 3;
             this.txtBxCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxCity_KeyPress);
             // 
