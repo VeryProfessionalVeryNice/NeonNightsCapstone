@@ -40,9 +40,10 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelAddInvoice = new System.Windows.Forms.Panel();
-            this.chBxCustPaid = new System.Windows.Forms.CheckBox();
             this.chBxPrint = new System.Windows.Forms.CheckBox();
             this.btnSaveToDatabase = new System.Windows.Forms.Button();
+            this.btnTestData = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.btnDeleteItem = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.lstBxItems = new System.Windows.Forms.ListBox();
@@ -57,6 +58,7 @@
             this.txtBxItemCode = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chBxCustPaid = new System.Windows.Forms.CheckBox();
             this.txtBxInvoiceId = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtBxCheckNum = new System.Windows.Forms.TextBox();
@@ -106,18 +108,16 @@
             this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet1 = new ProjectNeon.Database1DataSet1();
-            this.btnTestData = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet = new ProjectNeon.Database1DataSet();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCustomerPayment = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.customerTableAdapter = new ProjectNeon.Database1DataSet1TableAdapters.CustomerTableAdapter();
             this.customerTableAdapter1 = new ProjectNeon.Database1DataSetTableAdapters.CustomerTableAdapter();
             this.invoiceTableAdapter = new ProjectNeon.Database1DataSetTableAdapters.InvoiceTableAdapter();
-            this.btnCustomerPayment = new System.Windows.Forms.Button();
             this.panelAddInvoice.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
@@ -163,17 +163,6 @@
             this.panelAddInvoice.Size = new System.Drawing.Size(899, 589);
             this.panelAddInvoice.TabIndex = 2;
             // 
-            // chBxCustPaid
-            // 
-            this.chBxCustPaid.AutoSize = true;
-            this.chBxCustPaid.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chBxCustPaid.Location = new System.Drawing.Point(4, 312);
-            this.chBxCustPaid.Name = "chBxCustPaid";
-            this.chBxCustPaid.Size = new System.Drawing.Size(155, 30);
-            this.chBxCustPaid.TabIndex = 27;
-            this.chBxCustPaid.Text = "Mark as Paid";
-            this.chBxCustPaid.UseVisualStyleBackColor = true;
-            // 
             // chBxPrint
             // 
             this.chBxPrint.AutoSize = true;
@@ -197,6 +186,36 @@
             this.btnSaveToDatabase.Text = "Save Invoice";
             this.btnSaveToDatabase.UseVisualStyleBackColor = false;
             this.btnSaveToDatabase.Click += new System.EventHandler(this.btnSaveToDatabase_Click);
+            // 
+            // btnTestData
+            // 
+            this.btnTestData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnTestData.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTestData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTestData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTestData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnTestData.Location = new System.Drawing.Point(370, 544);
+            this.btnTestData.Name = "btnTestData";
+            this.btnTestData.Size = new System.Drawing.Size(100, 35);
+            this.btnTestData.TabIndex = 27;
+            this.btnTestData.Text = "Load Data";
+            this.btnTestData.UseVisualStyleBackColor = false;
+            this.btnTestData.Click += new System.EventHandler(this.btnTestData_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
+            this.btnSettings.Location = new System.Drawing.Point(253, 544);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(111, 35);
+            this.btnSettings.TabIndex = 28;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnTestCon_Click);
             // 
             // btnDeleteItem
             // 
@@ -374,6 +393,17 @@
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "‌Invoice Information";
+            // 
+            // chBxCustPaid
+            // 
+            this.chBxCustPaid.AutoSize = true;
+            this.chBxCustPaid.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chBxCustPaid.Location = new System.Drawing.Point(4, 312);
+            this.chBxCustPaid.Name = "chBxCustPaid";
+            this.chBxCustPaid.Size = new System.Drawing.Size(155, 30);
+            this.chBxCustPaid.TabIndex = 27;
+            this.chBxCustPaid.Text = "Mark as Paid";
+            this.chBxCustPaid.UseVisualStyleBackColor = true;
             // 
             // txtBxInvoiceId
             // 
@@ -1003,36 +1033,6 @@
             this.database1DataSet1.DataSetName = "Database1DataSet1";
             this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnTestData
-            // 
-            this.btnTestData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
-            this.btnTestData.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnTestData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTestData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTestData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnTestData.Location = new System.Drawing.Point(370, 544);
-            this.btnTestData.Name = "btnTestData";
-            this.btnTestData.Size = new System.Drawing.Size(100, 35);
-            this.btnTestData.TabIndex = 27;
-            this.btnTestData.Text = "Load Data";
-            this.btnTestData.UseVisualStyleBackColor = false;
-            this.btnTestData.Click += new System.EventHandler(this.btnTestData_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
-            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
-            this.btnSettings.Location = new System.Drawing.Point(253, 544);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(111, 35);
-            this.btnSettings.TabIndex = 28;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.btnTestCon_Click);
-            // 
             // customerBindingSource1
             // 
             this.customerBindingSource1.DataMember = "Customer";
@@ -1065,22 +1065,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(223, 546);
             this.flowLayoutPanel1.TabIndex = 30;
             // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // customerTableAdapter
-            // 
-            this.customerTableAdapter.ClearBeforeFill = true;
-            // 
-            // customerTableAdapter1
-            // 
-            this.customerTableAdapter1.ClearBeforeFill = true;
-            // 
-            // invoiceTableAdapter
-            // 
-            this.invoiceTableAdapter.ClearBeforeFill = true;
-            // 
             // btnCustomerPayment
             // 
             this.btnCustomerPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
@@ -1096,6 +1080,22 @@
             this.btnCustomerPayment.UseVisualStyleBackColor = false;
             this.btnCustomerPayment.Visible = false;
             this.btnCustomerPayment.Click += new System.EventHandler(this.btnCustomerPayment_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
+            // 
+            // customerTableAdapter1
+            // 
+            this.customerTableAdapter1.ClearBeforeFill = true;
+            // 
+            // invoiceTableAdapter
+            // 
+            this.invoiceTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
