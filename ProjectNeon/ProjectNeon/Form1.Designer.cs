@@ -322,6 +322,7 @@
             this.txtBxPriceEach.Name = "txtBxPriceEach";
             this.txtBxPriceEach.Size = new System.Drawing.Size(117, 32);
             this.txtBxPriceEach.TabIndex = 15;
+            this.txtBxPriceEach.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxPriceEach_KeyPress);
             // 
             // nudQty
             // 
@@ -365,6 +366,7 @@
             this.txtBxItemCode.Name = "txtBxItemCode";
             this.txtBxItemCode.Size = new System.Drawing.Size(117, 32);
             this.txtBxItemCode.TabIndex = 12;
+            this.txtBxItemCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxItemCode_KeyPress);
             // 
             // label12
             // 
@@ -415,6 +417,7 @@
             this.txtBxInvoiceId.Name = "txtBxInvoiceId";
             this.txtBxInvoiceId.Size = new System.Drawing.Size(316, 32);
             this.txtBxInvoiceId.TabIndex = 7;
+            this.txtBxInvoiceId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxInvoiceId_KeyPress);
             // 
             // label11
             // 
@@ -436,6 +439,7 @@
             this.txtBxCheckNum.Size = new System.Drawing.Size(316, 32);
             this.txtBxCheckNum.TabIndex = 11;
             this.txtBxCheckNum.Visible = false;
+            this.txtBxCheckNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxCheckNum_KeyPress);
             // 
             // label10
             // 
@@ -559,6 +563,7 @@
             this.txtBxName.Name = "txtBxName";
             this.txtBxName.Size = new System.Drawing.Size(224, 32);
             this.txtBxName.TabIndex = 0;
+            this.txtBxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxName_KeyPress);
             // 
             // txtBxZip
             // 
@@ -664,6 +669,7 @@
             this.txtBxState.Name = "txtBxState";
             this.txtBxState.Size = new System.Drawing.Size(173, 32);
             this.txtBxState.TabIndex = 4;
+            this.txtBxState.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxState_KeyPress);
             // 
             // txtBxAddress1
             // 
@@ -673,6 +679,7 @@
             this.txtBxAddress1.Name = "txtBxAddress1";
             this.txtBxAddress1.Size = new System.Drawing.Size(224, 32);
             this.txtBxAddress1.TabIndex = 1;
+            this.txtBxAddress1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxAddress1_KeyPress);
             // 
             // label5
             // 
@@ -702,6 +709,7 @@
             this.txtBxCity.Name = "txtBxCity";
             this.txtBxCity.Size = new System.Drawing.Size(173, 32);
             this.txtBxCity.TabIndex = 3;
+            this.txtBxCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxCity_KeyPress);
             // 
             // txtBxAddress2
             // 
@@ -711,6 +719,7 @@
             this.txtBxAddress2.Name = "txtBxAddress2";
             this.txtBxAddress2.Size = new System.Drawing.Size(224, 32);
             this.txtBxAddress2.TabIndex = 2;
+            this.txtBxAddress2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBxAddress2_KeyPress);
             // 
             // label4
             // 
