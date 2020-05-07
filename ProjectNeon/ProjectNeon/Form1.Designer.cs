@@ -190,6 +190,7 @@
             // btnTestData
             // 
             this.btnTestData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(81)))), ((int)(((byte)(96)))));
+            this.btnTestData.Enabled = false;
             this.btnTestData.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnTestData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTestData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,6 +201,7 @@
             this.btnTestData.TabIndex = 27;
             this.btnTestData.Text = "Load Data";
             this.btnTestData.UseVisualStyleBackColor = false;
+            this.btnTestData.Visible = false;
             this.btnTestData.Click += new System.EventHandler(this.btnTestData_Click);
             // 
             // btnSettings
@@ -1074,7 +1076,7 @@
             this.btnCustomerPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(176)))), ((int)(((byte)(218)))));
             this.btnCustomerPayment.Location = new System.Drawing.Point(3, 249);
             this.btnCustomerPayment.Name = "btnCustomerPayment";
-            this.btnCustomerPayment.Size = new System.Drawing.Size(160, 132);
+            this.btnCustomerPayment.Size = new System.Drawing.Size(220, 132);
             this.btnCustomerPayment.TabIndex = 29;
             this.btnCustomerPayment.Text = "Enter Customer Payment";
             this.btnCustomerPayment.UseVisualStyleBackColor = false;
